@@ -41,6 +41,8 @@ public:
         return info!=n.info && prec==n.prec && next!=n.next;
     }
     };
+// fine calss Nodo
+
     unsigned int size;
     Nodo* first;
     Dlista() : first() {}
@@ -126,7 +128,7 @@ delete attuale;
         }
     }
 
-    void static cancellaNodo(Nodo* current) {
+     void cancellaNodo(Nodo* current) {
         if(!current->prec) { //Cancellazione in testa
             if(current->next) {
                 first=first->next;
@@ -182,6 +184,7 @@ delete attuale;
              }
              return *this;
          }
+         //ricordare che da favigno non fungeva il --
          iterator operator--(int){
              iterator temp = *this;
               if(ptr){
@@ -217,20 +220,19 @@ delete attuale;
         else
             return end();
     }
-    it = nomestruttura.find()
-    iterator find(iterator i) const {
-        if(size<=0) cerr<<"diocan hai sbaglaiot tutto"<<endl;
-        else{
+    //iterator it = nomestruttura.find()
+    iterator find(const T& t) const {
+        if(size>0){
             Nodo* scorri=first;
             while(scorri){
-                if(scorri==i.ptr){
-                    iterator ok=i;
+                if(scorri->info==t){
+                    Dlista<T>::iterator ok = scorri;
                     return ok;
                  }
                 scorri=scorri->next;
             }
+        }
     }
-}
 
 
         class const_iterator{
@@ -272,10 +274,10 @@ delete attuale;
                 }
                   return *this;
             }
-            Nodo* operator->() const{
+            T* operator->() const{
                 return &(ptr->info);
             }
-            Nodo& operator*() const{
+            T& operator*() const{
                 return ptr->info;
             }
             //Dlist<T> get_tipoWorkout();
@@ -307,7 +309,9 @@ delete attuale;
              T& operator[](iterator i) const{
                  return i.ptr->info;
              }
-             iterator erase(iterator i){
+
+             // La funzione erase fatta sopra per ora sembra quella giusta
+             /*iterator erase(iterator i){
                     if(i.ptr) {
                         iterator ret;
                         ret.ptr = i.ptr->next;
@@ -321,13 +325,7 @@ delete attuale;
                         return end();
                  }
 
-
-             iterator find(const T&) const{
-                 {
-                  /*da implementare*/
-                 }
-
-             }
+                */
 
 };
 
