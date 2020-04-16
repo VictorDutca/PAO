@@ -4,9 +4,9 @@
 #include <ciclismo.h>
 #include <nuoto.h>
 
-
 class Triathlon : public Corsa, public Ciclismo, public Nuoto {
 public:
+    Triathlon(Corsa, Ciclismo, Nuoto);
     Triathlon(unsigned int, unsigned int,
               unsigned int, unsigned int, unsigned int, unsigned int,
               unsigned int, unsigned int, unsigned int, unsigned int,
@@ -17,6 +17,5 @@ public:
     virtual bool operator>=(const Workout&) const;
     virtual bool operator<=(const Workout&) const;
 };
-
 
 #endif // TRIATHLON_H

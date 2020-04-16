@@ -1,7 +1,6 @@
 #ifndef WORKOUT_H
 #define WORKOUT_H
 
-
 class Workout {
 private:
     unsigned int durata;
@@ -15,7 +14,5 @@ public:
     virtual bool operator>=(const Workout& ) const;
     unsigned int get_durata() const;
 };
-
-
 
 #endif // WORKOUT_H

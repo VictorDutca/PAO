@@ -1,8 +1,11 @@
 #include "nuoto.h"
 #include <typeinfo>
 
-Nuoto::Nuoto(unsigned int durata , unsigned int rana , unsigned int dorso, unsigned int libero): Workout(durata) , VascheRana(rana),VascheDorso(dorso),VascheLibero(libero){
-}
+unsigned int Nuoto::constRana = 5;
+unsigned int Nuoto::constDorso = 7;
+unsigned int Nuoto::constLibero = 3;
+
+Nuoto::Nuoto(unsigned int durata , unsigned int rana , unsigned int dorso, unsigned int libero): Workout(durata) , VascheRana(rana),VascheDorso(dorso),VascheLibero(libero) {}
 
 bool Nuoto::operator==(const Workout& w) const {
 if(typeid(w) == typeid(const Nuoto&)){
@@ -37,21 +40,23 @@ VascheLibero <= (dynamic_cast<const Nuoto&>(w)).VascheLibero;
         return false;
 
 }
+
 double Nuoto::GrassiBruc() const {
-return 4;
+    return 4;
 }
 
 double Nuoto::calorie() const {
-return 2;
+    return (VascheRana*constRana) + (VascheDorso*constDorso) + (VascheLibero*constLibero);
 }
+
 unsigned int Nuoto::getVascheLibero() const{
-return VascheLibero;
+    return VascheLibero;
 }
 
 unsigned int Nuoto::getVascheRana() const{
-return VascheRana;
-}
-unsigned int Nuoto::getVascheDorso() const{
-return VascheDorso;
+    return VascheRana;
 }
 
+unsigned int Nuoto::getVascheDorso() const{
+    return VascheDorso;
+}
