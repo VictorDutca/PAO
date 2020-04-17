@@ -11,8 +11,11 @@ double Ciclismo::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);
 }
 
+unsigned int Ciclismo::avg_Speed() const{
+    return distanza/get_durata();
+}
 double Ciclismo::GrassiBruc() const {
-    return durata/distanza;
+    return avg_Speed() + calorie();     // per ora lasciamo sta cazzata
 }
 
 bool Ciclismo::operator==(const Workout& w) const {

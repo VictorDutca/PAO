@@ -11,8 +11,11 @@ double Corsa::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);
 }
 
+unsigned int Corsa::avg_Speed() const {
+    return distanza/get_durata();
+}
 double Corsa::GrassiBruc() const {
-    return 1;
+    return avg_Speed() + calorie();     // per ora lasciamo sta cazzata
 }
 
 bool Corsa::operator==(const Workout& w) const {

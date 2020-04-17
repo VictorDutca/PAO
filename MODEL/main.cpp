@@ -18,9 +18,12 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     Corsa c1(180,30,10,10,10);
+    Corsa c11(180,30,10,10,10);
     Ciclismo c2(180,30,10,10,10);
-    Ciclismo c3(140,30,10,10,10);
+    Ciclismo c3(180,30,10,10,10);
     Nuoto n(15,2,2,2);
+    Nuoto n11(15,2,2,2);
+
     bool b = c2>=c3;
     cout << b << endl;
 
@@ -36,6 +39,15 @@ int main(int argc, char *argv[])
     Triathlon c4(c1, c2, n);
     double d3 = c4.calorie();
     cout << d3;
+    Triathlon c5(c1, c2, n);
+
+    if(c4==c5){
+        cout<<" ok "<<endl;
+    }
+    else{
+        cout<<" poroc dio !!! "<<endl;
+    }
+
 
     QApplication a(argc, argv);
     MainWindow w;

@@ -17,22 +17,55 @@ double Triathlon::GrassiBruc() const {
 }
 
 bool Triathlon::operator==(const Workout& w) const {
-if(typeid(w) == typeid(const Triathlon&)){
-            return Corsa::operator==(w) && Ciclismo::operator==(w) && Nuoto::operator==(w);
-    }
+    if(typeid(w) == typeid(const Triathlon&)){
+        return  Workout::get_durata() == w.get_durata() &&
+                Corsa::get_distanza() == (dynamic_cast<const Corsa&>(w)).get_distanza() &&
+                Corsa::get_discesa() == (dynamic_cast<const Corsa&>(w)).get_discesa() &&
+                Corsa::get_pianura() == (dynamic_cast<const Corsa&>(w)).get_pianura() &&
+                Corsa::get_salita() == (dynamic_cast<const Corsa&>(w)).get_salita() &&
+                Ciclismo::get_distanza() == (dynamic_cast<const Ciclismo&>(w)).get_distanza() &&
+                Ciclismo::get_discesa() == (dynamic_cast<const Ciclismo&>(w)).get_discesa() &&
+                Ciclismo::get_pianura() == (dynamic_cast<const Ciclismo&>(w)).get_pianura() &&
+                Ciclismo::get_salita() == (dynamic_cast<const Ciclismo&>(w)).get_salita() &&
+                Nuoto::getVascheDorso() == (dynamic_cast<const Nuoto&>(w)).getVascheDorso() &&
+                Nuoto::getVascheLibero() == (dynamic_cast<const Nuoto&>(w)).getVascheLibero() &&
+                Nuoto::getVascheRana() == (dynamic_cast<const Nuoto&>(w)).getVascheRana();
+        }
         return false;
 }
 
 bool Triathlon::operator>=(const Workout& w) const {
-if(typeid(w) == typeid(const Triathlon&)){
-            return Corsa::operator>=(w) && Ciclismo::operator>=(w) && Nuoto::operator>=(w);
-    }
+    if(typeid(w) == typeid(const Triathlon&)){
+        return  Workout::get_durata() >= w.get_durata() &&
+                Corsa::get_distanza() >= (dynamic_cast<const Corsa&>(w)).get_distanza() &&
+                Corsa::get_discesa() >= (dynamic_cast<const Corsa&>(w)).get_discesa() &&
+                Corsa::get_pianura() >= (dynamic_cast<const Corsa&>(w)).get_pianura() &&
+                Corsa::get_salita() >= (dynamic_cast<const Corsa&>(w)).get_salita() &&
+                Ciclismo::get_distanza() >= (dynamic_cast<const Ciclismo&>(w)).get_distanza() &&
+                Ciclismo::get_discesa() >= (dynamic_cast<const Ciclismo&>(w)).get_discesa() &&
+                Ciclismo::get_pianura() >= (dynamic_cast<const Ciclismo&>(w)).get_pianura() &&
+                Ciclismo::get_salita() >= (dynamic_cast<const Ciclismo&>(w)).get_salita() &&
+                Nuoto::getVascheDorso() >= (dynamic_cast<const Nuoto&>(w)).getVascheDorso() &&
+                Nuoto::getVascheLibero() >= (dynamic_cast<const Nuoto&>(w)).getVascheLibero() &&
+                Nuoto::getVascheRana() >= (dynamic_cast<const Nuoto&>(w)).getVascheRana();
+        }
         return false;
 }
 
 bool Triathlon::operator<=(const Workout& w) const {
-if(typeid(w) == typeid(const Triathlon&)){
-            return Corsa::operator<=(w) && Ciclismo::operator<=(w) && Nuoto::operator<=(w);
-    }
+    if(typeid(w) == typeid(const Triathlon&)){
+        return  Workout::get_durata() <= w.get_durata() &&
+                Corsa::get_distanza() <= (dynamic_cast<const Corsa&>(w)).get_distanza() &&
+                Corsa::get_discesa() <= (dynamic_cast<const Corsa&>(w)).get_discesa() &&
+                Corsa::get_pianura() <= (dynamic_cast<const Corsa&>(w)).get_pianura() &&
+                Corsa::get_salita() <= (dynamic_cast<const Corsa&>(w)).get_salita() &&
+                Ciclismo::get_distanza() <= (dynamic_cast<const Ciclismo&>(w)).get_distanza() &&
+                Ciclismo::get_discesa() <= (dynamic_cast<const Ciclismo&>(w)).get_discesa() &&
+                Ciclismo::get_pianura() <= (dynamic_cast<const Ciclismo&>(w)).get_pianura() &&
+                Ciclismo::get_salita() <= (dynamic_cast<const Ciclismo&>(w)).get_salita() &&
+                Nuoto::getVascheDorso() <= (dynamic_cast<const Nuoto&>(w)).getVascheDorso() &&
+                Nuoto::getVascheLibero() <= (dynamic_cast<const Nuoto&>(w)).getVascheLibero() &&
+                Nuoto::getVascheRana() <= (dynamic_cast<const Nuoto&>(w)).getVascheRana();
+        }
         return false;
 }

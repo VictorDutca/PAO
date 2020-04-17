@@ -4,7 +4,6 @@
 
 class Corsa : virtual public Workout {
 private:
-    //avg speed
     unsigned int distanza;
     unsigned int pianura;
     unsigned int salita;
@@ -23,6 +22,7 @@ public:
     unsigned int get_pianura() const;
     unsigned int get_salita() const;
     unsigned int get_discesa() const;
+    unsigned int avg_Speed() const;
 };
 
 #endif // CORSA_H
