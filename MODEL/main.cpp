@@ -18,7 +18,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     Corsa c1(180,30,10,10,10);
-    Corsa c11(180,30,10,10,10);
+    Corsa c11(80,30,10,10,10);
     Ciclismo c2(180,30,10,10,10);
     Ciclismo c3(180,30,10,10,10);
     Nuoto n(15,2,2,2);
@@ -39,9 +39,9 @@ int main(int argc, char *argv[])
     Triathlon c4(c1, c2, n);
     double d3 = c4.calorie();
     cout << d3;
-    Triathlon c5(c1, c2, n);
+    Triathlon c5(c11, c2, n);
 
-    if(c4==c5){
+    if(c5==c4){
         cout<<" ok "<<endl;
     }
     else{

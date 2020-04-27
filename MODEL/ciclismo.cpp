@@ -10,7 +10,13 @@ Ciclismo::Ciclismo(unsigned int di,unsigned int pia, unsigned int sal, unsigned 
 double Ciclismo::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);
 }
-
+Ciclismo::Ciclismo(const Ciclismo& c): Workout(c.get_durata()){
+       // = c.get_durata();
+       discesa = c.discesa;
+       pianura = c.pianura;
+       salita = c.salita;
+       distanza = c.distanza;
+}
 unsigned int Ciclismo::avg_Speed() const{
     return distanza/get_durata();
 }

@@ -13,6 +13,7 @@ private:
     static unsigned int constDisc;
 public:
     Ciclismo(unsigned int =0, unsigned int = 0, unsigned int = 0, unsigned int = 0, unsigned int = 0);
+    Ciclismo(const Ciclismo&);
     virtual double calorie() const;
     virtual double GrassiBruc() const;
     unsigned int get_distanza() const;
