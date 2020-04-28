@@ -13,22 +13,6 @@ public:
     T info;
     Nodo* prec,*next;
     Nodo(T w=0, Nodo* p=0, Nodo* n=0) : info(w), prec(p),next(n) {}
-
-//        Nodo(const Nodo& n) {
-//            info=n.info;
-//            prec=n.prec;
-//            next=n.next;
-//        }
-    /*Nodo& operator=(const Nodo& n) {
-        if(this!=&n){
-
-            info=n.info;
-            prec=n.prec;
-            next=n.next;
-        }
-            return *this;
-
-    }*/
     ~Nodo() {
         if(next) {
             delete next;
@@ -45,7 +29,7 @@ public:
 
     unsigned int size;
     Nodo* first;
-    Dlista() : first() {}
+    Dlista() : first() {} //da fare questo costr.
     Dlista(const Dlista& l) {
         Nodo* primo = l.first;
         first=new Nodo(l.first,0,0);
