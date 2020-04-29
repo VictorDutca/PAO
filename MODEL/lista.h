@@ -2,6 +2,8 @@
 #define LISTA_H
 
 #include<workout.h>
+#include<iostream>
+using namespace std;
 
 template<class T>
 class Dlista{
@@ -29,7 +31,7 @@ public:
 
     unsigned int size;
     Nodo* first;
-    Dlista() : first() {} //da fare questo costr.
+    Dlista() : first(0), size(0) {}
     Dlista(const Dlista& l) {
         Nodo* primo = l.first;
         first=new Nodo(l.first,0,0);
@@ -48,21 +50,44 @@ public:
         }
     }
     void pushNodo(Nodo* n) {
-        Nodo* a=first;
-        while(a->next) {
-            a=a->next;
+        if(first){
+            Nodo* a=first;
+            Nodo* b=0;
+            while(a->next) {
+                b=a;
+                a=a->next;
+            }
+            a->next=n;
+            n->prec=b;
+            n->next=0;
+            size++;
         }
-        a->next=n;
-        n->next=0;
+        else {
+            first = new Nodo(n->info, 0, 0);
+            size++;
+        }
     }
-    Nodo* popFirst() {
+    void pushT(const T& t) {
+        Nodo* n = new Nodo (t,0,0);
+        this->pushNodo(n);
+        size++;
+    }
+    T popFirst() {
         Nodo *a=0;
         if(first) {
             a=first;
             first=first->next;
+            size--;
         }
         a->next=0;
-        return a;
+        return a->info;
+    }
+    void stampa() {
+        if(first) {
+            cout << *(first->info);
+            first=first->next;
+            stampa();
+        }
     }
     /*if( !primo || !ultimo || !attuale)
    throw ErrContenitore();
@@ -119,6 +144,7 @@ delete attuale;
                 first->prec=0;
                 current->next=0;
                 delete current;
+                size--;
                 return;
             }
             else {
@@ -134,12 +160,14 @@ delete attuale;
             current->prec=0;
             current->next=0;
             delete current;
+            size--;
             return;
         }
         if(!current->next) { //Cancellazione alla fine
             Nodo* a=current->prec;
             a->next=0;
             delete current;
+            size--;
             return;
         }
     }

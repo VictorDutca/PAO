@@ -4,6 +4,8 @@
 
 #include<iostream>
 
+#include<typeinfo>
+
 using namespace std;
 
 #include "ciclismo.h"
@@ -41,13 +43,20 @@ int main(int argc, char *argv[])
     cout << d3;
     Triathlon c5(c11, c2, n);
 
+    Dlista<Workout*> dl;
+    Corsa* cc = new Corsa(180,30,10,10,10);
+    Ciclismo* nn = new Ciclismo(180,30,10,10,10);
+    dl.pushT(cc);
+    dl.pushT(nn);
+    //Nodo<Corsa> n = dl.popFirst();
+    //l.stampa();
+
     if(c5==c4){
         cout<<" ok "<<endl;
     }
     else{
-        cout<<" poroc dio !!! "<<endl;
+        cout<<" figa nel culo"<<endl;
     }
-
 
     QApplication a(argc, argv);
     MainWindow w;
