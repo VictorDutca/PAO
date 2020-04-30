@@ -2,14 +2,14 @@
 #include <typeinfo>
 
 
-Triathlon::Triathlon(Corsa c1, Ciclismo c2, Nuoto n) : Corsa(c1), Ciclismo(c2), Nuoto(n) {}
+
 
 Triathlon::Triathlon(unsigned int a, unsigned int b,
               unsigned int c, unsigned int d, unsigned int e, unsigned int f,
               unsigned int g, unsigned int h, unsigned int i, unsigned int l,
-             unsigned int m, unsigned int n, unsigned int o, unsigned int p) : Corsa(a,b,c,d,e), Ciclismo(f,g,h,i,l), Nuoto(m,n,o,p) {}
+             unsigned int m, unsigned int n, unsigned int o, unsigned int p,unsigned int q) :Workout(q), Corsa(a,b,c,d,e), Ciclismo(f,g,h,i,l), Nuoto(m,n,o,p) {}
 
- unsigned int Triathlon::get_durata() const{
+unsigned int Triathlon::get_durata() const{
     return Corsa::get_durata() + Nuoto::get_durata() + Ciclismo::get_durata();
 }
 

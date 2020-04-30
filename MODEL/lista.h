@@ -3,31 +3,32 @@
 
 #include<workout.h>
 #include<iostream>
+#include <vector>
 using namespace std;
 
 template<class T>
 class Dlista{
-friend class iterator;
-friend class const_iterator;
+    friend class iterator;
+    friend class const_iterator;
 public:
-class Nodo {
-public:
-    T info;
-    Nodo* prec,*next;
-    Nodo(T w=0, Nodo* p=0, Nodo* n=0) : info(w), prec(p),next(n) {}
-    ~Nodo() {
-        if(next) {
-            delete next;
+    class Nodo {
+    public:
+        T info;
+        Nodo* prec,*next;
+        Nodo(T w=0, Nodo* p=0, Nodo* n=0) : info(w), prec(p),next(n) {}
+        ~Nodo() {
+            if(next) {
+                delete next;
+            }
         }
-    }
-    bool operator==(const Nodo& n) const {
-        return info==n.info && prec==n.prec && next==n.next;
-    }
-    bool operator!=(const Nodo& n) const {
-        return info!=n.info && prec==n.prec && next!=n.next;
-    }
+        bool operator==(const Nodo& n) const {
+            return info==n.info && prec==n.prec && next==n.next;
+        }
+        bool operator!=(const Nodo& n) const {
+            return info!=n.info && prec==n.prec && next!=n.next;
+        }
     };
-// fine calss Nodo
+    // fine calss Nodo
 
     unsigned int size;
     Nodo* first;
@@ -58,7 +59,7 @@ public:
                 a=a->next;
             }
             a->next=n;
-            n->prec=b;
+            n->prec=a;
             n->next=0;
             size++;
         }
@@ -69,8 +70,7 @@ public:
     }
     void pushT(const T& t) {
         Nodo* n = new Nodo (t,0,0);
-        this->pushNodo(n);
-        size++;
+        pushNodo(n);
     }
     T popFirst() {
         Nodo *a=0;
@@ -81,13 +81,6 @@ public:
         }
         a->next=0;
         return a->info;
-    }
-    void stampa() {
-        if(first) {
-            cout << *(first->info);
-            first=first->next;
-            stampa();
-        }
     }
     /*if( !primo || !ultimo || !attuale)
    throw ErrContenitore();
@@ -137,7 +130,7 @@ delete attuale;
         }
     }
 
-     void cancellaNodo(Nodo* current) {
+    void cancellaNodo(Nodo* current) {
         if(!current->prec) { //Cancellazione in testa
             if(current->next) {
                 first=first->next;
@@ -173,52 +166,52 @@ delete attuale;
     }
 
     class iterator{
-    friend class Dlista;
+        friend class Dlista;
     private:
-         Nodo* ptr;
+        Nodo* ptr;
     public:
-         bool operator==(iterator it) const{
-             return ptr == it.ptr;
-         }
-         bool operator!=(iterator it) const{
-             return ptr != it.ptr;
-         }
-         iterator operator++(int){//postfisso
-             iterator temp = *this;
-             if(ptr){
-                 ptr=ptr->next;
-             }
-             return temp;
-         }
-         iterator& operator++(){ //prefisso
-             if(ptr){
+        bool operator==(iterator it) const{
+            return ptr == it.ptr;
+        }
+        bool operator!=(iterator it) const{
+            return ptr != it.ptr;
+        }
+        iterator operator++(int){//postfisso
+            iterator temp = *this;
+            if(ptr){
+                ptr=ptr->next;
+            }
+            return temp;
+        }
+        iterator& operator++(){ //prefisso
+            if(ptr){
                 ptr = ptr->next;
-             }
-             return *this;
-         }
-         //ricordare che da favigno non fungeva il --
-         iterator operator--(int){
-             iterator temp = *this;
-              if(ptr){
+            }
+            return *this;
+        }
+        //ricordare che da favigno non fungeva il --
+        iterator operator--(int){
+            iterator temp = *this;
+            if(ptr){
                 ptr = ptr->prec;
-              }
-                return temp;
-         }
-         iterator& operator--(){
-             if(ptr){
-               ptr = ptr->prec;
-             }
-               return *this;
-         }
-         Nodo* operator->() const{
-             return &(ptr->info);
+            }
+            return temp;
+        }
+        iterator& operator--(){
+            if(ptr){
+                ptr = ptr->prec;
+            }
+            return *this;
+        }
+        Nodo* operator->() const{
+            return &(ptr->info);
 
-         }
-         Nodo& operator*() const{
-             return ptr->info;
-         }
+        }
+        Nodo& operator*() const{
+            return ptr->info;
+        }
 
-};
+    };
     iterator erase(iterator i){
         if(size == 0)
             return begin();
@@ -240,90 +233,90 @@ delete attuale;
                 if(scorri->info==t){
                     Dlista<T>::iterator ok = scorri;
                     return ok;
-                 }
+                }
                 scorri=scorri->next;
             }
         }
     }
 
 
-        class const_iterator{
-            friend class Dlista;
-        private:
-            const Nodo* ptr;
-        public:
-            bool operator==(iterator it) const{
-                return ptr == it.ptr;
+    class const_iterator{
+        friend class Dlista;
+    private:
+        const Nodo* ptr;
+    public:
+        bool operator==(iterator it) const{
+            return ptr == it.ptr;
+        }
+        bool operator!=(iterator it) const{
+            return ptr != it.ptr;
+        }
+        const_iterator operator++(int){
+            const_iterator temp = *this;
+            if(ptr){
+                ptr=ptr->next;
             }
-            bool operator!=(iterator it) const{
-                return ptr != it.ptr;
+            return temp;
+
+        } //postfisso
+        const_iterator& operator++(){
+            if(ptr){
+                ptr = ptr->next;
             }
-            const_iterator operator++(int){
-                const_iterator temp = *this;
-                if(ptr){
-                    ptr=ptr->next;
-                }
-                return temp;
+            return *this;
 
-            } //postfisso
-            const_iterator& operator++(){
-                if(ptr){
-                   ptr = ptr->next;
-                }
-                return *this;
-
-            }    //prefisso
-            const_iterator operator--(int){
-                const_iterator temp = *this;
-                 if(ptr){
-                   ptr = ptr->prec;
-                 }
-                   return temp;
+        }    //prefisso
+        const_iterator operator--(int){
+            const_iterator temp = *this;
+            if(ptr){
+                ptr = ptr->prec;
             }
-            const_iterator& operator--(){
-                if(ptr){
-                  ptr = ptr->prec;
-                }
-                  return *this;
+            return temp;
+        }
+        const_iterator& operator--(){
+            if(ptr){
+                ptr = ptr->prec;
             }
-            T* operator->() const{
-                return &(ptr->info);
-            }
-            T& operator*() const{
-                return ptr->info;
-            }
-            //Dlist<T> get_tipoWorkout();
+            return *this;
+        }
+        T* operator->() const{
+            return &(ptr->info);
+        }
+        T& operator*() const{
+            return ptr->info;
+        }
+        //Dlist<T> get_tipoWorkout();
 
 
 
-        };
+    };
 
-             iterator begin(){
-                iterator aux;
-                aux.ptr = first;
-                return aux;
-             }
-             iterator end(){
-                 iterator aux;
-                 aux.ptr = 0;
-                 return aux;
-             }
-             const_iterator begin() const{
-                const_iterator aux;
-                aux.ptr = first;
-                return aux;
-             }
-             const_iterator end() const{
-                 const_iterator aux;
-                 aux.ptr = 0;
-                 return aux;
-             }
-             T& operator[](iterator i) const{
-                 return i.ptr->info;
-             }
+    iterator begin(){
+        iterator aux;
+        aux.ptr = first;
+        return aux;
+    }
+    iterator end(){
+        iterator aux;
+        aux.ptr = 0;
+        return aux;
+    }
+    const_iterator begin() const{
+        const_iterator aux;
+        aux.ptr = first;
+        return aux;
+    }
+    const_iterator end() const{
+        const_iterator aux;
+        aux.ptr = 0;
+        return aux;
+    }
+    T& operator[](iterator i) const{
+        return i.ptr->info;
+    }
 
-             // La funzione erase fatta sopra per ora sembra quella giusta
-             /*iterator erase(iterator i){
+    // La funzione erase fatta sopra per ora sembra quella giusta
+    /*iterator erase(iterator i){
                     if(i.ptr) {
                         iterator ret;
                         ret.ptr = i.ptr->next;
@@ -339,6 +332,15 @@ delete attuale;
 
                 */
 
+    vector<T> stampa() {
+        vector<T> v;
+        Nodo* firs = first;
+        while(firs) {
+            v.push_back(firs->info);
+            firs = firs->next;
+        }
+        return v;
+    }
 };
 
 #endif // LISTA_H

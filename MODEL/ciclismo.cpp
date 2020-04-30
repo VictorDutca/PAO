@@ -5,7 +5,7 @@ unsigned int Ciclismo::constPian = 5;
 unsigned int Ciclismo::constSal = 7;
 unsigned int Ciclismo::constDisc = 3;
 
-Ciclismo::Ciclismo(unsigned int di,unsigned int pia, unsigned int sal, unsigned int  dis, unsigned int dur): Workout(dur), distanza(di) ,pianura(pia), salita(sal), discesa(dis){}
+Ciclismo::Ciclismo(unsigned int dur,unsigned int di,unsigned int pia, unsigned int sal, unsigned int  dis ): Workout(dur), distanza(di) ,pianura(pia), salita(sal), discesa(dis){}
 
 double Ciclismo::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);

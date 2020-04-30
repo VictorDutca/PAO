@@ -21,6 +21,7 @@ public:
     unsigned int get_salita() const;
     unsigned int get_discesa() const;
     unsigned int avg_Speed() const;
+
     virtual bool operator==(const Workout& ) const;
     virtual bool operator<=(const Workout& ) const;
     virtual bool operator>=(const Workout& ) const;
