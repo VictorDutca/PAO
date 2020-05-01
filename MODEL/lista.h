@@ -253,9 +253,13 @@ delete attuale;
             return begin();
         if(i.ptr){
             iterator aux;
+            iterator aux1;
+            aux1.ptr= i.ptr->prec;
             aux.ptr = i.ptr->next;
             cancellaNodo(i.ptr);
-            size--;
+            if(!aux.ptr){
+              return aux1;
+            }
             return aux;
         }
         else

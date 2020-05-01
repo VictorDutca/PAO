@@ -46,14 +46,16 @@ int main(int argc, char *argv[])
     Triathlon c5(1,1,1,1,1,1,1,1,1,1,1,1,1,1);
 
     Dlista<Workout*> dl;
-    Corsa*    cc = new Corsa(180,30,10,10,10);
-    Ciclismo* nn = new Ciclismo(180,30,10,10,10);
-    Nuoto* nnn = new Nuoto(100,30,15,23);
-    Nuoto* n1=new Nuoto(101,30,15,23);
+    Corsa*    cc = new Corsa(181,30,10,10,10);
+    Ciclismo* nn = new Ciclismo(182,30,10,10,10);
+    Nuoto* nnn = new Nuoto(103,30,15,23);
+    Nuoto* n1=new Nuoto(104,30,15,23);
     Triathlon* tt = new Triathlon(10,1,1,1,1,10,1,1,1,1,1,1,1,1);
     dl.pushT(cc);
     dl.pushT(nn);
     dl.pushT(nnn);
+    dl.pushT(n1);
+    dl.pushT(tt);
     dl.pushT(tt);
     /*try {
         Workout* s = dl.popFirst(); cout << "la durata è " << s->get_durata();
@@ -66,11 +68,16 @@ int main(int argc, char *argv[])
     } catch(ListaVuota e) {
         cout << "negro, la lista è vuota, che cazzo fai?";
     }*/
-
+    int count=0;
     for(Dlista<Workout*>::iterator it = dl.begin(); it!=dl.end(); it++) {
+        //cout<<count<<"---> lista prima "<<endl;
+        if(count==5){
+            //cout<<count
+            it = dl.erase(it);
+            //it--;
+        }
+        count++;
         std::cout << "sbora nel culo " <<(*it)->get_durata() << endl;
-        dl.erase(it);
-        it--;
     }
 
     /*
@@ -88,7 +95,7 @@ int main(int argc, char *argv[])
 */
 
 
-    cout<<" figa nel culo"<<endl;
+//    cout<<" figa nel culo"<<endl;
 
 //    QApplication a(argc, argv);
 //    MainWindow w;
