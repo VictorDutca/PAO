@@ -6,11 +6,13 @@
 #include <vector>
 using namespace std;
 
+class ListaVuota {};
+
 template<class T>
 class Dlista{
     friend class iterator;
     friend class const_iterator;
-public:
+private:
     class Nodo {
     public:
         T info;
@@ -28,10 +30,45 @@ public:
             return info!=n.info && prec==n.prec && next!=n.next;
         }
     };
-    // fine calss Nodo
 
     unsigned int size;
     Nodo* first;
+
+    void cancellaNodo(Nodo* current) {
+            if(!current->prec) { //Cancellazione in testa
+                if(current->next) {
+                    first=first->next;
+                    first->prec=0;
+                    current->next=0;
+                    delete current;
+                    size--;
+                    return;
+                }
+                else {
+                    delete current;
+                    return;
+                }
+            }
+            if(current->prec && current->next) { //Cancellazione centrale
+                Nodo* a=current->prec;
+                a->next=current->next;
+                Nodo* b=current->next;
+                b->prec=current->prec;
+                current->prec=0;
+                current->next=0;
+                delete current;
+                size--;
+                return;
+            }
+            if(!current->next) { //Cancellazione alla fine
+                Nodo* a=current->prec;
+                a->next=0;
+                delete current;
+                size--;
+                return;
+            }
+        }
+public:
     Dlista() : first(0), size(0) {}
     Dlista(const Dlista& l) {
         Nodo* primo = l.first;
@@ -73,6 +110,7 @@ public:
         pushNodo(n);
     }
     T popFirst() {
+        if(!first) throw ListaVuota();
         Nodo *a=0;
         if(first) {
             a=first;
@@ -130,39 +168,37 @@ delete attuale;
         }
     }
 
-    void cancellaNodo(Nodo* current) {
-        if(!current->prec) { //Cancellazione in testa
-            if(current->next) {
-                first=first->next;
-                first->prec=0;
-                current->next=0;
-                delete current;
-                size--;
-                return;
+    /**
+     * @brief cancellaElemento
+     * @param el
+     * @return -1 se l'elemento non è presente, 0 se è riuscito a cancellarlo
+     */
+    int cancellaElemento (const T& el) {
+
+        if(!first) return -1;
+
+        Nodo* scorri = first;
+        if(scorri->info == el) {
+            first = first->next;
+            first->prec = 0;
+            scorri->next = 0;
+            delete scorri;
+            return 0;
+        }
+
+        while(scorri->next){
+            scorri=scorri->next;
+            if(scorri->info == el){
+                scorri->prec->next=scorri->next;
+                if(scorri->next) scorri->next->prec=scorri->prec;
+                scorri->next=0;
+                scorri->prec=0;
+                delete scorri;
+                return 0;
             }
-            else {
-                delete current;
-                return;
-            }
         }
-        if(current->prec && current->next) { //Cancellazione centrale
-            Nodo* a=current->prec;
-            a->next=current->next;
-            Nodo* b=current->next;
-            b->prec=current->prec;
-            current->prec=0;
-            current->next=0;
-            delete current;
-            size--;
-            return;
-        }
-        if(!current->next) { //Cancellazione alla fine
-            Nodo* a=current->prec;
-            a->next=0;
-            delete current;
-            size--;
-            return;
-        }
+
+        return -1;
     }
 
     class iterator{
@@ -203,11 +239,11 @@ delete attuale;
             }
             return *this;
         }
-        Nodo* operator->() const{
+        T* operator->() const{
             return &(ptr->info);
 
         }
-        Nodo& operator*() const{
+        T& operator*() const{
             return ptr->info;
         }
 
@@ -215,7 +251,7 @@ delete attuale;
     iterator erase(iterator i){
         if(size == 0)
             return begin();
-        if(i.punt){
+        if(i.ptr){
             iterator aux;
             aux.ptr = i.ptr->next;
             cancellaNodo(i.ptr);
