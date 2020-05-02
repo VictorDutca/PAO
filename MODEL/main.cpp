@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "testwindow.h"
 #include <QApplication>
 
 #include<iostream>
@@ -97,9 +97,8 @@ int main(int argc, char *argv[])
 
 //    cout<<" figa nel culo"<<endl;
 
-//    QApplication a(argc, argv);
-//    MainWindow w;
-//    w.show();
-
-//    return a.exec();
+   QApplication a(argc, argv);
+   testwindow w;
+    w.show();
+    return a.exec();
 }

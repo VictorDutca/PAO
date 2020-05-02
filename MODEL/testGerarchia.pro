@@ -31,7 +31,8 @@ SOURCES += \
     nuoto.cpp \
     ciclismo.cpp \
     triathlon.cpp \
-    schedules.cpp
+    schedules.cpp \
+    testwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +42,8 @@ HEADERS += \
     ciclismo.h \
     triathlon.h \
     schedules.h \
-    lista.h
+    lista.h \
+    testwindow.h
 
 FORMS += \
         mainwindow.ui
