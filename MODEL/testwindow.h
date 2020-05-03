@@ -8,7 +8,8 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QCheckBox>
-
+#include <QFrame>
+#include <QTextEdit>
 
 class testwindow : public QMainWindow
 {
@@ -17,13 +18,9 @@ public:
     explicit testwindow(QWidget *parent = nullptr);
 
 private:
-QCheckBox *checkbox;
-QVBoxLayout *layout;
-QLabel *lblStalin;
-QLabel *lblHitler;
-QLabel *lblAlieni;
-QTableView *tabGrid;
-QTabWidget* test;
+QLineEdit *nameLine;
+QTextEdit *addressText;
+
 
 signals:
 

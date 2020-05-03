@@ -32,7 +32,9 @@ SOURCES += \
     ciclismo.cpp \
     triathlon.cpp \
     schedules.cpp \
-    testwindow.cpp
+    testwindow.cpp \
+    qfitwindow.cpp \
+    xmlhandler.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +45,9 @@ HEADERS += \
     triathlon.h \
     schedules.h \
     lista.h \
-    testwindow.h
+    testwindow.h \
+    qfitwindow.h \
+    xmlhandler.h
 
 FORMS += \
         mainwindow.ui

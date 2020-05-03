@@ -2,6 +2,7 @@
 #include "testwindow.h"
 #include <QApplication>
 
+
 #include<iostream>
 
 #include<typeinfo>
@@ -18,6 +19,7 @@ using namespace std;
 #include "schedules.h"
 #include "triathlon.h"
 #include "workout.h"
+#include "qfitwindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -96,9 +98,11 @@ int main(int argc, char *argv[])
 
 
 //    cout<<" figa nel culo"<<endl;
+       QApplication a(argc, argv);
+    QFitWindow QfeetWindow;
+        QfeetWindow.show();
 
-   QApplication a(argc, argv);
-   testwindow w;
-    w.show();
+
+
     return a.exec();
 }
