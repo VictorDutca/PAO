@@ -11,12 +11,14 @@
 		<plain>7</plain>
 		<downhill>3</downhill>
 		<uphill>3</uphill>
+		<distance>2</distance>
 	</running>
 	<cycling>
 		<length>7</length>
 		<plain>7</plain>
 		<downhill>3</downhill>
 		<uphill>3</uphill>
+		<distance>2</distance>
 	</cycling>
 	<triathlon>		
 		<lengthswimming>2</lengthswimming>
@@ -27,9 +29,11 @@
 		<plainrunning>7</plainrunning>
 		<downhillrunning>3</downhillrunning>
 		<uphillrunning>3</uphillrunning>
+		<distancerunning>2</distancerunning>
 		<lengthcycling>7</lengthcycling>
 		<plaincycling>7</plaincycling>
 		<downhillcycling>3</downhillcycling>
 		<uphillcycling>3</uphillcycling>
+		<distancecycling>2</distancecycling>
 	</triathlon>
 </workout>
