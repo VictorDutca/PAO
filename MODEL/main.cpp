@@ -20,6 +20,7 @@ using namespace std;
 #include "triathlon.h"
 #include "workout.h"
 #include "qfitwindow.h"
+#include "xmlhandler.h"
 
 int main(int argc, char *argv[])
 {
@@ -98,11 +99,15 @@ int main(int argc, char *argv[])
 
 
 //    cout<<" figa nel culo"<<endl;
+    Dlista<Workout*> dlxml;
+    XMLHandler caricatore(dlxml);
+    caricatore.FileReader("../MODEL/Files/QFitWorkout.xml");
+    for(Dlista<Workout*>::iterator it = dlxml.begin(); it!=dlxml.end(); it++) {
+        std::cout <<(*it)->get_durata() << endl;
+    }
        QApplication a(argc, argv);
     QFitWindow QfeetWindow;
         QfeetWindow.show();
-
-
 
     return a.exec();
 }

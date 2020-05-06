@@ -90,9 +90,9 @@ public:
     void pushNodo(Nodo* n) {
         if(first){
             Nodo* a=first;
-            Nodo* b=0;
+            //Nodo* b=0;
             while(a->next) {
-                b=a;
+                //b=a;
                 a=a->next;
             }
             a->next=n;
@@ -105,7 +105,7 @@ public:
             size++;
         }
     }
-    void pushT(const T& t) {
+    void pushT(T t) {
         Nodo* n = new Nodo (t,0,0);
         pushNodo(n);
     }

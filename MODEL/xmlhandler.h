@@ -16,9 +16,9 @@ class XMLHandler {
 private:
     QXmlStreamReader XMLRead;
     QXmlStreamWriter XMLWrite;
-
+    Dlista<Workout*>& wrk;
 public:
-    XMLHandler();
+    XMLHandler(Dlista<Workout*>&);
     void FileReader(QString);
     Workout* WorkoutExplode(QString);
     void FileWriter();

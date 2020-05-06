@@ -4,12 +4,12 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 
-XMLHandler::XMLHandler(){}
+XMLHandler::XMLHandler(Dlista<Workout*>& worki) : wrk(worki) {}
 
 void XMLHandler::FileReader(QString work) {
     QFile FileWorkout(work);
     if(FileWorkout.open(QIODevice::ReadOnly | QIODevice::Text)){
-        try{
+        //try{
             XMLRead.setDevice(&FileWorkout);
             XMLRead.readNext();
             while(!XMLRead.atEnd() && !XMLRead.hasError()){
@@ -17,23 +17,25 @@ void XMLHandler::FileReader(QString work) {
                 if(XMLRead.isStartDocument())
                     continue;
                 if(XMLRead.isStartElement()){
-                    if(XMLRead.name() == "Workout")
+                    if(XMLRead.name() == "workout")
                         continue;
                     QString work1 = XMLRead.name().toString();
                     Workout* w = WorkoutExplode(work1);
-                    //FINIRE QUA
+                    wrk.pushT(w);
+                    //delete w; //sistemare copia profonda che è farlocca
                 }
             }
         }
+        FileWorkout.close();
     }
-}
+
 Workout* XMLHandler::WorkoutExplode(QString work){
     Workout* w = nullptr;
     XMLRead.readNextStartElement();
     if(XMLRead.isStartElement()){
         if(work == "swimming"){
             int freestyle, frog, backstroke, length;
-            XMLRead.readNextStartElement();
+           // XMLRead.readNextStartElement();
             length = XMLRead.readElementText().toInt();
             XMLRead.readNextStartElement();
             backstroke = XMLRead.readElementText().toInt();
@@ -48,7 +50,7 @@ Workout* XMLHandler::WorkoutExplode(QString work){
         }
         else if(work == "running"){
             int length, plain,downhill,uphill,distance;
-            XMLRead.readNextStartElement();
+            //XMLRead.readNextStartElement();
             length = XMLRead.readElementText().toInt();
             XMLRead.readNextStartElement();
             plain = XMLRead.readElementText().toInt();
@@ -66,7 +68,7 @@ Workout* XMLHandler::WorkoutExplode(QString work){
         }
         else if(work == "cycling"){
             int length, plain,downhill,uphill,distance;
-            XMLRead.readNextStartElement();
+            //XMLRead.readNextStartElement();
             length = XMLRead.readElementText().toInt();
             XMLRead.readNextStartElement();
             plain = XMLRead.readElementText().toInt();
@@ -84,7 +86,7 @@ Workout* XMLHandler::WorkoutExplode(QString work){
         }
         else if(work == "triathlon"){
             int plainCo,downhillCo,uphillCo,distanceCo,lengthCo,plainCi,downhillCi,uphillCi,distanceCi,lengthCi,freestyle, frog, backstroke, lengthN;
-            XMLRead.readNextStartElement();
+            //XMLRead.readNextStartElement();
             lengthN = XMLRead.readElementText().toInt();
             XMLRead.readNextStartElement();
             backstroke = XMLRead.readElementText().toInt();
