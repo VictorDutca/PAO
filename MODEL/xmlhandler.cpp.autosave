@@ -21,7 +21,10 @@ void XMLHandler::FileReader(QString work) {
                         continue;
                     QString work1 = XMLRead.name().toString();
                     Workout* w = WorkoutExplode(work1);
-                    wrk.pushT(w);                }
+                   
+                    wrk.pushT(w);
+                    //delete w; //sistemare copia profonda che è farlocca
+                }
             }
         }
         FileWorkout.close();
@@ -131,78 +134,4 @@ Workout* XMLHandler::WorkoutExplode(QString work){
     }
     return w;
 }
-
-//file writer
-
-void XMLHandler::FileWriter(){
-    QFile file("../MODEL/Files/QFitWorkout.xml");
-    if (file.open(QIODevice::WriteOnly)) {
-        XMLWrite.setDevice(&file);
-        XMLWrite.setAutoFormatting(true);
-        XMLWrite.writeStartDocument();
-
-        XMLWrite.writeStartElement("workout");
-        Dlista<Workout*>::iterator it = wrk.begin();
-        for (;it != wrk.end(); ++it) {
-            //std::string tipo = (*it)->tipo();
-            if(dynamic_cast<Nuoto*>(*it)) {
-               Nuoto* p = dynamic_cast<Nuoto*>(*it);
-                XMLWrite.writeStartElement("swimming");
-                XMLWrite.writeTextElement("length", QString::fromStdString(std::to_string(((*it)->get_durata()))));
-                XMLWrite.writeTextElement("backstroke", QString::fromStdString(std::to_string((p->getVascheDorso()))));
-                XMLWrite.writeTextElement("frog", QString::fromStdString(std::to_string((p->getVascheRana()))));
-                XMLWrite.writeTextElement("freestyle", QString::fromStdString(std::to_string((p->getVascheLibero()))));
-
-                XMLWrite.writeEndElement();
-            } else if(dynamic_cast<Ciclismo*>(*it)) {
-                Ciclismo* p = dynamic_cast<Ciclismo*>(*it);
-                XMLWrite.writeStartElement("cycling");
-                XMLWrite.writeTextElement("length", QString::fromStdString(std::to_string(((*it)->get_durata()))));
-                XMLWrite.writeTextElement("plain", QString::fromStdString(std::to_string((p->get_pianura()))));
-                XMLWrite.writeTextElement("downhill", QString::fromStdString(std::to_string((p->get_discesa()))));
-                XMLWrite.writeTextElement("uphill", QString::fromStdString(std::to_string((p->get_salita()))));
-                XMLWrite.writeTextElement("distance", QString::fromStdString(std::to_string((p->get_distanza()))));
-
-                XMLWrite.writeEndElement();
-            } else if(dynamic_cast<Corsa*>(*it)) {
-                Corsa* p = dynamic_cast<Corsa*>(*it);
-                XMLWrite.writeStartElement("running");
-                XMLWrite.writeTextElement("length", QString::fromStdString(std::to_string(((*it)->get_durata()))));
-                XMLWrite.writeTextElement("plain", QString::fromStdString(std::to_string((p->get_pianura()))));
-                XMLWrite.writeTextElement("downhill", QString::fromStdString(std::to_string((p->get_discesa()))));
-                XMLWrite.writeTextElement("uphill", QString::fromStdString(std::to_string((p->get_salita()))));
-                XMLWrite.writeTextElement("distance", QString::fromStdString(std::to_string((p->get_distanza()))));
-                XMLWrite.writeEndElement();
-            } else if (dynamic_cast<Triathlon*>(*it)) {
-                Triathlon* p = dynamic_cast<Triathlon*>(*it);
-                XMLWrite.writeStartElement("triathlon");
-                XMLWrite.writeTextElement("lengthswimming", QString::fromStdString(std::to_string(( p->Nuoto::get_durata() ))));
-                XMLWrite.writeTextElement("backstroke", QString::fromStdString(std::to_string(( p->Nuoto::getVascheDorso() ))));
-                XMLWrite.writeTextElement("frog", QString::fromStdString(std::to_string(( p->Nuoto::getVascheRana() ))));
-                XMLWrite.writeTextElement("freestyle", QString::fromStdString(std::to_string(( p->Nuoto::getVascheLibero() ))));
-
-                XMLWrite.writeTextElement("lengthrunning", QString::fromStdString(std::to_string(( p->Corsa::get_durata() ))));
-                XMLWrite.writeTextElement("plainrunning", QString::fromStdString(std::to_string(( p->Corsa::get_pianura() ))));
-                XMLWrite.writeTextElement("downhillrunning", QString::fromStdString(std::to_string(( p->Corsa::get_discesa() ))));
-                XMLWrite.writeTextElement("uphillrunning", QString::fromStdString(std::to_string(( p->Corsa::get_salita() ))));
-                XMLWrite.writeTextElement("distancerunning", QString::fromStdString(std::to_string(( p->Corsa::get_distanza() ))));
-
-                XMLWrite.writeTextElement("lengthcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_durata() ))));
-                XMLWrite.writeTextElement("plaincycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_pianura() ))));
-                XMLWrite.writeTextElement("downhillcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_discesa() ))));
-                XMLWrite.writeTextElement("uphillcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_salita() ))));
-                XMLWrite.writeTextElement("distancecycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_distanza() ))));
-
-
-
-                XMLWrite.writeEndElement();
-            }
-        }
-        XMLWrite.writeEndElement(); // allenamenti
-
-        XMLWrite.writeEndDocument();
-    }
-    file.close();
-}
-
 

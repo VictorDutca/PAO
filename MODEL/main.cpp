@@ -103,6 +103,7 @@ int main(int argc, char *argv[])
     XMLHandler caricatore(dlxml);
     caricatore.FileReader("../MODEL/Files/QFitWorkout.xml");
     for(Dlista<Workout*>::iterator it = dlxml.begin(); it!=dlxml.end(); it++) {
+        //it++;
         std::cout <<(*it)->get_durata() << endl;
     }
        QApplication a(argc, argv);

@@ -88,6 +88,7 @@ public:
         }
     }
     void pushNodo(Nodo* n) {
+
         if(first){
             Nodo* a=first;
             //Nodo* b=0;
@@ -101,7 +102,7 @@ public:
             size++;
         }
         else {
-            first = new Nodo(n->info, 0, 0);
+            first =n;
             size++;
         }
     }
