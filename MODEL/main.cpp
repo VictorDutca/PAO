@@ -102,6 +102,13 @@ int main(int argc, char *argv[])
     Dlista<Workout*> dlxml;
     XMLHandler caricatore(dlxml);
     caricatore.FileReader("../MODEL/Files/QFitWorkout.xml");
+    dlxml.pushT(cc);
+    dlxml.pushT(nn);
+    dlxml.pushT(nnn);
+    dlxml.pushT(n1);
+    dlxml.pushT(tt);
+    dlxml.pushT(tt);
+    caricatore.FileWriter();
     for(Dlista<Workout*>::iterator it = dlxml.begin(); it!=dlxml.end(); it++) {
         //it++;
         std::cout <<(*it)->get_durata() << endl;

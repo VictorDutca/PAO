@@ -145,15 +145,28 @@ void XMLHandler::FileWriter(){
         Dlista<Workout*>::iterator it = wrk.begin();
         for (;it != wrk.end(); ++it) {
             //std::string tipo = (*it)->tipo();
-            if(dynamic_cast<Nuoto*>(*it)) {
-               Nuoto* p = dynamic_cast<Nuoto*>(*it);
-                XMLWrite.writeStartElement("swimming");
-                XMLWrite.writeTextElement("length", QString::fromStdString(std::to_string(((*it)->get_durata()))));
-                XMLWrite.writeTextElement("backstroke", QString::fromStdString(std::to_string((p->getVascheDorso()))));
-                XMLWrite.writeTextElement("frog", QString::fromStdString(std::to_string((p->getVascheRana()))));
-                XMLWrite.writeTextElement("freestyle", QString::fromStdString(std::to_string((p->getVascheLibero()))));
+            if(dynamic_cast<Triathlon*>(*it)) {
+                Triathlon* p = dynamic_cast<Triathlon*>(*it);
+                XMLWrite.writeStartElement("triathlon");
+                XMLWrite.writeTextElement("lengthswimming", QString::fromStdString(std::to_string(( p->Nuoto::get_durata()/3 ))));
+                XMLWrite.writeTextElement("backstroke", QString::fromStdString(std::to_string(( p->Nuoto::getVascheDorso() ))));
+                XMLWrite.writeTextElement("frog", QString::fromStdString(std::to_string(( p->Nuoto::getVascheRana() ))));
+                XMLWrite.writeTextElement("freestyle", QString::fromStdString(std::to_string(( p->Nuoto::getVascheLibero() ))));
+
+                XMLWrite.writeTextElement("lengthrunning", QString::fromStdString(std::to_string(( p->Corsa::get_durata()/3 ))));
+                XMLWrite.writeTextElement("plainrunning", QString::fromStdString(std::to_string(( p->Corsa::get_pianura() ))));
+                XMLWrite.writeTextElement("downhillrunning", QString::fromStdString(std::to_string(( p->Corsa::get_discesa() ))));
+                XMLWrite.writeTextElement("uphillrunning", QString::fromStdString(std::to_string(( p->Corsa::get_salita() ))));
+                XMLWrite.writeTextElement("distancerunning", QString::fromStdString(std::to_string(( p->Corsa::get_distanza() ))));
+
+                XMLWrite.writeTextElement("lengthcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_durata()/3 ))));
+                XMLWrite.writeTextElement("plaincycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_pianura() ))));
+                XMLWrite.writeTextElement("downhillcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_discesa() ))));
+                XMLWrite.writeTextElement("uphillcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_salita() ))));
+                XMLWrite.writeTextElement("distancecycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_distanza() ))));
 
                 XMLWrite.writeEndElement();
+
             } else if(dynamic_cast<Ciclismo*>(*it)) {
                 Ciclismo* p = dynamic_cast<Ciclismo*>(*it);
                 XMLWrite.writeStartElement("cycling");
@@ -173,29 +186,15 @@ void XMLHandler::FileWriter(){
                 XMLWrite.writeTextElement("uphill", QString::fromStdString(std::to_string((p->get_salita()))));
                 XMLWrite.writeTextElement("distance", QString::fromStdString(std::to_string((p->get_distanza()))));
                 XMLWrite.writeEndElement();
-            } else if (dynamic_cast<Triathlon*>(*it)) {
-                Triathlon* p = dynamic_cast<Triathlon*>(*it);
-                XMLWrite.writeStartElement("triathlon");
-                XMLWrite.writeTextElement("lengthswimming", QString::fromStdString(std::to_string(( p->Nuoto::get_durata() ))));
-                XMLWrite.writeTextElement("backstroke", QString::fromStdString(std::to_string(( p->Nuoto::getVascheDorso() ))));
-                XMLWrite.writeTextElement("frog", QString::fromStdString(std::to_string(( p->Nuoto::getVascheRana() ))));
-                XMLWrite.writeTextElement("freestyle", QString::fromStdString(std::to_string(( p->Nuoto::getVascheLibero() ))));
+            } else if (dynamic_cast<Nuoto*>(*it)) {
+                Nuoto* p = dynamic_cast<Nuoto*>(*it);
+                 XMLWrite.writeStartElement("swimming");
+                 XMLWrite.writeTextElement("length", QString::fromStdString(std::to_string(((*it)->get_durata()))));
+                 XMLWrite.writeTextElement("backstroke", QString::fromStdString(std::to_string((p->getVascheDorso()))));
+                 XMLWrite.writeTextElement("frog", QString::fromStdString(std::to_string((p->getVascheRana()))));
+                 XMLWrite.writeTextElement("freestyle", QString::fromStdString(std::to_string((p->getVascheLibero()))));
 
-                XMLWrite.writeTextElement("lengthrunning", QString::fromStdString(std::to_string(( p->Corsa::get_durata() ))));
-                XMLWrite.writeTextElement("plainrunning", QString::fromStdString(std::to_string(( p->Corsa::get_pianura() ))));
-                XMLWrite.writeTextElement("downhillrunning", QString::fromStdString(std::to_string(( p->Corsa::get_discesa() ))));
-                XMLWrite.writeTextElement("uphillrunning", QString::fromStdString(std::to_string(( p->Corsa::get_salita() ))));
-                XMLWrite.writeTextElement("distancerunning", QString::fromStdString(std::to_string(( p->Corsa::get_distanza() ))));
-
-                XMLWrite.writeTextElement("lengthcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_durata() ))));
-                XMLWrite.writeTextElement("plaincycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_pianura() ))));
-                XMLWrite.writeTextElement("downhillcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_discesa() ))));
-                XMLWrite.writeTextElement("uphillcycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_salita() ))));
-                XMLWrite.writeTextElement("distancecycling", QString::fromStdString(std::to_string(( p->Ciclismo::get_distanza() ))));
-
-
-
-                XMLWrite.writeEndElement();
+                 XMLWrite.writeEndElement();
             }
         }
         XMLWrite.writeEndElement(); // allenamenti

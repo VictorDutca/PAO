@@ -9,16 +9,31 @@ QFitWindow::QFitWindow(QWidget *parent)
     nameLine = new QLineEdit;
     Table = new QTableView();
     QLabel *addressLabel = new QLabel(tr("Address:"));
+    QLabel *dioken = new QLabel(tr("Cazzate"));
+    salva = new QPushButton(tr("Salva"));
+    esporta = new QPushButton(tr("Esporta"));
+    crea = new QPushButton(tr("Crea"));
+QGridLayout *mainLayout = new QGridLayout;
     addressText = new QTextEdit;
+    lblTitolo = new QLabel;
+    QPixmap banner("../MODEL/img/logoProg.png");
+    lblTitolo->setPixmap(banner);
+    lblTitolo->setAlignment(Qt::AlignCenter);
+    mainLayout->addWidget(lblTitolo);
 //! [constructor and input fields]
 
 //! [layout]
-    QGridLayout *mainLayout = new QGridLayout;
-    mainLayout->addWidget(nameLabel, 0, 0);
-    mainLayout->addWidget(nameLine, 0, 1);
-    mainLayout->addWidget(addressLabel, 1, 0, Qt::AlignTop);
-    mainLayout->addWidget(addressText, 1, 1);
-    mainLayout->addWidget(Table,1,1);
+
+    mainLayout->addWidget(salva,0,0);
+    mainLayout->addWidget(crea,1,0);
+    mainLayout->addWidget(esporta,2,0);
+
+//    mainLayout->addWidget(dioken, 1, 0);
+//    mainLayout->addWidget(nameLabel, 0, 0);
+//    mainLayout->addWidget(nameLine, 0, 1);
+//    mainLayout->addWidget(addressLabel, 2, 0, Qt::AlignTop);
+//    mainLayout->addWidget(addressText, 1, 1);
+//    mainLayout->addWidget(Table,2,1);
 //! [layout]
 
 //![setting the layout]
