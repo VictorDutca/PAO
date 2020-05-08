@@ -34,7 +34,8 @@ SOURCES += \
     schedules.cpp \
     testwindow.cpp \
     qfitwindow.cpp \
-    xmlhandler.cpp
+    xmlhandler.cpp \
+    qfitmenu.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +48,8 @@ HEADERS += \
     lista.h \
     testwindow.h \
     qfitwindow.h \
-    xmlhandler.h
+    xmlhandler.h \
+    qfitmenu.h
 
 FORMS += \
         mainwindow.ui

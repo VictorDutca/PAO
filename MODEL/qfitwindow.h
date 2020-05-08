@@ -3,7 +3,7 @@
 #include <QWidget>
 #include <QTableView>
 #include <QPushButton>
-
+#include "qfitmenu.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -26,6 +26,7 @@ private:
     QLineEdit *nameLine;
     QTextEdit *addressText;
     QTableView *Table;
+    Qfitmenu *menu;
 };
 //! [class definition]
 

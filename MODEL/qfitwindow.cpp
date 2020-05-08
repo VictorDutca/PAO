@@ -13,13 +13,16 @@ QFitWindow::QFitWindow(QWidget *parent)
     salva = new QPushButton(tr("Salva"));
     esporta = new QPushButton(tr("Esporta"));
     crea = new QPushButton(tr("Crea"));
-QGridLayout *mainLayout = new QGridLayout;
+    QGridLayout *mainLayout = new QGridLayout;
     addressText = new QTextEdit;
     lblTitolo = new QLabel;
     QPixmap banner("../MODEL/img/logoProg.png");
     lblTitolo->setPixmap(banner);
     lblTitolo->setAlignment(Qt::AlignCenter);
-    mainLayout->addWidget(lblTitolo);
+    mainLayout->addWidget(lblTitolo,0,0);
+    mainLayout->setAlignment(lblTitolo, Qt::AlignHCenter);
+    menu = new Qfitmenu();
+    mainLayout->addWidget(menu);
 //! [constructor and input fields]
 
 //! [layout]
