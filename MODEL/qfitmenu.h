@@ -19,6 +19,8 @@ private:
     QVBoxLayout *layoutMenu;
 public:
     Qfitmenu();
+private slots:
+    void ApriScelta();
 };
 
 #endif // QFITMENU_H

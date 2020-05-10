@@ -1,11 +1,21 @@
 #include "qfitmenu.h"
+#include "qfitedit.h"
+#include <QLabel>
+#include <QStringList>
+#include <QPushButton>
+#include <QIcon>
+#include <QSize>
+#include <QMessageBox>
+
 
 Qfitmenu::Qfitmenu()
 {
     Qfitnew = new QPushButton(tr("Crea"));
     Qfitsave = new QPushButton(tr("Salva"));
     Qfitexport = new QPushButton(tr("Esporta"));
-
+    connect(Qfitnew, &QPushButton::clicked, [=]() {
+        ApriScelta();
+    });
     QPixmap banner("../MODEL/img/logoProg.png");
     title = new QLabel;
     title->setPixmap(banner.scaled(200,100)); //modificare in futuro
@@ -22,4 +32,9 @@ Qfitmenu::Qfitmenu()
     layout->addLayout(layoutMenu);
     layoutMenu->setAlignment(Qt::AlignRight);
     setLayout(layout);
+}
+
+void Qfitmenu::ApriScelta() {
+    QfitEdit *dialog = new QfitEdit();
+    dialog->
 }

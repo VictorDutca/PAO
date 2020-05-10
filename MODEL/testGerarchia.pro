@@ -36,7 +36,9 @@ SOURCES += \
     qfitwindow.cpp \
     xmlhandler.cpp \
     qfitmenu.cpp \
-    modelworkout.cpp
+    modelworkout.cpp \
+    qfitchoice.cpp \
+    qfitedit.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -51,7 +53,9 @@ HEADERS += \
     qfitwindow.h \
     xmlhandler.h \
     qfitmenu.h \
-    modelworkout.h
+    modelworkout.h \
+    qfitchoice.h \
+    qfitedit.h
 
 FORMS += \
         mainwindow.ui
