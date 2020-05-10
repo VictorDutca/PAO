@@ -4,6 +4,9 @@
 #include <QTableView>
 #include <QPushButton>
 #include "qfitmenu.h"
+#include "lista.h"
+#include "workout.h"
+#include "modelworkout.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -17,7 +20,7 @@ class QFitWindow : public QWidget
     Q_OBJECT
 
 public:
-    QFitWindow(QWidget *parent = nullptr);
+    QFitWindow(Dlista<Workout*>&, QWidget *parent = nullptr);
 
 
 private:
@@ -27,6 +30,9 @@ private:
     QTextEdit *addressText;
     QTableView *Table;
     Qfitmenu *menu;
+    Dlista<Workout*>& WL;
+    ModelWorkout* TableModel;
+
 };
 //! [class definition]
 

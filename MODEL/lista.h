@@ -87,6 +87,10 @@ public:
             delete first;
         }
     }
+    int getSize(){
+        return size;
+
+    }
     void pushNodo(Nodo* n) {
 
         if(first){
@@ -382,6 +386,21 @@ delete attuale;
         }
         return v;
     }
+
+    const T& At(int position) const{
+        Nodo *aux = first;
+        int counter = 0;
+        while (aux && counter < position) {
+            aux = aux->next;
+            counter++;
+        }
+
+        if(counter < position)
+            throw;
+
+        return aux->info;
+
+    };
 };
 
 #endif // LISTA_H

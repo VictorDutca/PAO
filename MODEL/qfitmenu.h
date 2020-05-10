@@ -15,8 +15,8 @@ Q_OBJECT
 private:
     QLabel *title;
     QPushButton  *Qfitsave, *Qfitnew, *Qfitexport;
-    QVBoxLayout *layout;
-    QHBoxLayout *layoutMenu;
+    QHBoxLayout *layout;
+    QVBoxLayout *layoutMenu;
 public:
     Qfitmenu();
 };
