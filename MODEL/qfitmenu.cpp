@@ -35,6 +35,8 @@ Qfitmenu::Qfitmenu()
 }
 
 void Qfitmenu::ApriScelta() {
-    QfitEdit *dialog = new QfitEdit();
-    dialog->
-}
+    QfitEdit* dialog;
+    dialog->exec();
+    dialog->disconnect();
+    delete dialog;
+    }
