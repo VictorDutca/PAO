@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< Updated upstream
 <!-- Written by QtCreator 4.5.2, 2020-05-10T10:46:38. -->
+=======
+<!-- Written by QtCreator 4.5.2, 2020-05-12T18:18:21. -->
+>>>>>>> Stashed changes
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -304,7 +308,11 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">testGerarchia</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">testGerarchia2</value>
+<<<<<<< Updated upstream
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/victor/Scrivania/PAOR_EPO/QFit/MODEL/testGerarchia.pro</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/alessandro/Scrivania/QFit/MODEL/testGerarchia.pro</value>
+>>>>>>> Stashed changes
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">testGerarchia.pro</value>
