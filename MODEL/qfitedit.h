@@ -17,6 +17,9 @@ public:
 private:
     QPushButton *sceltaCorsa, *sceltaCiclismo, *sceltaNuoto, *sceltaTriathlon;
     QVBoxLayout *layoutScelta;
+    QVBoxLayout *MainLayout;
+private slots:
+    void ApriCorsaForm();
 };
 
 #endif // QFITEDIT_H

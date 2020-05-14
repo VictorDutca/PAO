@@ -39,7 +39,8 @@ SOURCES += \
     modelworkout.cpp \
     qfitchoice.cpp \
     qfitedit.cpp \
-    formmenu.cpp
+    formmenu.cpp \
+    qfitcorsa.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -57,7 +58,8 @@ HEADERS += \
     modelworkout.h \
     qfitchoice.h \
     qfitedit.h \
-    formmenu.h
+    formmenu.h \
+    qfitcorsa.h
 
 FORMS += \
         mainwindow.ui \

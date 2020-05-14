@@ -1,16 +1,32 @@
 #include "qfitedit.h"
+#include "qfitcorsa.h"
 
-QfitEdit::QfitEdit(QWidget* parent):QDialog(parent)
-{
+QfitEdit::QfitEdit(QWidget* parent) : QDialog(parent) {
     layoutScelta = new QVBoxLayout;
+    MainLayout = new QVBoxLayout;
 
     sceltaCorsa = new QPushButton(tr("Corsa"));
     sceltaCiclismo = new QPushButton(tr("Ciclismo"));
     sceltaNuoto = new QPushButton(tr("Nuoto"));
     sceltaTriathlon = new QPushButton(tr("Triathlon"));
+
+    connect(sceltaCorsa, &QPushButton::clicked, [=]() {
+        ApriCorsaForm();
+    });
+
     layoutScelta->addWidget(sceltaCorsa);
     layoutScelta->addWidget(sceltaCiclismo);
     layoutScelta->addWidget(sceltaNuoto);
     layoutScelta->addWidget(sceltaTriathlon);
-    setLayout(layoutScelta);
+    MainLayout->addLayout(layoutScelta);
+    setLayout(MainLayout);
+    setWindowTitle(tr("QFit"));
+    setFixedSize(100,150);
+}
+
+void QfitEdit::ApriCorsaForm() {
+    QfitCorsa* dialog1 = new QfitCorsa;
+    dialog1->exec();
+    dialog1->disconnect();
+    delete dialog1;
 }

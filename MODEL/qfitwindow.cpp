@@ -28,12 +28,12 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,QWidget *parent)
     Table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //this->setFixedSize(1000,800);
 
-    QPalette pal = palette();
+    //QPalette pal = palette();
 
     // set black background
-    pal.setColor(QPalette::Background, QColor(113,180,141));
-    setAutoFillBackground(true);
-    setPalette(pal);
+    //pal.setColor(QPalette::Background, QColor(113,180,141));
+    //setAutoFillBackground(true);
+    //setPalette(pal);
 
 //! [constructor and input fields]
 
