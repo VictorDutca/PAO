@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>utils/logoProg.png</file>
+        <file>Files/QFitWorkout.xml</file>
+    </qresource>
+</RCC>

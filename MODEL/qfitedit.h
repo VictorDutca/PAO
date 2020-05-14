@@ -13,8 +13,7 @@
 class QfitEdit : public QDialog {
     Q_OBJECT
 public:
-    explicit QfitEdit(QWidget* = nullptr);
-
+    QfitEdit(QWidget* = nullptr);
 private:
     QPushButton *sceltaCorsa, *sceltaCiclismo, *sceltaNuoto, *sceltaTriathlon;
     QVBoxLayout *layoutScelta;

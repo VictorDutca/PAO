@@ -16,27 +16,32 @@ Qfitmenu::Qfitmenu()
     connect(Qfitnew, &QPushButton::clicked, [=]() {
         ApriScelta();
     });
-    QPixmap banner("../MODEL/img/logoProg.png");
+    QPixmap banner(":/utils/logoProg.png");
     title = new QLabel;
     title->setPixmap(banner.scaled(200,100)); //modificare in futuro
     title->setAlignment(Qt::AlignCenter);
-    layout = new QHBoxLayout();
-    layoutMenu = new QVBoxLayout();
+    layout = new QVBoxLayout();
+    layoutMenu = new QHBoxLayout();
     layoutMenu->addWidget(Qfitnew);
     layoutMenu->addWidget(Qfitsave);
     layoutMenu->addWidget(Qfitexport);
-   // layout->setContentsMargins(100,100,100,100);
-    layout->addWidget(title);
-    layout->setAlignment(title, Qt::AlignLeft);
+    // layout->setContentsMargins(100,100,100,100);
+    layout->addWidget(title,1);
+    //layout->setAlignment(title, Qt::AlignCenter);
 
-    layout->addLayout(layoutMenu);
-    layoutMenu->setAlignment(Qt::AlignRight);
+
+    layout->addLayout(layoutMenu,1);
+    //layoutMenu->setAlignment(Qt::AlignRight);
+    layout->insertStretch( -1, 1 );
     setLayout(layout);
+
+    layout->setMargin(0);
+    layout->setSpacing(0);
 }
 
 void Qfitmenu::ApriScelta() {
-    QfitEdit* dialog;
+    QfitEdit* dialog = new QfitEdit;
     dialog->exec();
     dialog->disconnect();
     delete dialog;
-    }
+}
