@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 //    cout<<" figa nel culo"<<endl;
     Dlista<Workout*> dlxml;
     XMLHandler caricatore(dlxml);
-    caricatore.FileReader("../MODEL/Files/QFitWorkout.xml");
+    caricatore.FileReader(":/Files/QFitWorkout.xml");
     dlxml.pushT(cc);
     dlxml.pushT(nn);
     dlxml.pushT(nnn);
