@@ -7,8 +7,7 @@
 #include <QSize>
 #include <QMessageBox>
 
-Qfitmenu::Qfitmenu()
-{
+Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL, QWidget *_parent) : WL(_WL), QWidget(_parent) {
     Qfitnew = new QPushButton(tr("Crea"));
     Qfitsave = new QPushButton(tr("Salva"));
     Qfitexport = new QPushButton(tr("Esporta"));
@@ -38,7 +37,7 @@ Qfitmenu::Qfitmenu()
 }
 
 void Qfitmenu::ApriScelta() {
-    QfitEdit* dialog = new QfitEdit;
+    QfitEdit* dialog = new QfitEdit(WL);
     dialog->exec();
     dialog->disconnect();
     delete dialog;

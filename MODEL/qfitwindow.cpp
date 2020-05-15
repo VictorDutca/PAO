@@ -13,7 +13,7 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,QWidget *parent)
    QGridLayout *mainLayout = new QGridLayout;
 
 
-    menu = new Qfitmenu();
+    menu = new Qfitmenu(WL);
     mainLayout->addWidget(menu);
     mainLayout->addWidget(Table);
 

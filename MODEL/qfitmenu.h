@@ -8,7 +8,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QFormLayout>
-
+#include "lista.h"
 
 class Qfitmenu : public QWidget {
 Q_OBJECT
@@ -17,8 +17,9 @@ private:
     QPushButton  *Qfitsave, *Qfitnew, *Qfitexport;
     QHBoxLayout *layout;
     QVBoxLayout *layoutMenu;
+    Dlista<Workout*>& WL;
 public:
-    Qfitmenu();
+    Qfitmenu(Dlista<Workout*>&, QWidget *parent = nullptr);
 private slots:
     void ApriScelta();
 };
