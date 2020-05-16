@@ -1,5 +1,6 @@
 #include "qfitmenu.h"
 #include "qfitedit.h"
+#include "qfitwindow.h"
 #include <QLabel>
 #include <QStringList>
 #include <QPushButton>
@@ -7,13 +8,14 @@
 #include <QSize>
 #include <QMessageBox>
 
-Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL, QWidget *_parent) : WL(_WL), QWidget(_parent) {
+Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL,ModelWorkout& _m, QWidget *_parent) : WL(_WL),m(_m), QWidget(_parent) {
     Qfitnew = new QPushButton(tr("Crea"));
     Qfitsave = new QPushButton(tr("Salva"));
     Qfitexport = new QPushButton(tr("Esporta"));
     connect(Qfitnew, &QPushButton::clicked, [=]() {
         ApriScelta();
     });
+
     QPixmap banner(":/utils/logoProg.png");
     title = new QLabel;
     title->setPixmap(banner.scaled(200,100)); //modificare in futuro
@@ -37,7 +39,8 @@ Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL, QWidget *_parent) : WL(_WL), QWidget(_
 }
 
 void Qfitmenu::ApriScelta() {
-    QfitEdit* dialog = new QfitEdit(WL);
+    QfitEdit* dialog = new QfitEdit(WL,m);
+
     dialog->exec();
     dialog->disconnect();
     delete dialog;

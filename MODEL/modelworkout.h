@@ -17,8 +17,12 @@ public:
     bool removeRows(int, int, const QModelIndex &) override;
     bool insertRows(int, int, const QModelIndex &) override;
 
+
 private:
     Dlista<Workout*>& enfo;
+
+public slots:
+    void update();
 };
 
 #endif // MODELWORKOUT_H

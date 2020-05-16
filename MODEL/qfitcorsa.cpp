@@ -2,8 +2,10 @@
 #include <iostream>
 #include <QMessageBox>
 #include "corsa.h"
+#include "qfitwindow.h"
+#include "modelworkout.h"
 
-QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, QWidget* parent) : WL(_WL), QDialog(parent) {
+QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
     Ldistanza = new QLabel;
@@ -97,6 +99,10 @@ void QfitCorsa::SalvaCorsa() {
         }
         Corsa *w = new Corsa(x2, x1, x3, x5, x4);
         WL.pushT(w);
+        m.update();
+
+
+
     }
     catch(int ex) {
         QMessageBox msgBox;

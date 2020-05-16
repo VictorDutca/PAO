@@ -1,7 +1,7 @@
 #include "qfitedit.h"
 #include "qfitcorsa.h"
 
-QfitEdit::QfitEdit(Dlista<Workout*>& _WL, QWidget* parent) : WL(_WL), QDialog(parent) {
+QfitEdit::QfitEdit(Dlista<Workout*>& _WL,ModelWorkout& _m ,QWidget* parent) : WL(_WL), m(_m) , QDialog(parent) {
     layoutScelta = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
 
@@ -25,7 +25,7 @@ QfitEdit::QfitEdit(Dlista<Workout*>& _WL, QWidget* parent) : WL(_WL), QDialog(pa
 }
 
 void QfitEdit::ApriCorsaForm() {
-    QfitCorsa* dialog1 = new QfitCorsa(WL);
+    QfitCorsa* dialog1 = new QfitCorsa(WL,m);
     dialog1->exec();
     dialog1->disconnect();
     delete dialog1;

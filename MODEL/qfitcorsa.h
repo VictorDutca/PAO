@@ -12,11 +12,12 @@
 #include <QTextEdit>
 #include <QLineEdit>
 #include "lista.h"
+#include "modelworkout.h"
 
 class QfitCorsa : public QDialog {
 Q_OBJECT
 public:
-    QfitCorsa(Dlista<Workout*>& , QWidget* = nullptr);
+    QfitCorsa(Dlista<Workout*>& , ModelWorkout&,  QWidget* = nullptr);
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
@@ -25,6 +26,7 @@ private:
     QPushButton *salva, *reset;
     QHBoxLayout *Hdistanza, *Hdurata, *Hpianura, *Hsalita, *Hdiscesa, *Hbottoni;
     Dlista<Workout*>& WL;
+    ModelWorkout& m;
 private slots:
     void SalvaCorsa();
 };

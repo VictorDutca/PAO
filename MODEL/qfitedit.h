@@ -11,16 +11,18 @@
 #include <QSpinBox>
 #include <QDateEdit>
 #include "lista.h"
+#include "modelworkout.h"
 
 class QfitEdit : public QDialog {
     Q_OBJECT
 public:
-    QfitEdit(Dlista<Workout*>&, QWidget* = nullptr);
+    QfitEdit(Dlista<Workout*>&, ModelWorkout& ,QWidget* = nullptr);
 private:
     QPushButton *sceltaCorsa, *sceltaCiclismo, *sceltaNuoto, *sceltaTriathlon;
     QVBoxLayout *layoutScelta;
     QVBoxLayout *MainLayout;
     Dlista<Workout*>& WL;
+    ModelWorkout& m;
 private slots:
     void ApriCorsaForm();
 };

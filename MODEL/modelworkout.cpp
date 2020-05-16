@@ -86,6 +86,13 @@ bool ModelWorkout::insertRows(int position, int rows, const QModelIndex &parent)
     return true;
 }
 
+void ModelWorkout::update(){
+    beginResetModel();
+        insertRow(rowCount());
+    endResetModel();
+
+}
+
 
 
 

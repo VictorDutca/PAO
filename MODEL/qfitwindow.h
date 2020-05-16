@@ -21,17 +21,16 @@ class QFitWindow : public QWidget
 
 public:
     QFitWindow(Dlista<Workout*>&, QWidget *parent = nullptr);
-
-
+    QTableView *Table;
 private:
     QLabel *lblTitolo;
     QPushButton  *salva, *crea, *esporta;
     QLineEdit *nameLine;
     QTextEdit *addressText;
-    QTableView *Table;
     Qfitmenu *menu;
     Dlista<Workout*>& WL;
     ModelWorkout* TableModel;
+
 
 };
 //! [class definition]

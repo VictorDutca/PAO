@@ -9,6 +9,7 @@
 #include <QLabel>
 #include <QFormLayout>
 #include "lista.h"
+#include "modelworkout.h"
 
 class Qfitmenu : public QWidget {
 Q_OBJECT
@@ -18,8 +19,9 @@ private:
     QHBoxLayout *layout;
     QVBoxLayout *layoutMenu;
     Dlista<Workout*>& WL;
+    ModelWorkout& m;
 public:
-    Qfitmenu(Dlista<Workout*>&, QWidget *parent = nullptr);
+    Qfitmenu(Dlista<Workout*>&,ModelWorkout&, QWidget *parent = nullptr);
 private slots:
     void ApriScelta();
 };

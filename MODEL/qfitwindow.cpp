@@ -10,10 +10,11 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,QWidget *parent)
 {
    TableModel = new ModelWorkout(WL);
    Table = new QTableView;
+
    QGridLayout *mainLayout = new QGridLayout;
 
 
-    menu = new Qfitmenu(WL);
+    menu = new Qfitmenu(WL,*TableModel);
     mainLayout->addWidget(menu);
     mainLayout->addWidget(Table);
 
@@ -52,4 +53,7 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,QWidget *parent)
     setLayout(mainLayout);
     setWindowTitle(tr("QFit"));
 }
+
+
+
 //! [setting the layout]
