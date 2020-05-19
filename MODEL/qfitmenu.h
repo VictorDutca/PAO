@@ -10,6 +10,7 @@
 #include <QFormLayout>
 #include "lista.h"
 #include "modelworkout.h"
+#include "xmlhandler.h"
 
 class Qfitmenu : public QWidget {
 Q_OBJECT
@@ -20,10 +21,12 @@ private:
     QVBoxLayout *layoutMenu;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
+    XMLHandler& XMLWorkout;
 public:
-    Qfitmenu(Dlista<Workout*>&,ModelWorkout&, QWidget *parent = nullptr);
+    Qfitmenu(Dlista<Workout*>&,ModelWorkout&,XMLHandler& , QWidget *parent = nullptr);
 private slots:
     void ApriScelta();
+    void SalvaFile();
 };
 
 #endif // QFITMENU_H

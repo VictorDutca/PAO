@@ -8,12 +8,15 @@
 #include <QSize>
 #include <QMessageBox>
 
-Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL,ModelWorkout& _m, QWidget *_parent) : WL(_WL),m(_m), QWidget(_parent) {
+Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL,ModelWorkout& _m, XMLHandler& _XMLWorkout ,QWidget *_parent) : WL(_WL),m(_m), XMLWorkout(_XMLWorkout) ,QWidget(_parent) {
     Qfitnew = new QPushButton(tr("Crea"));
     Qfitsave = new QPushButton(tr("Salva"));
     Qfitexport = new QPushButton(tr("Esporta"));
     connect(Qfitnew, &QPushButton::clicked, [=]() {
         ApriScelta();
+    });
+    connect(Qfitsave, &QPushButton::clicked, [=]() {
+        SalvaFile();
     });
 
     QPixmap banner(":/utils/logoProg.png");
@@ -44,4 +47,11 @@ void Qfitmenu::ApriScelta() {
     dialog->exec();
     dialog->disconnect();
     delete dialog;
+}
+
+void Qfitmenu::SalvaFile() {
+
+    XMLWorkout.FileWriter();
+
+
 }

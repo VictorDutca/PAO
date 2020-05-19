@@ -3,6 +3,7 @@
 #include <QJsonDocument>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
+#include <iostream>
 
 XMLHandler::XMLHandler(Dlista<Workout*>& worki) : wrk(worki) {}
 
@@ -24,7 +25,25 @@ void XMLHandler::FileReader(QString work) {
                     wrk.pushT(w);                }
             }
         }
-        FileWorkout.close();
+    else{
+        QFile FileWorkoutDefault (":/Files/QFitWorkout.xml");
+        if(FileWorkoutDefault.open(QIODevice::ReadOnly | QIODevice::Text)){
+            XMLRead.setDevice(&FileWorkoutDefault);
+            XMLRead.readNext();
+            while(!XMLRead.atEnd() && !XMLRead.hasError()){
+                XMLRead.readNext();
+                if(XMLRead.isStartDocument())
+                    continue;
+                if(XMLRead.isStartElement()){
+                    if(XMLRead.name() == "workout")
+                        continue;
+                    QString work1 = XMLRead.name().toString();
+                    Workout* w = WorkoutExplode(work1);
+                    wrk.pushT(w);                }
+            }
+        }
+    }
+    FileWorkout.close();
     }
 
 Workout* XMLHandler::WorkoutExplode(QString work){
@@ -135,7 +154,10 @@ Workout* XMLHandler::WorkoutExplode(QString work){
 //file writer
 
 void XMLHandler::FileWriter(){
-    QFile file("../MODEL/Files/QFitWorkout.xml");
+    QFile file("QFitWorkout.xml");
+    //file.close(); //messo per sicurezza
+
+
     if (file.open(QIODevice::WriteOnly)) {
         XMLWrite.setDevice(&file);
         XMLWrite.setAutoFormatting(true);

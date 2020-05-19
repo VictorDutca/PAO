@@ -7,6 +7,7 @@
 #include "lista.h"
 #include "workout.h"
 #include "modelworkout.h"
+#include "xmlhandler.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -20,7 +21,7 @@ class QFitWindow : public QWidget
     Q_OBJECT
 
 public:
-    QFitWindow(Dlista<Workout*>&, QWidget *parent = nullptr);
+    QFitWindow(Dlista<Workout*>&, XMLHandler& ,QWidget *parent = nullptr);
     QTableView *Table;
 private:
     QLabel *lblTitolo;
@@ -30,6 +31,7 @@ private:
     Qfitmenu *menu;
     Dlista<Workout*>& WL;
     ModelWorkout* TableModel;
+    XMLHandler& XMLWorkout;
 
 
 };

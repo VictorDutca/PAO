@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workout>
+    <running>
+        <length>6</length>
+        <plain>6</plain>
+        <downhill>6</downhill>
+        <uphill>6</uphill>
+        <distance>666</distance>
+    </running>
+    <running>
+        <length>8</length>
+        <plain>8</plain>
+        <downhill>8</downhill>
+        <uphill>8</uphill>
+        <distance>8</distance>
+    </running>
+</workout>

@@ -5,8 +5,8 @@
 #include <QColor>
 
 //! [constructor and input fields]
-QFitWindow::QFitWindow(Dlista<Workout*>& _WL,QWidget *parent)
-    : WL(_WL) , QWidget(parent)
+QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *parent)
+    : WL(_WL), XMLWorkout(_XMLWorkout) , QWidget(parent)
 {
    TableModel = new ModelWorkout(WL);
    Table = new QTableView;
@@ -14,7 +14,7 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,QWidget *parent)
    QGridLayout *mainLayout = new QGridLayout;
 
 
-    menu = new Qfitmenu(WL,*TableModel);
+    menu = new Qfitmenu(WL,*TableModel,XMLWorkout);
     mainLayout->addWidget(menu);
     mainLayout->addWidget(Table);
 

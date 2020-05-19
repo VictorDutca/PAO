@@ -1152,6 +1152,18 @@ moc_qfitwindow.cpp: ../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QWidget \
 		../MODEL/workout.h \
 		../MODEL/modelworkout.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
+		../MODEL/xmlhandler.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamReader \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qxmlstream.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamWriter \
+		../MODEL/nuoto.h \
+		../MODEL/corsa.h \
+		../MODEL/ciclismo.h \
+		../MODEL/triathlon.h \
 		../MODEL/qfitwindow.h \
 		moc_predefs.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/bin/moc
@@ -1274,6 +1286,23 @@ moc_qfitmenu.cpp: ../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QFormLayout \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qformlayout.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QLayout \
+		../MODEL/lista.h \
+		../MODEL/workout.h \
+		../MODEL/modelworkout.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../MODEL/xmlhandler.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamReader \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qxmlstream.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamWriter \
+		../MODEL/nuoto.h \
+		../MODEL/corsa.h \
+		../MODEL/ciclismo.h \
+		../MODEL/triathlon.h \
 		../MODEL/qfitmenu.h \
 		moc_predefs.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/bin/moc
@@ -1484,6 +1513,10 @@ moc_qfitedit.cpp: ../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QDateEdit \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qdatetimeedit.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qdatetime.h \
+		../MODEL/lista.h \
+		../MODEL/workout.h \
+		../MODEL/modelworkout.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
 		../MODEL/qfitedit.h \
 		moc_predefs.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/bin/moc
@@ -1740,6 +1773,10 @@ moc_qfitcorsa.cpp: ../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/qpen.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QLineEdit \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qlineedit.h \
+		../MODEL/lista.h \
+		../MODEL/workout.h \
+		../MODEL/modelworkout.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
 		../MODEL/qfitcorsa.h \
 		moc_predefs.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/bin/moc
@@ -2729,6 +2766,18 @@ qfitwindow.o: ../MODEL/qfitwindow.cpp ../MODEL/qfitwindow.h \
 		../MODEL/workout.h \
 		../MODEL/modelworkout.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
+		../MODEL/xmlhandler.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamReader \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qxmlstream.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamWriter \
+		../MODEL/nuoto.h \
+		../MODEL/corsa.h \
+		../MODEL/ciclismo.h \
+		../MODEL/triathlon.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QtWidgets \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QtCore \
@@ -2779,8 +2828,6 @@ qfitwindow.o: ../MODEL/qfitwindow.cpp ../MODEL/qfitwindow.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qidentityproxymodel.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qisenum.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonarray.h \
-		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonvalue.h \
-		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsondocument.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonobject.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qlibrary.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qlibraryinfo.h \
@@ -2840,7 +2887,6 @@ qfitwindow.o: ../MODEL/qfitwindow.cpp ../MODEL/qfitwindow.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/quuid.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qwaitcondition.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qwineventnotifier.h \
-		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qxmlstream.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qtcoreversion.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/QtGui \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/QtGuiDepends \
@@ -3239,6 +3285,23 @@ qfitmenu.o: ../MODEL/qfitmenu.cpp ../MODEL/qfitmenu.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QFormLayout \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qformlayout.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QLayout \
+		../MODEL/lista.h \
+		../MODEL/workout.h \
+		../MODEL/modelworkout.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../MODEL/xmlhandler.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamReader \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qxmlstream.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamWriter \
+		../MODEL/nuoto.h \
+		../MODEL/corsa.h \
+		../MODEL/ciclismo.h \
+		../MODEL/triathlon.h \
 		../MODEL/qfitedit.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qdialog.h \
@@ -3255,12 +3318,17 @@ qfitmenu.o: ../MODEL/qfitmenu.cpp ../MODEL/qfitmenu.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qtabbar.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QDateEdit \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qdatetimeedit.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qdatetime.h \
+		../MODEL/qfitwindow.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QTableView \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qtableview.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QStringList \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/QIcon \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QSize \
@@ -3582,6 +3650,10 @@ qfitedit.o: ../MODEL/qfitedit.cpp ../MODEL/qfitedit.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QDateEdit \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qdatetimeedit.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qdatetime.h \
+		../MODEL/lista.h \
+		../MODEL/workout.h \
+		../MODEL/modelworkout.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
 		../MODEL/qfitcorsa.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QTextEdit \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qtextedit.h \
@@ -3886,7 +3958,33 @@ qfitcorsa.o: ../MODEL/qfitcorsa.cpp ../MODEL/qfitcorsa.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/qtextformat.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtGui/qpen.h \
 		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QLineEdit \
-		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qlineedit.h
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qlineedit.h \
+		../MODEL/lista.h \
+		../MODEL/workout.h \
+		../MODEL/modelworkout.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qmessagebox.h \
+		../MODEL/corsa.h \
+		../MODEL/qfitwindow.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QTableView \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qtableview.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../MODEL/qfitmenu.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtWidgets/QGridLayout \
+		../MODEL/xmlhandler.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QJsonDocument \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamReader \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/qxmlstream.h \
+		../../../../Qt5.9.5/5.9.5/gcc_64/include/QtCore/QXmlStreamWriter \
+		../MODEL/nuoto.h \
+		../MODEL/ciclismo.h \
+		../MODEL/triathlon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qfitcorsa.o ../MODEL/qfitcorsa.cpp
 
 qrc_utils.o: qrc_utils.cpp 

@@ -101,20 +101,20 @@ int main(int argc, char *argv[])
 //    cout<<" figa nel culo"<<endl;
     Dlista<Workout*> dlxml;
     XMLHandler caricatore(dlxml);
-    caricatore.FileReader(":/Files/QFitWorkout.xml");
+    caricatore.FileReader("QFitWorkout.xml");
     //dlxml.pushT(cc);
     //dlxml.pushT(nn);
     //dlxml.pushT(nnn);
     //dlxml.pushT(n1);
     //dlxml.pushT(tt);
     //dlxml.pushT(tt);
-    /*caricatore.FileWriter();
-    for(Dlista<Workout*>::iterator it = dlxml.begin(); it!=dlxml.end(); it++) {
+    //caricatore.FileWriter();
+    /*for(Dlista<Workout*>::iterator it = dlxml.begin(); it!=dlxml.end(); it++) {
         //it++;
         std::cout <<(*it)->get_durata() << endl;
     }*/
        QApplication a(argc, argv);
-    QFitWindow QfeetWindow(dlxml);
+    QFitWindow QfeetWindow(dlxml,caricatore);
         QfeetWindow.show();
 
     return a.exec();
