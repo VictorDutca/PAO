@@ -1,11 +1,11 @@
-#include "qfitcorsa.h"
+#include "qfitciclismo.h".h"
 #include <iostream>
 #include <QMessageBox>
-#include "corsa.h"
+#include "ciclismo.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
 
-QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
+QfitCiclismo::QfitCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
     Ldistanza = new QLabel;
@@ -28,7 +28,7 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     Hbottoni = new QHBoxLayout;
 
     connect(salva, &QPushButton::clicked, [=]() {
-        SalvaCorsa();
+        SalvaCiclismo();
     });
 
     connect(reset, &QPushButton::clicked, [=]() {
@@ -81,7 +81,7 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     setLayout(MainLayout);
 }
 
-void QfitCorsa::SalvaCorsa() {
+void QfitCiclismo::SalvaCiclismo() {
     try {
         QString Odistanza = Tdistanza->text();
         int x1 = Odistanza.toInt();
@@ -101,7 +101,7 @@ void QfitCorsa::SalvaCorsa() {
         if(!x1 || !x2 || !x3 || !x4 || !x5) {
             throw 0;
         }
-        Corsa *w = new Corsa(x2, x1, x3, x5, x4);
+        Ciclismo *w = new Ciclismo(x2, x1, x3, x5, x4);
         WL.pushT(w);
         m.update();
         close();
@@ -113,7 +113,7 @@ void QfitCorsa::SalvaCorsa() {
     }
 }
 
-void QfitCorsa::Reset() {
+void QfitCiclismo::Reset() {
     Tdistanza->setText("");
     Tdurata->setText("");
     Tpianura->setText("");

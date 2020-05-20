@@ -25,6 +25,9 @@ private:
     ModelWorkout& m;
 private slots:
     void ApriCorsaForm();
+    void ApriCiclismoForm();
+    void ApriNuotoForm();
+    void ApriTriathlonForm();
 };
 
 #endif // QFITEDIT_H

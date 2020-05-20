@@ -1,5 +1,5 @@
-#ifndef QFITCORSA_H
-#define QFITCORSA_H
+#ifndef QFITCICLISMO_H
+#define QFITCICLISMO_H
 #include <QDialog>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -14,10 +14,10 @@
 #include "lista.h"
 #include "modelworkout.h"
 
-class QfitCorsa : public QDialog {
+class QfitCiclismo : public QDialog {
 Q_OBJECT
 public:
-    QfitCorsa(Dlista<Workout*>& , ModelWorkout&,  QWidget* = nullptr);
+    QfitCiclismo(Dlista<Workout*>& , ModelWorkout&,  QWidget* = nullptr);
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
@@ -28,8 +28,8 @@ private:
     Dlista<Workout*>& WL;
     ModelWorkout& m;
 private slots:
-    void SalvaCorsa();
+    void SalvaCiclismo();
     void Reset();
 };
 
-#endif // QFITCORSA_H
+#endif // QFITCICLISMO_H

@@ -1,5 +1,5 @@
-#ifndef QFITCORSA_H
-#define QFITCORSA_H
+#ifndef QFITNUOTO_H
+#define QFITNUOTO_H
 #include <QDialog>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -14,22 +14,22 @@
 #include "lista.h"
 #include "modelworkout.h"
 
-class QfitCorsa : public QDialog {
+class QfitNuoto : public QDialog {
 Q_OBJECT
 public:
-    QfitCorsa(Dlista<Workout*>& , ModelWorkout&,  QWidget* = nullptr);
+    QfitNuoto(Dlista<Workout*>& , ModelWorkout&,  QWidget* = nullptr);
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
-    QLabel *Ldistanza, *Ldurata, *Lpianura, *Lsalita, *Ldiscesa;
-    QLineEdit *Tdistanza, *Tdurata, *Tpianura, *Tsalita, *Tdiscesa;
+    QLabel *Ldurata, *LRana, *LDorso, *LLibero;
+    QLineEdit *Tdurata, *TRana, *TDorso, *TLibero;
     QPushButton *salva, *reset;
-    QHBoxLayout *Hdistanza, *Hdurata, *Hpianura, *Hsalita, *Hdiscesa, *Hbottoni;
+    QHBoxLayout *Hdurata, *HRana, *HDorso, *HLibero, *Hbottoni;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
 private slots:
-    void SalvaCorsa();
+    void SalvaNuoto();
     void Reset();
 };
 
-#endif // QFITCORSA_H
+#endif // QFITNUOTO_H

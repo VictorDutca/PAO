@@ -40,7 +40,10 @@ SOURCES += \
     qfitchoice.cpp \
     qfitedit.cpp \
     formmenu.cpp \
-    qfitcorsa.cpp
+    qfitcorsa.cpp \
+    qfitciclismo.cpp \
+    qfitnuoto.cpp \
+    qfittriathlon.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -59,7 +62,10 @@ HEADERS += \
     qfitchoice.h \
     qfitedit.h \
     formmenu.h \
-    qfitcorsa.h
+    qfitcorsa.h \
+    qfitciclismo.h \
+    qfitnuoto.h \
+    qfittriathlon.h
 
 FORMS += \
         mainwindow.ui \
