@@ -14,7 +14,7 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     COpianura = new QLabel;
     COsalita = new QLabel;
     COdiscesa = new QLabel;
-    COdistanza = new QLabel;
+    CIdistanza = new QLabel;
     CIdurata = new QLabel;
     CIpianura = new QLabel;
     CIsalita = new QLabel;
@@ -38,8 +38,6 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     TNrana = new QLineEdit;
     TNdorso = new QLineEdit;
     TNlibero = new QLineEdit;
-
-
 
     salva = new QPushButton;
     reset = new QPushButton;
