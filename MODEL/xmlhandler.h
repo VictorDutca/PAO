@@ -21,6 +21,7 @@ public:
     XMLHandler(Dlista<Workout*>&);
     void FileReader(QString);
     Workout* WorkoutExplode(QString);
+    void FileExport(QIODevice&);
     void FileWriter();
 
 };

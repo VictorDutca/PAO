@@ -27,6 +27,7 @@ public:
 private slots:
     void ApriScelta();
     void SalvaFile();
+    void EsportaFile();
 };
 
 #endif // QFITMENU_H

@@ -7,6 +7,8 @@
 #include <QIcon>
 #include <QSize>
 #include <QMessageBox>
+#include <QDialog>
+#include <QFileDialog>
 
 Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL,ModelWorkout& _m, XMLHandler& _XMLWorkout ,QWidget *_parent) : WL(_WL),m(_m), XMLWorkout(_XMLWorkout) ,QWidget(_parent) {
     Qfitnew = new QPushButton(tr("Crea"));
@@ -18,6 +20,10 @@ Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL,ModelWorkout& _m, XMLHandler& _XMLWorko
     connect(Qfitsave, &QPushButton::clicked, [=]() {
         SalvaFile();
     });
+    connect(Qfitexport, &QPushButton::clicked, [=]() {
+        EsportaFile();
+    });
+
 
     QPixmap banner(":/utils/logoProg.png");
     title = new QLabel;
@@ -52,6 +58,26 @@ void Qfitmenu::ApriScelta() {
 void Qfitmenu::SalvaFile() {
 
     XMLWorkout.FileWriter();
-
-
 }
+void Qfitmenu::EsportaFile(){
+
+    QFileDialog diag;
+    QString suffix = "xml";
+    diag.setDefaultSuffix(suffix);
+    QString fileName = diag.getSaveFileName(this, tr("Save QFitWorkout"), "", tr("XML Workout (*.xml);;All Files ()"));
+    if (fileName.isEmpty())
+            return;
+        else {
+            QFile file(fileName);
+            if (!file.open(QIODevice::WriteOnly)) {
+                QMessageBox::information(this, tr("Unable to open file"),
+                    file.errorString());
+                return;
+            }
+    //QDataStream out(&file);
+        XMLWorkout.FileExport(file);
+            //out.setVersion(QDataStream::Qt_4_5);
+            //out << ExportString;
+     }
+  }
+
