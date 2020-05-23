@@ -31,8 +31,57 @@ private:
         }
     };
 
+
     unsigned int size;
     Nodo* first;
+
+    T popFirst() {
+        T aux;
+        if(!first) throw ListaVuota();
+        Nodo *a=0;
+        if(first) {
+            a=first;
+            first=first->next;
+            size--;
+        }
+        a->next=0;
+        aux = a->info;
+        delete a;
+        return aux;
+    }
+
+    T popLast(){
+        T aux;
+        if(!first) throw ListaVuota();
+        Nodo* a= first;
+        while(a->next){
+            a=a->next;
+        }
+
+        a->prec->next = 0;
+        size --;
+        aux = a->info;
+        return aux;
+
+    }
+
+
+    /*void removeAt(unsigned int pos) {
+        if( pos >= size || size == 0)
+          //  throw ErrContenitore();
+
+        if(pos == 0)
+            popFront();
+        else if(pos == size - 1)
+            popBack();
+        else {
+            typename Contenitore<T>::Nodo *daEliminare = primo;
+            for (unsigned int i = 0; i < pos; ++i, daEliminare = daEliminare->dx) ;
+            eliminaNodo(primo, ultimo, daEliminare);
+            size--;
+        }
+    }*/
+
 
     void cancellaNodo(Nodo* current) {
             if(!current->prec) { //Cancellazione in testa
@@ -69,6 +118,36 @@ private:
             }
         }
 public:
+    void removeAt(unsigned int position){
+        Nodo *a=first;
+        if(position > size){
+            //mandare eccezzZzzZione;
+        }
+
+
+        if(position == 0){
+            popFirst();
+
+        }
+        else if(position == (size-1)){
+            popLast();
+        }
+        else{
+
+            while(position){
+                a=a->next;
+                position --;
+            }
+
+            a->prec->next = a->next;
+            a->next->prec = a->prec;
+            a->prec = 0;
+            a->next = 0;
+            size--;
+            delete a;
+        }
+
+    }
     Dlista() : first(0), size(0) {}
     Dlista(const Dlista& l) {
         Nodo* primo = l.first;
@@ -114,17 +193,7 @@ public:
         Nodo* n = new Nodo (t,0,0);
         pushNodo(n);
     }
-    T popFirst() {
-        if(!first) throw ListaVuota();
-        Nodo *a=0;
-        if(first) {
-            a=first;
-            first=first->next;
-            size--;
-        }
-        a->next=0;
-        return a->info;
-    }
+
     /*if( !primo || !ultimo || !attuale)
    throw ErrContenitore();
 if(attuale == primo && primo == ultimo)

@@ -8,6 +8,8 @@
 #include "workout.h"
 #include "modelworkout.h"
 #include "xmlhandler.h"
+#include "delegatedelete.h"
+#include "delegatebutton.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -25,6 +27,7 @@ public:
     QTableView *Table;
 private:
     QLabel *lblTitolo;
+    DelegateDelete* TblElimina;
     QPushButton  *salva, *crea, *esporta;
     QLineEdit *nameLine;
     QTextEdit *addressText;
@@ -32,7 +35,10 @@ private:
     Dlista<Workout*>& WL;
     ModelWorkout* TableModel;
     XMLHandler& XMLWorkout;
-
+public slots:
+    void SignalErase(int);
+signals:
+    void ModelRemove(int);
 
 };
 //! [class definition]

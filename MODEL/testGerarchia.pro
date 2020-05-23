@@ -43,7 +43,9 @@ SOURCES += \
     qfitcorsa.cpp \
     qfitciclismo.cpp \
     qfitnuoto.cpp \
-    qfittriathlon.cpp
+    qfittriathlon.cpp \
+    delegatedelete.cpp \
+    delegatebutton.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -65,7 +67,9 @@ HEADERS += \
     qfitcorsa.h \
     qfitciclismo.h \
     qfitnuoto.h \
-    qfittriathlon.h
+    qfittriathlon.h \
+    delegatedelete.h \
+    delegatebutton.h
 
 FORMS += \
         mainwindow.ui \

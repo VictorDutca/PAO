@@ -23,6 +23,7 @@ private:
 
 public slots:
     void update();
+    void ModelErase(int);
 };
 
 #endif // MODELWORKOUT_H

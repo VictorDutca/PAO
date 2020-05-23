@@ -15,15 +15,22 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
 
 
     menu = new Qfitmenu(WL,*TableModel,XMLWorkout);
+
     mainLayout->addWidget(menu);
     mainLayout->addWidget(Table);
 
     Table->setModel(TableModel);
     //aggiunta bottoni finti da rifare
-    QPushButton *elimina = new QPushButton();
+    //QPushButton *elimina = new QPushButton();
     QPushButton *modifica = new QPushButton();
     QPushButton *dettagli = new QPushButton();
-
+    TblElimina = new DelegateDelete();
+    Table->setItemDelegateForColumn(4, TblElimina);
+    //Table->setItemDelegateForColumn(5, modifica);
+    //Table->setItemDelegateForColumn(6, dettagli);
+    connect(TblElimina, SIGNAL(AlertDelete(int)), this, SLOT(SignalErase(int)));
+    connect(this, SIGNAL(ModelRemove(int)), TblElimina, SLOT(DeleteSlot(int)));
+    connect(TblElimina, SIGNAL(ModelDelete(int)), TableModel, SLOT(ModelErase(int)));
 
 
     Table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -54,6 +61,19 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
     setWindowTitle(tr("QFit"));
 }
 
+void QFitWindow::SignalErase(int row){
+    QMessageBox ConfirmDelete;
+    ConfirmDelete.setIcon(QMessageBox::Question);
+    ConfirmDelete.setText("ATTENZIONE!");
+    ConfirmDelete.setInformativeText("Vuoi davvero eliminare l'allenamento?");
+    ConfirmDelete.addButton("No", QMessageBox::NoRole);
+    ConfirmDelete.addButton("Sì", QMessageBox::YesRole);
+    int choice = ConfirmDelete.exec();
+    if(choice)
+        emit ModelRemove(row);
+
+
+}
 
 
 //! [setting the layout]

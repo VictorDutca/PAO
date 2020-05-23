@@ -93,6 +93,13 @@ void ModelWorkout::update(){
 
 }
 
+void ModelWorkout::ModelErase(int row){
+    if(row >= 0 && row < rowCount()) {
+       enfo.removeAt(static_cast<unsigned int>(row));
+        removeRow(row);
+    }
+}
+
 
 
 
