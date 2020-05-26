@@ -7,14 +7,17 @@
 
 QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     gbCorsa = new QGroupBox("Corsa");
-    gbCorsa = new QGroupBox("Ciclismo");
-    gbCorsa = new QGroupBox("Nuoto");
+    gbCiclismo = new QGroupBox("Ciclismo");
+    gbNuoto = new QGroupBox("Nuoto");
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
 
     LTCorsa = new QVBoxLayout;
     LTCiclismo = new QVBoxLayout;
     LTNuoto = new QVBoxLayout;
+
+    TitleLayout = new QHBoxLayout;
+    LBTTriat = new QLabel(tr("Triathlon"));
 
     COdistanza = new QLabel;
     COdurata = new QLabel;
@@ -170,6 +173,11 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
 
+    //titolo pag
+    TitleLayout->addWidget(LBTTriat, Qt::AlignHCenter);
+    MainLayout->addLayout(TitleLayout, Qt::AlignRight);
+
+
     MainLayout->addWidget(gbCorsa);
     MainLayout->addWidget(gbCiclismo);
     MainLayout->addWidget(gbNuoto);
@@ -178,8 +186,10 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     setWindowTitle(tr("QFit"));
     //setFixedSize(500,200);
 
+
     MainLayout->addLayout(LayoutForm);
     setLayout(MainLayout);
+
 }
 
 void QfitTriathlon::SalvaTriathlon() {

@@ -22,10 +22,10 @@ public:
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
-    QLabel *COdistanza, *COdurata, *COpianura, *COsalita, *COdiscesa, *CIdistanza, *CIdurata, *CIpianura, *CIsalita, *CIdiscesa, *Ndurata, *Nrana, *Ndorso, *Nlibero;
+    QLabel *COdistanza, *COdurata, *COpianura, *COsalita, *COdiscesa, *CIdistanza, *CIdurata, *CIpianura, *CIsalita, *CIdiscesa, *Ndurata, *Nrana, *Ndorso, *Nlibero, *LBTTriat;
     QLineEdit *TCOdistanza, *TCOdurata, *TCOpianura, *TCOsalita, *TCOdiscesa, *TCIdistanza, *TCIdurata, *TCIpianura, *TCIsalita, *TCIdiscesa, *TNdurata, *TNrana, *TNdorso, *TNlibero;
     QPushButton *salva, *reset;
-    QHBoxLayout *HCOdistanza, *HCOdurata, *HCOpianura, *HCOsalita, *HCOdiscesa, *HCIdistanza, *HCIdurata, *HCIpianura, *HCIsalita, *HCIdiscesa, *HNdurata, *HNrana, *HNdorso, *HNlibero, *Hbottoni;
+    QHBoxLayout *HCOdistanza, *HCOdurata, *HCOpianura, *HCOsalita, *HCOdiscesa, *HCIdistanza, *HCIdurata, *HCIpianura, *HCIsalita, *HCIdiscesa, *HNdurata, *HNrana, *HNdorso, *HNlibero, *Hbottoni,*TitleLayout;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
     QGroupBox *gbCorsa;
