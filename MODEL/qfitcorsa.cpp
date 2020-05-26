@@ -6,6 +6,7 @@
 #include "modelworkout.h"
 
 QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
+    gbCorsa = new QGroupBox("Corsa");
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
     Ldistanza = new QLabel;
@@ -41,11 +42,11 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     Lsalita->setText("Salita:");
     Ldiscesa->setText("Discesa:");
 
-    Tdurata->setFixedWidth(400);
-    Tdistanza->setFixedWidth(400);
-    Tpianura->setFixedWidth(400);
-    Tsalita->setFixedWidth(400);
-    Tdiscesa->setFixedWidth(400);
+    Tdurata->setFixedWidth(350);
+    Tdistanza->setFixedWidth(350);
+    Tpianura->setFixedWidth(350);
+    Tsalita->setFixedWidth(350);
+    Tdiscesa->setFixedWidth(350);
 
     Hdistanza->addWidget(Ldistanza);
     Hdistanza->addWidget(Tdistanza);
@@ -72,12 +73,15 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     reset->setText("Reset");
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
-    LayoutForm->addLayout(Hbottoni);
+    //LayoutForm->addLayout(Hbottoni);
+
+    gbCorsa->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
-    setFixedSize(500,200);
+    setFixedSize(500,250);
 
-    MainLayout->addLayout(LayoutForm);
+    MainLayout->addWidget(gbCorsa);
+    MainLayout->addLayout(Hbottoni);
     setLayout(MainLayout);
 }
 

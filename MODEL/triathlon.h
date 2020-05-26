@@ -3,6 +3,7 @@
 #include <corsa.h>
 #include <ciclismo.h>
 #include <nuoto.h>
+#include <QGroupBox>
 
 class Triathlon : public Corsa, public Ciclismo, public Nuoto {
 public:

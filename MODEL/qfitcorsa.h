@@ -13,6 +13,7 @@
 #include <QLineEdit>
 #include "lista.h"
 #include "modelworkout.h"
+#include <QGroupBox>
 
 class QfitCorsa : public QDialog {
 Q_OBJECT
@@ -27,6 +28,7 @@ private:
     QHBoxLayout *Hdistanza, *Hdurata, *Hpianura, *Hsalita, *Hdiscesa, *Hbottoni;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
+    QGroupBox *gbCorsa;
 private slots:
     void SalvaCorsa();
     void Reset();

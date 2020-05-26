@@ -13,6 +13,7 @@
 #include <QLineEdit>
 #include "lista.h"
 #include "modelworkout.h"
+#include <QGroupBox>
 
 class QfitNuoto : public QDialog {
 Q_OBJECT
@@ -27,6 +28,7 @@ private:
     QHBoxLayout *Hdurata, *HRana, *HDorso, *HLibero, *Hbottoni;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
+    QGroupBox *gbNuoto;
 private slots:
     void SalvaNuoto();
     void Reset();

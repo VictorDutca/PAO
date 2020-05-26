@@ -6,6 +6,7 @@
 #include "modelworkout.h"
 
 QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
+    gbNuoto = new QGroupBox("Nuoto");
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
     Ldurata = new QLabel;
@@ -37,10 +38,10 @@ QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     LDorso->setText("Dorso:");
     LLibero->setText("Libero:");
 
-    Tdurata->setFixedWidth(400);
-    TRana->setFixedWidth(400);
-    TDorso->setFixedWidth(400);
-    TLibero->setFixedWidth(400);
+    Tdurata->setFixedWidth(350);
+    TRana->setFixedWidth(350);
+    TDorso->setFixedWidth(350);
+    TLibero->setFixedWidth(350);
 
     Hdurata->addWidget(Ldurata);
     Hdurata->addWidget(Tdurata);
@@ -63,12 +64,15 @@ QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     reset->setText("Reset");
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
-    LayoutForm->addLayout(Hbottoni);
+    //LayoutForm->addLayout(Hbottoni);
+
+    gbNuoto->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
-    setFixedSize(500,200);
+    setFixedSize(500,220);
 
-    MainLayout->addLayout(LayoutForm);
+    MainLayout->addWidget(gbNuoto);
+    MainLayout->addLayout(Hbottoni);
     setLayout(MainLayout);
 }
 

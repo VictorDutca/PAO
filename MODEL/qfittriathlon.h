@@ -13,6 +13,7 @@
 #include <QLineEdit>
 #include "lista.h"
 #include "modelworkout.h"
+#include <QGroupBox>
 
 class QfitTriathlon : public QDialog {
 Q_OBJECT
@@ -27,6 +28,10 @@ private:
     QHBoxLayout *HCOdistanza, *HCOdurata, *HCOpianura, *HCOsalita, *HCOdiscesa, *HCIdistanza, *HCIdurata, *HCIpianura, *HCIsalita, *HCIdiscesa, *HNdurata, *HNrana, *HNdorso, *HNlibero, *Hbottoni;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
+    QGroupBox *gbCorsa;
+    QGroupBox *gbCiclismo;
+    QGroupBox *gbNuoto;
+    QVBoxLayout *LTCorsa, *LTCiclismo, *LTNuoto;
 private slots:
     void SalvaTriathlon();
     void Reset();

@@ -6,8 +6,15 @@
 #include "modelworkout.h"
 
 QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
+    gbCorsa = new QGroupBox("Corsa");
+    gbCorsa = new QGroupBox("Ciclismo");
+    gbCorsa = new QGroupBox("Nuoto");
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
+
+    LTCorsa = new QVBoxLayout;
+    LTCiclismo = new QVBoxLayout;
+    LTNuoto = new QVBoxLayout;
 
     COdistanza = new QLabel;
     COdurata = new QLabel;
@@ -82,20 +89,20 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     Ndorso->setText("Dorso:");
     Nlibero->setText("Libero:");
 
-    TCOdurata->setFixedWidth(400);
-    TCOdistanza->setFixedWidth(400);
-    TCOpianura->setFixedWidth(400);
-    TCOsalita->setFixedWidth(400);
-    TCOdiscesa->setFixedWidth(400);
-    TCIdurata->setFixedWidth(400);
-    TCIdistanza->setFixedWidth(400);
-    TCIpianura->setFixedWidth(400);
-    TCIsalita->setFixedWidth(400);
-    TCIdiscesa->setFixedWidth(400);
-    TNdurata->setFixedWidth(400);
-    TNrana->setFixedWidth(400);
-    TNdorso->setFixedWidth(400);
-    TNlibero->setFixedWidth(400);
+    TCOdurata->setFixedWidth(350);
+    TCOdistanza->setFixedWidth(350);
+    TCOpianura->setFixedWidth(350);
+    TCOsalita->setFixedWidth(350);
+    TCOdiscesa->setFixedWidth(350);
+    TCIdurata->setFixedWidth(350);
+    TCIdistanza->setFixedWidth(350);
+    TCIpianura->setFixedWidth(350);
+    TCIsalita->setFixedWidth(350);
+    TCIdiscesa->setFixedWidth(350);
+    TNdurata->setFixedWidth(350);
+    TNrana->setFixedWidth(350);
+    TNdorso->setFixedWidth(350);
+    TNlibero->setFixedWidth(350);
 
     HCOdistanza->addWidget(COdistanza);
     HCOdistanza->addWidget(TCOdistanza);
@@ -139,25 +146,33 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     HNlibero->addWidget(Nlibero);
     HNlibero->addWidget(TNlibero);
 
-    LayoutForm->addLayout(HCOdistanza);
-    LayoutForm->addLayout(HCOdurata);
-    LayoutForm->addLayout(HCOpianura);
-    LayoutForm->addLayout(HCOsalita);
-    LayoutForm->addLayout(HCOdiscesa);
-    LayoutForm->addLayout(HCIdistanza);
-    LayoutForm->addLayout(HCIdurata);
-    LayoutForm->addLayout(HCIpianura);
-    LayoutForm->addLayout(HCIsalita);
-    LayoutForm->addLayout(HCIdiscesa);
-    LayoutForm->addLayout(HNdurata);
-    LayoutForm->addLayout(HNrana);
-    LayoutForm->addLayout(HNdorso);
-    LayoutForm->addLayout(HNlibero);
+    LTCorsa->addLayout(HCOdistanza);
+    LTCorsa->addLayout(HCOdurata);
+    LTCorsa->addLayout(HCOpianura);
+    LTCorsa->addLayout(HCOsalita);
+    LTCorsa->addLayout(HCOdiscesa);
+    LTCiclismo->addLayout(HCIdistanza);
+    LTCiclismo->addLayout(HCIdurata);
+    LTCiclismo->addLayout(HCIpianura);
+    LTCiclismo->addLayout(HCIsalita);
+    LTCiclismo->addLayout(HCIdiscesa);
+    LTNuoto->addLayout(HNdurata);
+    LTNuoto->addLayout(HNrana);
+    LTNuoto->addLayout(HNdorso);
+    LTNuoto->addLayout(HNlibero);
+
+    gbCorsa->setLayout(LTCorsa);
+    gbCiclismo->setLayout(LTCiclismo);
+    gbNuoto->setLayout(LTNuoto);
 
     salva->setText("Salva");
     reset->setText("Reset");
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
+
+    MainLayout->addWidget(gbCorsa);
+    MainLayout->addWidget(gbCiclismo);
+    MainLayout->addWidget(gbNuoto);
     LayoutForm->addLayout(Hbottoni);
 
     setWindowTitle(tr("QFit"));
