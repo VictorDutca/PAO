@@ -28,6 +28,9 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     Hdiscesa = new QHBoxLayout;
     Hbottoni = new QHBoxLayout;
 
+    TitleLayoutCorsa = new QHBoxLayout;
+    LBTcorsa = new QLabel(tr("Nuovo allenamento Corsa"));
+
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaCorsa();
     });
@@ -79,6 +82,10 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
 
     setWindowTitle(tr("QFit"));
     setFixedSize(500,250);
+
+    TitleLayoutCorsa->addWidget(LBTcorsa, Qt::AlignCenter);
+    LBTcorsa->setAlignment(Qt::AlignCenter);
+    MainLayout->addLayout(TitleLayoutCorsa);
 
     MainLayout->addWidget(gbCorsa);
     MainLayout->addLayout(Hbottoni);

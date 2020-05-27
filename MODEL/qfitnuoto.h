@@ -22,10 +22,10 @@ public:
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
-    QLabel *Ldurata, *LRana, *LDorso, *LLibero;
+    QLabel *Ldurata, *LRana, *LDorso, *LLibero,* LBTnuoto;
     QLineEdit *Tdurata, *TRana, *TDorso, *TLibero;
     QPushButton *salva, *reset;
-    QHBoxLayout *Hdurata, *HRana, *HDorso, *HLibero, *Hbottoni;
+    QHBoxLayout *Hdurata, *HRana, *HDorso, *HLibero, *Hbottoni, *TitleLayoutNuoto;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
     QGroupBox *gbNuoto;

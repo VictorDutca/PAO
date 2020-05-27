@@ -22,10 +22,10 @@ public:
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
-    QLabel *Ldistanza, *Ldurata, *Lpianura, *Lsalita, *Ldiscesa;
+    QLabel *Ldistanza, *Ldurata, *Lpianura, *Lsalita, *Ldiscesa,*LBTciclismo;
     QLineEdit *Tdistanza, *Tdurata, *Tpianura, *Tsalita, *Tdiscesa;
     QPushButton *salva, *reset;
-    QHBoxLayout *Hdistanza, *Hdurata, *Hpianura, *Hsalita, *Hdiscesa, *Hbottoni;
+    QHBoxLayout *Hdistanza, *Hdurata, *Hpianura, *Hsalita, *Hdiscesa, *Hbottoni, *TitleLayoutCiclismo;
     Dlista<Workout*>& WL;
     ModelWorkout& m;
     QGroupBox *gbCiclismo;

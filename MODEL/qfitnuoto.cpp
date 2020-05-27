@@ -25,6 +25,9 @@ QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     HLibero = new QHBoxLayout;
     Hbottoni = new QHBoxLayout;
 
+    TitleLayoutNuoto = new QHBoxLayout;
+    LBTnuoto = new QLabel(tr("Nuovo allenamento Nuoto"));
+
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaNuoto();
     });
@@ -70,6 +73,10 @@ QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
 
     setWindowTitle(tr("QFit"));
     setFixedSize(500,220);
+
+    TitleLayoutNuoto->addWidget(LBTnuoto, Qt::AlignCenter);
+    LBTnuoto->setAlignment(Qt::AlignCenter);
+    MainLayout->addLayout(TitleLayoutNuoto);
 
     MainLayout->addWidget(gbNuoto);
     MainLayout->addLayout(Hbottoni);
