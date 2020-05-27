@@ -6,7 +6,7 @@
 #include "modelworkout.h"
 
 QfitCiclismo::QfitCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
-    gbCiclismo = new QGroupBox(" "); // lascio vuoto di proposito per vedere come sta senza titolino della box
+    gbCiclismo = new QGroupBox("Ciclismo"); // lascio vuoto di proposito per vedere come sta senza titolino della box
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
     Ldistanza = new QLabel;
@@ -29,7 +29,7 @@ QfitCiclismo::QfitCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* par
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutCiclismo = new QHBoxLayout();
-    LBTciclismo = new QLabel(tr("Nuovo allenamento Ciclismo"));
+    LBTciclismo = new QLabel(tr("Nuovo Ciclismo"));
 
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaCiclismo();

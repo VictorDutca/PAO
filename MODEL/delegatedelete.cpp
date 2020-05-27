@@ -11,3 +11,4 @@ void DelegateDelete::DeleteSlot(int row) {
     BTNElement.remove(BTNElement.key(BTNElement.last()));
     emit ModelDelete(row);
 }
+

@@ -17,7 +17,7 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     LTNuoto = new QVBoxLayout;
 
     TitleLayout = new QHBoxLayout;
-    LBTTriat = new QLabel(tr("Nuovo allenamento Triathlon"));
+    LBTTriat = new QLabel(tr("Nuovo Triathlon"));
 
     COdistanza = new QLabel;
     COdurata = new QLabel;
@@ -186,7 +186,6 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
 
     setWindowTitle(tr("QFit"));
     //setFixedSize(500,200);
-
 
     MainLayout->addLayout(LayoutForm);
     setLayout(MainLayout);

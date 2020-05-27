@@ -26,7 +26,7 @@ QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutNuoto = new QHBoxLayout;
-    LBTnuoto = new QLabel(tr("Nuovo allenamento Nuoto"));
+    LBTnuoto = new QLabel(tr("Nuovo Nuoto"));
 
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaNuoto();

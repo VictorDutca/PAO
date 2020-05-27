@@ -4,6 +4,7 @@
 #include <QPalette>
 #include <QColor>
 
+
 //! [constructor and input fields]
 QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *parent)
     : WL(_WL), XMLWorkout(_XMLWorkout) , QWidget(parent)
@@ -26,13 +27,16 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
     QPushButton *modifica = new QPushButton();
     QPushButton *dettagli = new QPushButton();
     TblElimina = new DelegateDelete();
+    TblModifica = new DelegateChange();
     Table->setItemDelegateForColumn(4, TblElimina);
+    Table->setItemDelegateForColumn(5, TblModifica);
     //Table->setItemDelegateForColumn(5, modifica);
     //Table->setItemDelegateForColumn(6, dettagli);
     connect(TblElimina, SIGNAL(AlertDelete(int)), this, SLOT(SignalErase(int)));
     connect(this, SIGNAL(ModelRemove(int)), TblElimina, SLOT(DeleteSlot(int)));
     connect(TblElimina, SIGNAL(ModelDelete(int)), TableModel, SLOT(ModelErase(int)));
 
+    connect(TblModifica, SIGNAL(ApriChange(int)), this, SLOT(OpenChangeDialog(int)));
 
     Table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //this->setFixedSize(1000,800);
@@ -74,6 +78,32 @@ void QFitWindow::SignalErase(int row){
         emit ModelRemove(row);
 
 
+}
+
+void QFitWindow::OpenChangeDialog(int row) {
+    Workout* a = WL.At(row);
+
+    if(dynamic_cast<Corsa*>(a)) {
+        QfitChangeCorsa  *b = new QfitChangeCorsa(WL, *TableModel, row);
+        b->exec();
+    }
+
+    /*if(dynamic_cast<Triathlon*>(a)) {
+        da = new DialogTriathlon(catleti, ca, true,riga);
+    } else if(dynamic_cast<Nuoto*>(a)) {
+        da = new DialogNuoto(catleti, ca, true,riga);
+    } else if(dynamic_cast<Ciclismo*>(a)) {
+        da = new DialogCiclismo(catleti, ca, true,riga);
+    } else if(dynamic_cast<Corsa*>(a)) {
+        da = new DialogCorsa(catleti, ca, true,riga);
+    } else {
+        return;
+    }
+
+    da->exec();
+    delete da;
+    // nessuna delete su 'a' perché get ritorna un puntatore grezzo, non copia profonda
+    // corrispondente a quello contenuto in DeepPtr<Allenamento>*/
 }
 
 

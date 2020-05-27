@@ -10,6 +10,8 @@
 #include "xmlhandler.h"
 #include "delegatedelete.h"
 #include "delegatebutton.h"
+#include "delegatechange.h"
+#include "qfitchangecorsa.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -36,8 +38,10 @@ private:
     Dlista<Workout*>& WL;
     ModelWorkout* TableModel;
     XMLHandler& XMLWorkout;
+    DelegateChange *TblModifica;
 public slots:
     void SignalErase(int);
+    void OpenChangeDialog(int);
 signals:
     void ModelRemove(int);
 

@@ -1,11 +1,12 @@
-#include "qfitcorsa.h"
+#include "qfitchangecorsa.h"
 #include <iostream>
 #include <QMessageBox>
 #include "corsa.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
 
-QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
+QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit) {
+    Corsa *CorsaEdit = dynamic_cast<Corsa*>(WL.At(ToEdit));
     gbCorsa = new QGroupBox("Corsa");
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
@@ -29,15 +30,21 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutCorsa = new QHBoxLayout;
-    LBTcorsa = new QLabel(tr("Nuovo Corsa"));
+    LBTcorsa = new QLabel(tr("Modifica Corsa"));
 
     connect(salva, &QPushButton::clicked, [=]() {
-        SalvaCorsa();
+        SalvaChangeCorsa();
     });
 
     connect(reset, &QPushButton::clicked, [=]() {
         Reset();
     });
+
+    Tdurata->setText("" + CorsaEdit->get_durata());
+    Tdiscesa->setText("" + CorsaEdit->get_discesa());
+    Tdistanza->setText("" + CorsaEdit->get_distanza());
+    Tpianura->setText("" + CorsaEdit->get_pianura());
+    Tsalita->setText("" + CorsaEdit->get_salita());
 
     Ldistanza->setText("Distanza:");
     Ldurata->setText("Durata:");
@@ -92,7 +99,7 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     setLayout(MainLayout);
 }
 
-void QfitCorsa::SalvaCorsa() {
+void QfitChangeCorsa::SalvaChangeCorsa() {
     try {
         QString Odistanza = Tdistanza->text();
         int x1 = Odistanza.toInt();
@@ -124,7 +131,7 @@ void QfitCorsa::SalvaCorsa() {
     }
 }
 
-void QfitCorsa::Reset() {
+void QfitChangeCorsa::Reset() {
     Tdistanza->setText("");
     Tdurata->setText("");
     Tpianura->setText("");
