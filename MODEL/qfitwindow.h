@@ -15,6 +15,7 @@ QT_BEGIN_NAMESPACE
 class QLabel;
 class QLineEdit;
 class QTextEdit;
+class QVBoxLayout;
 QT_END_NAMESPACE
 
 //! [class definition]
@@ -24,8 +25,8 @@ class QFitWindow : public QWidget
 
 public:
     QFitWindow(Dlista<Workout*>&, XMLHandler& ,QWidget *parent = nullptr);
-    QTableView *Table;
 private:
+    QTableView *Table;
     QLabel *lblTitolo;
     DelegateDelete* TblElimina;
     QPushButton  *salva, *crea, *esporta;

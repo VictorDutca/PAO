@@ -11,13 +11,14 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
    TableModel = new ModelWorkout(WL);
    Table = new QTableView;
 
-   QGridLayout *mainLayout = new QGridLayout;
+   QVBoxLayout *mainLayout = new QVBoxLayout;
 
 
     menu = new Qfitmenu(WL,*TableModel,XMLWorkout);
 
     mainLayout->addWidget(menu);
     mainLayout->addWidget(Table);
+    mainLayout->setAlignment(Qt::AlignCenter);
 
     Table->setModel(TableModel);
     //aggiunta bottoni finti da rifare

@@ -28,20 +28,28 @@ Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL,ModelWorkout& _m, XMLHandler& _XMLWorko
     QPixmap banner(":/utils/logoProg.png");
     title = new QLabel;
     title->setPixmap(banner.scaled(200,100)); //modificare in futuro
-    title->setAlignment(Qt::AlignLeft);
-    layout = new QHBoxLayout();
+    title->setAlignment(Qt::AlignCenter);
+
     layoutMenu = new QVBoxLayout();
     layoutMenu->addWidget(Qfitnew);
+    Qfitnew->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
     layoutMenu->addWidget(Qfitsave);
+    Qfitsave->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
     layoutMenu->addWidget(Qfitexport);
-    // layout->setContentsMargins(100,100,100,100);
-    layout->addWidget(title);
-    layout->setAlignment(title, Qt::AlignLeft);
-
-    layout->addLayout(layoutMenu);
+    Qfitexport->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
     layoutMenu->setAlignment(Qt::AlignRight);
+
+    layout = new QHBoxLayout();
+    // layout->setContentsMargins(100,100,100,100);
+    layout->addWidget(title,3);
+    layout->setAlignment(title, Qt::AlignCenter);
+    layout->addLayout(layoutMenu);
+
+
     //layout->insertStretch( -1, 1 );
     setLayout(layout);
+
+
 
     //layout->setMargin(0);
     //layout->setSpacing(0);
@@ -66,18 +74,18 @@ void Qfitmenu::EsportaFile(){
     diag.setDefaultSuffix(suffix);
     QString fileName = diag.getSaveFileName(this, tr("Save QFitWorkout"), "", tr("XML Workout (*.xml);;All Files ()"));
     if (fileName.isEmpty())
+        return;
+    else {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly)) {
+            QMessageBox::information(this, tr("Unable to open file"),
+                                     file.errorString());
             return;
-        else {
-            QFile file(fileName);
-            if (!file.open(QIODevice::WriteOnly)) {
-                QMessageBox::information(this, tr("Unable to open file"),
-                    file.errorString());
-                return;
-            }
-    //QDataStream out(&file);
+        }
+        //QDataStream out(&file);
         XMLWorkout.FileExport(file);
-            //out.setVersion(QDataStream::Qt_4_5);
-            //out << ExportString;
-     }
-  }
+        //out.setVersion(QDataStream::Qt_4_5);
+        //out << ExportString;
+    }
+}
 

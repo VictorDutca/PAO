@@ -175,7 +175,8 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
 
     //titolo pag
     TitleLayout->addWidget(LBTTriat, Qt::AlignHCenter);
-    MainLayout->addLayout(TitleLayout, Qt::AlignRight);
+    LBTTriat->setAlignment (Qt::AlignHCenter);
+    MainLayout->addLayout(TitleLayout);
 
 
     MainLayout->addWidget(gbCorsa);
