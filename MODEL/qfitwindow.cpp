@@ -86,6 +86,11 @@ void QFitWindow::OpenChangeDialog(int row) {
     if(dynamic_cast<Corsa*>(a)) {
         QfitChangeCorsa  *b = new QfitChangeCorsa(WL, *TableModel, row);
         b->exec();
+    }else if(dynamic_cast<Ciclismo*>(a)){
+
+        QfitChangeCiclismo  *b = new QfitChangeCiclismo(WL, *TableModel, row);
+        b->exec();
+
     }
 
     /*if(dynamic_cast<Triathlon*>(a)) {

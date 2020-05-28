@@ -71,3 +71,19 @@ unsigned int Ciclismo::get_salita() const {
 unsigned int Ciclismo::get_discesa() const {
     return discesa;
 }
+
+
+void Ciclismo::set_distanza(unsigned int x)  {
+distanza = x;
+}
+
+void Ciclismo::set_pianura(unsigned int x)  {
+pianura = x;
+}
+void Ciclismo::set_salita(unsigned int x)  {
+salita = x;
+}
+
+void Ciclismo::set_discesa(unsigned int x)  {
+discesa = x;
+}

@@ -4,6 +4,7 @@
 #include "corsa.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
+#include "errhandler.h"
 
 QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     gbCorsa = new QGroupBox("Corsa");
@@ -110,14 +111,14 @@ void QfitCorsa::SalvaCorsa() {
         int x5 = Osalita.toInt();
 
         if(!x1 || !x2 || !x3 || !x4 || !x5) {
-            throw 0;
+            throw ErrEmptyForm();
         }
         Corsa *w = new Corsa(x2, x1, x3, x5, x4);
         WL.pushT(w);
         m.update();
         close();
     }
-    catch(int ex) {
+    catch(ErrEmptyForm) {
         QMessageBox msgBox;
         msgBox.setText("Dati non corretti.");
         msgBox.exec();

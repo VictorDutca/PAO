@@ -4,6 +4,7 @@
 #include "ciclismo.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
+#include "errhandler.h"
 
 QfitCiclismo::QfitCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     gbCiclismo = new QGroupBox("Ciclismo"); // lascio vuoto di proposito per vedere come sta senza titolino della box
@@ -110,14 +111,14 @@ void QfitCiclismo::SalvaCiclismo() {
         int x5 = Osalita.toInt();
 
         if(!x1 || !x2 || !x3 || !x4 || !x5) {
-            throw 0;
+            throw ErrEmptyForm();
         }
         Ciclismo *w = new Ciclismo(x2, x1, x3, x5, x4);
         WL.pushT(w);
         m.update();
         close();
     }
-    catch(int ex) {
+    catch(ErrEmptyForm) {
         QMessageBox msgBox;
         msgBox.setText("Dati non corretti.");
         msgBox.exec();

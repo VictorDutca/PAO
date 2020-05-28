@@ -23,6 +23,11 @@ public:
     unsigned int get_pianura() const;
     unsigned int get_salita() const;
     unsigned int get_discesa() const;
+    void set_distanza(unsigned int);
+    void set_pianura(unsigned int);
+    void set_salita(unsigned int);
+    void set_discesa(unsigned int);
+
     unsigned int avg_Speed() const;
 };
 

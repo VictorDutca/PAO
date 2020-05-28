@@ -67,3 +67,20 @@ unsigned int Corsa::get_salita() const {
 unsigned int Corsa::get_discesa() const {
     return discesa;
 }
+
+
+
+void Corsa::set_distanza(unsigned int x) {
+distanza = x;
+}
+
+void Corsa::set_pianura(unsigned int x) {
+pianura = x;
+}
+void Corsa::set_salita(unsigned int x) {
+salita = x;
+}
+
+void Corsa::set_discesa(unsigned int x) {
+discesa = x;
+}

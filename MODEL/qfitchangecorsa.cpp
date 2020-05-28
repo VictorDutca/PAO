@@ -4,6 +4,8 @@
 #include "corsa.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
+#include <string.h>
+#include "errhandler.h"
 
 QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit) {
     Corsa *CorsaEdit = dynamic_cast<Corsa*>(WL.At(ToEdit));
@@ -40,11 +42,13 @@ QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
         Reset();
     });
 
-    Tdurata->setText("" + CorsaEdit->get_durata());
-    Tdiscesa->setText("" + CorsaEdit->get_discesa());
-    Tdistanza->setText("" + CorsaEdit->get_distanza());
-    Tpianura->setText("" + CorsaEdit->get_pianura());
-    Tsalita->setText("" + CorsaEdit->get_salita());
+
+
+    Tdurata->setText(QString::number(CorsaEdit->get_durata()));
+    Tdiscesa->setText(QString::number(CorsaEdit->get_discesa()));
+    Tdistanza->setText(QString::number(CorsaEdit->get_distanza()));
+    Tpianura->setText(QString::number(CorsaEdit->get_pianura()));
+    Tsalita->setText(QString::number(CorsaEdit->get_salita()));
 
     Ldistanza->setText("Distanza:");
     Ldurata->setText("Durata:");
@@ -117,14 +121,23 @@ void QfitChangeCorsa::SalvaChangeCorsa() {
         int x5 = Osalita.toInt();
 
         if(!x1 || !x2 || !x3 || !x4 || !x5) {
-            throw 0;
+            throw ErrEmptyForm();
         }
-        Corsa *w = new Corsa(x2, x1, x3, x5, x4);
-        WL.pushT(w);
+
+       Corsa *CorsaEdit = dynamic_cast<Corsa*>(WL.At(ToEdit));
+
+       CorsaEdit->set_discesa(x4);
+       CorsaEdit->set_distanza(x1);
+       CorsaEdit->set_durata(x2);
+       CorsaEdit->set_pianura(x3);
+       CorsaEdit->set_salita(x5);
+
+
+       // WL.pushT(w);
         m.update();
         close();
     }
-    catch(int ex) {
+    catch(ErrEmptyForm) {
         QMessageBox msgBox;
         msgBox.setText("Dati non corretti.");
         msgBox.exec();

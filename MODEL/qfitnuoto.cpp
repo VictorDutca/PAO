@@ -4,6 +4,7 @@
 #include "nuoto.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
+#include "errhandler.h"
 
 QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     gbNuoto = new QGroupBox("Nuoto");
@@ -99,14 +100,14 @@ void QfitNuoto::SalvaNuoto() {
         int x5 = OLibero.toInt();
 
         if(!x2 || !x3 || !x4 || !x5) {
-            throw 0;
+            throw ErrEmptyForm();
         }
         Nuoto *w = new Nuoto(x2, x3, x4, x5);
         WL.pushT(w);
         m.update();
         close();
     }
-    catch(int ex) {
+    catch(ErrEmptyForm) {
         QMessageBox msgBox;
         msgBox.setText("Dati non corretti.");
         msgBox.exec();

@@ -47,7 +47,8 @@ SOURCES += \
     delegatedelete.cpp \
     delegatebutton.cpp \
     delegatechange.cpp \
-    qfitchangecorsa.cpp
+    qfitchangecorsa.cpp \
+    qfitchangeciclismo.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -73,7 +74,9 @@ HEADERS += \
     delegatedelete.h \
     delegatebutton.h \
     delegatechange.h \
-    qfitchangecorsa.h
+    qfitchangecorsa.h \
+    qfitchangeciclismo.h \
+    errhandler.h
 
 FORMS += \
         mainwindow.ui \

@@ -22,6 +22,10 @@ public:
     unsigned int get_discesa() const;
     unsigned int avg_Speed() const;
 
+    void set_distanza(unsigned int);
+    void set_pianura(unsigned int);
+    void set_salita(unsigned int);
+    void set_discesa(unsigned int);
     virtual bool operator==(const Workout& ) const;
     virtual bool operator<=(const Workout& ) const;
     virtual bool operator>=(const Workout& ) const;

@@ -13,6 +13,7 @@ public:
     virtual bool operator<=(const Workout& ) const;
     virtual bool operator>=(const Workout& ) const;
     virtual unsigned int get_durata() const;
+    virtual void set_durata(unsigned int);
 };
 
 #endif // WORKOUT_H

@@ -4,6 +4,7 @@
 #include "triathlon.h".
 #include "qfitwindow.h"
 #include "modelworkout.h"
+#include "errhandler.h"
 
 QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     gbCorsa = new QGroupBox("Corsa");
@@ -237,14 +238,14 @@ void QfitTriathlon::SalvaTriathlon() {
         int x14 = ONLibero.toInt();
 
         if(!x1 || !x2 || !x3 || !x4 || !x5 || !x6 || !x7 || !x8 || !x9 || !x10 || !x11 || !x12 || !x13 || !x14) {
-            throw 0;
+            throw ErrEmptyForm();
         }
         Triathlon *w = new Triathlon(x1, x3, x5, x4, x7, x6, x8, x10, x9, x10, x11, x12, x13, x14);
         WL.pushT(w);
         m.update();
         close();
     }
-    catch(int ex) {
+    catch(ErrEmptyForm) {
         QMessageBox msgBox;
         msgBox.setText("Dati non corretti.");
         msgBox.exec();
