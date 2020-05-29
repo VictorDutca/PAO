@@ -18,6 +18,9 @@ public:
     unsigned int getVascheLibero() const;
     unsigned int getVascheRana() const;
     unsigned int getVascheDorso() const;
+    void set_VascheLibero(unsigned int);
+    void set_VascheRana(unsigned int);
+    void set_VascheDorso(unsigned int);
     virtual bool operator==(const Workout& ) const;
     virtual bool operator<=(const  Workout& ) const;
     virtual bool operator>=(const  Workout& ) const;

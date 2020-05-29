@@ -82,15 +82,22 @@ void QFitWindow::SignalErase(int row){
 
 void QFitWindow::OpenChangeDialog(int row) {
     Workout* a = WL.At(row);
-
-    if(dynamic_cast<Corsa*>(a)) {
+    if(dynamic_cast<Triathlon*>(a)){
+        //QfitChangeTriathlon *b = new QfitChangeTriathlon(WL, *TableModel, row);
+        //b->exec();
+    }
+    else if(dynamic_cast<Corsa*>(a)) {
         QfitChangeCorsa  *b = new QfitChangeCorsa(WL, *TableModel, row);
         b->exec();
-    }else if(dynamic_cast<Ciclismo*>(a)){
+    }
+    else if(dynamic_cast<Ciclismo*>(a)){
 
         QfitChangeCiclismo  *b = new QfitChangeCiclismo(WL, *TableModel, row);
         b->exec();
-
+    }
+    else if(dynamic_cast<Nuoto*>(a)){
+        QfitChangeNuoto *b = new QfitChangeNuoto(WL, *TableModel, row);
+        b->exec();
     }
 
     /*if(dynamic_cast<Triathlon*>(a)) {

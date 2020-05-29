@@ -37,7 +37,6 @@ SOURCES += \
     xmlhandler.cpp \
     qfitmenu.cpp \
     modelworkout.cpp \
-    qfitchoice.cpp \
     qfitedit.cpp \
     formmenu.cpp \
     qfitcorsa.cpp \
@@ -48,7 +47,8 @@ SOURCES += \
     delegatebutton.cpp \
     delegatechange.cpp \
     qfitchangecorsa.cpp \
-    qfitchangeciclismo.cpp
+    qfitchangeciclismo.cpp \
+    qfitchangenuoto.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -76,7 +76,8 @@ HEADERS += \
     delegatechange.h \
     qfitchangecorsa.h \
     qfitchangeciclismo.h \
-    errhandler.h
+    errhandler.h \
+    qfitchangenuoto.h
 
 FORMS += \
         mainwindow.ui \

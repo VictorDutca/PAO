@@ -60,3 +60,14 @@ unsigned int Nuoto::getVascheRana() const{
 unsigned int Nuoto::getVascheDorso() const{
     return VascheDorso;
 }
+
+void Nuoto::set_VascheLibero(unsigned int x) {
+    VascheLibero = x;
+}
+
+void Nuoto::set_VascheDorso(unsigned int x) {
+    VascheDorso = x;
+}
+void Nuoto::set_VascheRana(unsigned int x) {
+    VascheRana = x;
+}

@@ -13,6 +13,7 @@
 #include "delegatechange.h"
 #include "qfitchangecorsa.h"
 #include "qfitchangeciclismo.h"
+#include "qfitchangenuoto.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;

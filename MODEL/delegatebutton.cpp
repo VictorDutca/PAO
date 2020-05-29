@@ -52,7 +52,6 @@ bool DelegateButton::editorEvent(
             QStyleOptionButton* btns = BTNElement.value(index);
             if (btns->rect.contains(e->x(), e->y())) {
                 btns->state &= (~QStyle::State_Sunken);
-//AHAHAHA
                 emit TableButtonPressed(index.row());
             }
         }
