@@ -22,8 +22,31 @@ QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     Tpianura = new QLineEdit;
     Tsalita = new QLineEdit;
     Tdiscesa = new QLineEdit;
+
     salva = new QPushButton;
     reset = new QPushButton;
+    if(Editable){
+        QPalette *palette = new QPalette();
+        palette->setColor(QPalette::Base,Qt::transparent);
+
+        Tdistanza->setReadOnly(true);
+        Tdurata->setReadOnly(true);
+        Tpianura->setReadOnly(true);
+        Tsalita->setReadOnly(true);
+        Tdiscesa->setReadOnly(true);
+
+        Tdistanza->setPalette(*palette);
+        Tdurata->setPalette(*palette);
+        Tpianura->setPalette(*palette);
+        Tsalita->setPalette(*palette);
+        Tdiscesa->setPalette(*palette);
+
+
+    }
+
+
+
+
     Hdistanza = new QHBoxLayout;
     Hdurata = new QHBoxLayout;
     Hpianura = new QHBoxLayout;
@@ -32,8 +55,11 @@ QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutCorsa = new QHBoxLayout;
+     if(!Editable){
     LBTcorsa = new QLabel(tr("Modifica Corsa"));
-
+     }else{
+          LBTcorsa = new QLabel(tr("Visualizza Corsa"));
+     }
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaChangeCorsa();
     });
@@ -85,8 +111,10 @@ QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
 
     salva->setText("Salva");
     reset->setText("Reset");
-    Hbottoni->addWidget(salva);
-    Hbottoni->addWidget(reset);
+    if(!Editable){
+        Hbottoni->addWidget(salva);
+        Hbottoni->addWidget(reset);
+    }
     //LayoutForm->addLayout(Hbottoni);
 
     gbCorsa->setLayout(LayoutForm);

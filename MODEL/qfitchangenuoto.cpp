@@ -22,6 +22,21 @@ QfitChangeNuoto::QfitChangeNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     TLibero = new QLineEdit;
     salva = new QPushButton;
     reset = new QPushButton;
+    if(Editable){
+        QPalette *palette = new QPalette();
+        palette->setColor(QPalette::Base,Qt::transparent);
+
+        Tdurata->setReadOnly(true);
+        TRana->setReadOnly(true);
+        TDorso->setReadOnly(true);
+        TLibero->setReadOnly(true);
+
+        Tdurata->setPalette(*palette);
+        TRana->setPalette(*palette);
+        TDorso->setPalette(*palette);
+        TLibero->setPalette(*palette);
+    }
+
     Hdurata = new QHBoxLayout;
     HRana = new QHBoxLayout;
     HDorso = new QHBoxLayout;
@@ -29,8 +44,11 @@ QfitChangeNuoto::QfitChangeNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutNuoto = new QHBoxLayout;
+        if(!Editable){
     LBTnuoto = new QLabel(tr("Modifica Nuoto"));
-
+}else{
+    LBTnuoto = new QLabel(tr("Visualizza Nuoto"));
+        }
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaChangeNuoto();
     });

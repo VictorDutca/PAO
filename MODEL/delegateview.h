@@ -6,7 +6,7 @@ class DelegateView : public DelegateButton
 {
     Q_OBJECT
 public:
-    DelegateView(QString = "Visualizza", QObject* = nullptr);
+    DelegateView(QIcon = QIcon(":/utils/lense.png"), QObject* = nullptr);
 
 signals:
     void ApriChange(int); //avviso modifica

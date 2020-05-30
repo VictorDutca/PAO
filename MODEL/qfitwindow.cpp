@@ -22,6 +22,7 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
     mainLayout->setAlignment(Qt::AlignCenter);
 
     Table->setModel(TableModel);
+
     //aggiunta bottoni finti da rifare
     //QPushButton *elimina = new QPushButton();
     QPushButton *modifica = new QPushButton();
@@ -32,6 +33,9 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
     Table->setItemDelegateForColumn(4, TblElimina);
     Table->setItemDelegateForColumn(5, TblModifica);
     Table->setItemDelegateForColumn(6, TblVisualizza);
+
+
+    //Table->setRowHeight(1,1000);
     //Table->setItemDelegateForColumn(5, modifica);
     //Table->setItemDelegateForColumn(6, dettagli);
     connect(TblElimina, SIGNAL(AlertDelete(int)), this, SLOT(SignalErase(int)));
@@ -44,7 +48,8 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
 
 
     Table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    //this->setFixedSize(1000,800);
+    //Table->verticalHeader()->set
+    this->setFixedSize(1152,800);
 
     //QPalette pal = palette();
 

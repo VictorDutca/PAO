@@ -1,6 +1,6 @@
 #include "delegatedelete.h"
 
-DelegateDelete::DelegateDelete(QString ButtonSTR, QObject* parent)
+DelegateDelete::DelegateDelete(QIcon ButtonSTR, QObject* parent)
     : DelegateButton (ButtonSTR, parent)
 {
     connect(this, SIGNAL (TableButtonPressed(int)), this, SIGNAL(AlertDelete(int)));

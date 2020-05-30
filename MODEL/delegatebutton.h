@@ -13,13 +13,13 @@
 class DelegateButton : public QItemDelegate {
  Q_OBJECT
 public:
-    DelegateButton(QString title, QObject *parent=nullptr);
+    DelegateButton(QIcon title, QObject *parent=nullptr);
     void paint(QPainter*,const QStyleOptionViewItem& , const QModelIndex&) const override;
     bool editorEvent(QEvent*, QAbstractItemModel*,
                      const QStyleOptionViewItem &, const QModelIndex &) override;
     ~DelegateButton() override;
 private:
-    QString TitleButton;
+    QIcon TitleButton;
 protected:
     typedef QMap<QModelIndex, QStyleOptionButton*> ButtonDestroy;
     ButtonDestroy BTNElement;

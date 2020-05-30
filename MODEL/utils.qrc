@@ -2,5 +2,9 @@
     <qresource prefix="/">
         <file>utils/logoProg.png</file>
         <file>Files/QFitWorkout.xml</file>
+        <file>utils/trash.xpm</file>
+        <file>utils/trash.png</file>
+        <file>utils/wrench.png</file>
+        <file>utils/lense.png</file>
     </qresource>
 </RCC>

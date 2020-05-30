@@ -19,6 +19,24 @@ QfitChangeCiclismo::QfitChangeCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, 
     Tdiscesa = new QLineEdit;
     salva = new QPushButton;
     reset = new QPushButton;
+
+ if(Editable){
+     QPalette *palette = new QPalette();
+     palette->setColor(QPalette::Base,Qt::transparent);
+
+     Tdistanza->setReadOnly(true);
+     Tdurata->setReadOnly(true);
+     Tpianura->setReadOnly(true);
+     Tsalita->setReadOnly(true);
+     Tdiscesa->setReadOnly(true);
+
+     Tdistanza->setPalette(*palette);
+     Tdurata->setPalette(*palette);
+     Tpianura->setPalette(*palette);
+     Tsalita->setPalette(*palette);
+     Tdiscesa->setPalette(*palette);
+}
+
     Hdistanza = new QHBoxLayout;
     Hdurata = new QHBoxLayout;
     Hpianura = new QHBoxLayout;
@@ -27,8 +45,12 @@ QfitChangeCiclismo::QfitChangeCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, 
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutCiclismo = new QHBoxLayout;
+        if(!Editable){
     LBTciclismo = new QLabel(tr("Modifica Ciclismo"));
+}else{
+LBTciclismo = new QLabel(tr("Visualizza Ciclismo"));
 
+        }
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaChangeCiclismo();
     });
@@ -80,8 +102,10 @@ QfitChangeCiclismo::QfitChangeCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, 
 
     salva->setText("Salva");
     reset->setText("Reset");
-    Hbottoni->addWidget(salva);
-    Hbottoni->addWidget(reset);
+    if(!Editable){
+        Hbottoni->addWidget(salva);
+        Hbottoni->addWidget(reset);
+    }
     //LayoutForm->addLayout(Hbottoni);
 
     gbCiclismo->setLayout(LayoutForm);

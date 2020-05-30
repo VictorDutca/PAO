@@ -6,7 +6,7 @@ class DelegateChange : public DelegateButton
 {
     Q_OBJECT
 public:
-    DelegateChange(QString = "Modifica", QObject* = nullptr);
+    DelegateChange(QIcon = QIcon(":/utils/wrench.png"), QObject* = nullptr);
 
 signals:
     void ApriChange(int); //avviso modifica

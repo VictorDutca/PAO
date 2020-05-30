@@ -54,13 +54,19 @@ QVariant ModelWorkout::headerData(int section, Qt::Orientation orientation, int 
     if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
         switch(section){
         case 0:
-            return QString("Tipo");
+            return QString("Allenameto");
         case 1:
             return QString("Durata");
         case 2:
             return QString("Calorie");
         case 3:
             return QString("Grassi Bruciati");
+        case 4:
+            return QString("Elimina");
+        case 5:
+            return QString("Modifica");
+        case 6:
+            return QString("Visualizza");
 
         }
 

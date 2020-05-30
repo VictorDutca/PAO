@@ -1,6 +1,6 @@
 #include "delegatebutton.h"
 
-DelegateButton::DelegateButton(QString _TitleButton, QObject *parent)
+DelegateButton::DelegateButton(QIcon _TitleButton, QObject *parent)
     : QItemDelegate (parent), TitleButton(_TitleButton)
 {
 
@@ -12,12 +12,15 @@ void DelegateButton::paint(QPainter *painter, const QStyleOptionViewItem &option
     QStyleOptionButton* button = BTNElement.value(index);
     if (!button) {
         button = new QStyleOptionButton();
-        button->text = TitleButton;
+        button->icon = TitleButton;
+
+        button->iconSize = QSize(25,25) ;
+
         button->state |= QStyle::State_Enabled;
         (const_cast<DelegateButton *>(this))->BTNElement.insert(index, button);
     }
 
-    button->rect = option.rect.adjusted(4, 4, -(option.rect.width() / 2 + 4) , -4);
+    button->rect = option.rect.adjusted(20, 5, -120 , -3);
     painter->save();
 
     if (option.state & QStyle::State_Selected) {

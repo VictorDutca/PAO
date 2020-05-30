@@ -6,7 +6,7 @@ class DelegateDelete : public DelegateButton
 {
     Q_OBJECT
 public:
-    DelegateDelete(QString = "Elimina", QObject* = nullptr);
+    DelegateDelete(QIcon = QIcon(":/utils/trash.png"), QObject* = nullptr);
 public slots:
     void DeleteSlot(int);
 

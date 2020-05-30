@@ -20,7 +20,7 @@ QfitChangeTriathlon::QfitChangeTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m
     LTNuoto = new QVBoxLayout;
 
     TitleLayout = new QHBoxLayout;
-    if(Editable){
+    if(!Editable){
         LBTTriat = new QLabel(tr("Modifica Triathlon"));
     }
     else{
@@ -60,6 +60,9 @@ QfitChangeTriathlon::QfitChangeTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m
     reset = new QPushButton;
 
     if(Editable){
+        QPalette *palette = new QPalette();
+        palette->setColor(QPalette::Base,Qt::transparent);
+        //palette->setColor(QPalette::Text,Qt::gray);
         TCOdistanza->setReadOnly(true);
         TCOdiscesa->setReadOnly(true);
         TCOdurata->setReadOnly(true);
@@ -76,6 +79,26 @@ QfitChangeTriathlon::QfitChangeTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m
         TNrana->setReadOnly(true);
         TNdorso->setReadOnly(true);
         TNlibero->setReadOnly(true);
+
+
+        TCOdistanza->setPalette(*palette);
+        TCOdiscesa->setPalette(*palette);
+        TCOdurata->setPalette(*palette);
+        TCOpianura->setPalette(*palette);
+        TCOsalita->setPalette(*palette);
+
+        TCIdistanza->setPalette(*palette);
+        TCIdiscesa->setPalette(*palette);
+        TCIdurata->setPalette(*palette);
+        TCIpianura->setPalette(*palette);
+        TCIsalita->setPalette(*palette);
+
+        TNdurata->setPalette(*palette);
+        TNrana->setPalette(*palette);
+        TNdorso->setPalette(*palette);
+        TNlibero->setPalette(*palette);
+
+
     }
 
     HCOdistanza = new QHBoxLayout;
