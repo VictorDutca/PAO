@@ -48,7 +48,9 @@ SOURCES += \
     delegatechange.cpp \
     qfitchangecorsa.cpp \
     qfitchangeciclismo.cpp \
-    qfitchangenuoto.cpp
+    qfitchangenuoto.cpp \
+    qfitchangetriathlon.cpp \
+    delegateview.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -77,7 +79,9 @@ HEADERS += \
     qfitchangecorsa.h \
     qfitchangeciclismo.h \
     errhandler.h \
-    qfitchangenuoto.h
+    qfitchangenuoto.h \
+    qfitchangetriathlon.h \
+    delegateview.h
 
 FORMS += \
         mainwindow.ui \

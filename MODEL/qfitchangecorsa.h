@@ -19,7 +19,7 @@
 class QfitChangeCorsa : public QDialog {
 Q_OBJECT
 public:
-    QfitChangeCorsa(Dlista<Workout*>& , ModelWorkout&, int, QWidget* = nullptr);
+    QfitChangeCorsa(Dlista<Workout*>& , ModelWorkout&, int, int =0,QWidget* = nullptr);
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
@@ -31,6 +31,7 @@ private:
     ModelWorkout& m;
     QGroupBox *gbCorsa;
     int ToEdit;
+    int Editable;
 private slots:
     void SalvaChangeCorsa();
     void Reset();

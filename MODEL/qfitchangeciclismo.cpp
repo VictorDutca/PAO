@@ -2,7 +2,7 @@
 #include "errhandler.h"
 #include <QMessageBox>
 
-QfitChangeCiclismo::QfitChangeCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit) {
+QfitChangeCiclismo::QfitChangeCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit, int _Editable,QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit),Editable(_Editable) {
     Ciclismo *CiclismoEdit = dynamic_cast<Ciclismo*>(WL.At(ToEdit));
     gbCiclismo = new QGroupBox("Ciclismo");
     LayoutForm = new QVBoxLayout;

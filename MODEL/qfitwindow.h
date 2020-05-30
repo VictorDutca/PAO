@@ -14,6 +14,8 @@
 #include "qfitchangecorsa.h"
 #include "qfitchangeciclismo.h"
 #include "qfitchangenuoto.h"
+#include "qfitchangetriathlon.h"
+#include "delegateview.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -41,9 +43,11 @@ private:
     ModelWorkout* TableModel;
     XMLHandler& XMLWorkout;
     DelegateChange *TblModifica;
+    DelegateView *TblVisualizza;
 public slots:
     void SignalErase(int);
     void OpenChangeDialog(int);
+    void OpenViewDialog(int);
 signals:
     void ModelRemove(int);
 

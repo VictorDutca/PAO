@@ -20,7 +20,7 @@ class QfitChangeCiclismo : public QDialog
 {
     Q_OBJECT
 public:
-    QfitChangeCiclismo(Dlista<Workout*>& , ModelWorkout&, int, QWidget* = nullptr);
+    QfitChangeCiclismo(Dlista<Workout*>& , ModelWorkout&, int, int =0,QWidget* = nullptr);
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
@@ -32,6 +32,7 @@ private:
     ModelWorkout& m;
     QGroupBox *gbCiclismo;
     int ToEdit;
+    int Editable;
 private slots:
     void SalvaChangeCiclismo();
     void Reset();

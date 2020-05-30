@@ -7,7 +7,7 @@
 #include <string.h>
 #include "errhandler.h"
 
-QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit) {
+QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit, int _Editable,QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit), Editable(_Editable) {
     Corsa *CorsaEdit = dynamic_cast<Corsa*>(WL.At(ToEdit));
     gbCorsa = new QGroupBox("Corsa");
     LayoutForm = new QVBoxLayout;

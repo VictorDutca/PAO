@@ -7,7 +7,7 @@
 #include <string.h>
 #include "errhandler.h"
 
-QfitChangeNuoto::QfitChangeNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit  ,QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit) {
+QfitChangeNuoto::QfitChangeNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, int _ToEdit, int _Editable ,QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent), ToEdit(_ToEdit),Editable(_Editable) {
     Nuoto *NuotoEdit = dynamic_cast<Nuoto*>(WL.At(ToEdit));
     gbNuoto = new QGroupBox("Nuoto");
     LayoutForm = new QVBoxLayout;
@@ -111,7 +111,7 @@ void QfitChangeNuoto::SalvaChangeNuoto() {
         }
         Nuoto *NuotoEdit = dynamic_cast<Nuoto*>(WL.At(ToEdit));
 
-        //new Nuoto(x2, x3, x4, x5);
+
         NuotoEdit->set_durata(x2);
         NuotoEdit->set_VascheRana(x3);
         NuotoEdit->set_VascheDorso(x4);

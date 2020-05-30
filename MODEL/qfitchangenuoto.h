@@ -18,7 +18,7 @@
 class QfitChangeNuoto : public QDialog {
 Q_OBJECT
 public:
-    QfitChangeNuoto(Dlista<Workout*>& , ModelWorkout&, int ,QWidget* = nullptr);
+    QfitChangeNuoto(Dlista<Workout*>& , ModelWorkout&, int, int =0,QWidget* = nullptr);
 private:
     QVBoxLayout *LayoutForm;
     QVBoxLayout *MainLayout;
@@ -30,9 +30,10 @@ private:
     ModelWorkout& m;
     QGroupBox *gbNuoto;
     int ToEdit;
+    int Editable;
 private slots:
     void SalvaChangeNuoto();
     void Reset();
 };
 
-#endif // QFITNUOTO_H
+#endif // QFITCHANGENUOTO_H

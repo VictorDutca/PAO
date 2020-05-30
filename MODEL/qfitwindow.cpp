@@ -28,8 +28,10 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
     QPushButton *dettagli = new QPushButton();
     TblElimina = new DelegateDelete();
     TblModifica = new DelegateChange();
+    TblVisualizza = new DelegateView();
     Table->setItemDelegateForColumn(4, TblElimina);
     Table->setItemDelegateForColumn(5, TblModifica);
+    Table->setItemDelegateForColumn(6, TblVisualizza);
     //Table->setItemDelegateForColumn(5, modifica);
     //Table->setItemDelegateForColumn(6, dettagli);
     connect(TblElimina, SIGNAL(AlertDelete(int)), this, SLOT(SignalErase(int)));
@@ -37,6 +39,9 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
     connect(TblElimina, SIGNAL(ModelDelete(int)), TableModel, SLOT(ModelErase(int)));
 
     connect(TblModifica, SIGNAL(ApriChange(int)), this, SLOT(OpenChangeDialog(int)));
+    connect(TblVisualizza, SIGNAL(ApriChange(int)), this, SLOT(OpenViewDialog(int)));
+
+
 
     Table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //this->setFixedSize(1000,800);
@@ -83,8 +88,8 @@ void QFitWindow::SignalErase(int row){
 void QFitWindow::OpenChangeDialog(int row) {
     Workout* a = WL.At(row);
     if(dynamic_cast<Triathlon*>(a)){
-        //QfitChangeTriathlon *b = new QfitChangeTriathlon(WL, *TableModel, row);
-        //b->exec();
+        QfitChangeTriathlon *b = new QfitChangeTriathlon(WL, *TableModel, row);
+        b->exec();
     }
     else if(dynamic_cast<Corsa*>(a)) {
         QfitChangeCorsa  *b = new QfitChangeCorsa(WL, *TableModel, row);
@@ -117,6 +122,25 @@ void QFitWindow::OpenChangeDialog(int row) {
     // nessuna delete su 'a' perché get ritorna un puntatore grezzo, non copia profonda
     // corrispondente a quello contenuto in DeepPtr<Allenamento>*/
 }
+void QFitWindow::OpenViewDialog(int row){
+    Workout* a = WL.At(row);
+    if(dynamic_cast<Triathlon*>(a)){
+        QfitChangeTriathlon *b = new QfitChangeTriathlon(WL, *TableModel, row, 1);
+        b->exec();
+    }
+    else if(dynamic_cast<Corsa*>(a)) {
+        QfitChangeCorsa  *b = new QfitChangeCorsa(WL, *TableModel, row, 1);
+        b->exec();
+    }
+    else if(dynamic_cast<Ciclismo*>(a)){
 
+        QfitChangeCiclismo  *b = new QfitChangeCiclismo(WL, *TableModel, row, 1);
+        b->exec();
+    }
+    else if(dynamic_cast<Nuoto*>(a)){
+        QfitChangeNuoto *b = new QfitChangeNuoto(WL, *TableModel, row, 1);
+        b->exec();
+    }
+}
 
 //! [setting the layout]
