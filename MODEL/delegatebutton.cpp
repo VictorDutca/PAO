@@ -13,14 +13,16 @@ void DelegateButton::paint(QPainter *painter, const QStyleOptionViewItem &option
     if (!button) {
         button = new QStyleOptionButton();
         button->icon = TitleButton;
-
+        QBrush tb(Qt::white);
+       // QBrush tb(Qt::transparent);
+        button->palette = QPalette(tb, tb, tb, tb, tb, tb, tb, tb, tb);
         button->iconSize = QSize(25,25) ;
 
         button->state |= QStyle::State_Enabled;
         (const_cast<DelegateButton *>(this))->BTNElement.insert(index, button);
     }
 
-    button->rect = option.rect.adjusted(20, 5, -120 , -3);
+    button->rect = option.rect.adjusted(10, 4, -120 , -3);
     painter->save();
 
     if (option.state & QStyle::State_Selected) {
@@ -28,7 +30,7 @@ void DelegateButton::paint(QPainter *painter, const QStyleOptionViewItem &option
     }
 
     painter->restore();
-    QApplication::style()->drawControl(QStyle::CE_PushButton, button, painter);
+    QApplication::style()->drawControl(QStyle::CE_PushButtonLabel, button, painter);
 
 }
 

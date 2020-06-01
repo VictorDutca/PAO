@@ -6,6 +6,7 @@
 #include "modelworkout.h"
 #include "errhandler.h"
 
+
 QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     gbCorsa = new QGroupBox("Corsa");
     gbCiclismo = new QGroupBox("Ciclismo");
@@ -186,6 +187,8 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     LayoutForm->addLayout(Hbottoni);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     //setFixedSize(500,200);
 
     MainLayout->addLayout(LayoutForm);

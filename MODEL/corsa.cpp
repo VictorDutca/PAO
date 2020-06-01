@@ -1,5 +1,6 @@
 #include "corsa.h"
 #include <typeinfo>
+#include "math.h"
 
 unsigned int Corsa::constPian = 5;
 unsigned int Corsa::constSal = 7;
@@ -7,15 +8,15 @@ unsigned int Corsa::constDisc = 3;
 
 Corsa::Corsa (unsigned int dur, unsigned int dist, unsigned int pian, unsigned int sal, unsigned int disc) : Workout(dur), distanza(dist), pianura(pian), salita(sal), discesa(disc) {}
 
-double Corsa::calorie() const {
+unsigned int Corsa::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);
 }
 
 unsigned int Corsa::avg_Speed() const {
     return distanza/get_durata();
 }
-double Corsa::GrassiBruc() const {
-    return avg_Speed() + calorie();     // per ora lasciamo sta cazzata
+unsigned int Corsa::GrassiBruc() const {
+    return (avg_Speed() + calorie()) / (2*M_PI);
 }
 
 bool Corsa::operator==(const Workout& w) const {

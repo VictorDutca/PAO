@@ -120,6 +120,8 @@ QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     gbCorsa->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     setFixedSize(500,250);
 
     TitleLayoutCorsa->addWidget(LBTcorsa, Qt::AlignCenter);
@@ -160,8 +162,6 @@ void QfitChangeCorsa::SalvaChangeCorsa() {
        CorsaEdit->set_pianura(x3);
        CorsaEdit->set_salita(x5);
 
-
-       // WL.pushT(w);
         m.update();
         close();
     }

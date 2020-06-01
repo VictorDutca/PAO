@@ -6,5 +6,10 @@
         <file>utils/trash.png</file>
         <file>utils/wrench.png</file>
         <file>utils/lense.png</file>
+        <file>utils/small_icon.png</file>
+        <file>utils/tri.png</file>
+        <file>utils/swimmer.svg</file>
+        <file>utils/running.png</file>
+        <file>utils/cycling.png</file>
     </qresource>
 </RCC>

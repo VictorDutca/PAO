@@ -256,6 +256,8 @@ QfitChangeTriathlon::QfitChangeTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m
     LayoutForm->addLayout(Hbottoni);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     //setFixedSize(500,200);
 
     MainLayout->addLayout(LayoutForm);

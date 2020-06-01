@@ -82,6 +82,8 @@ QfitCiclismo::QfitCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* par
     gbCiclismo->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     setFixedSize(500,250);
 
     TitleLayoutCiclismo->addWidget(LBTciclismo,Qt::AlignCenter);

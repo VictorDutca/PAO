@@ -1,5 +1,6 @@
 #include "triathlon.h"
 #include <typeinfo>
+#include "math.h"
 
 
 
@@ -14,12 +15,12 @@ Triathlon::Triathlon(unsigned int a, unsigned int b,
 
 
 
-double Triathlon::calorie() const {
+unsigned int Triathlon::calorie() const {
     return Corsa::calorie() + Ciclismo::calorie() + Nuoto::calorie();
 }
 
-double Triathlon::GrassiBruc() const {
-    return 1;
+unsigned int Triathlon::GrassiBruc() const {
+    return ((calorie()) / (2*M_PI)) * 5 ;
 }
 
 bool Triathlon::operator==(const Workout& w) const {

@@ -10,11 +10,12 @@ private:
     static unsigned int constRana;
     static unsigned int constDorso;
     static unsigned int constLibero;
+    static unsigned int constGrassi;
 public:
     Nuoto(unsigned int =0, unsigned int =0, unsigned int =0, unsigned int =0);
     //Nuoto(const Nuoto&);
-    virtual double calorie() const;
-    virtual double GrassiBruc() const;
+    virtual unsigned int calorie() const;
+    virtual unsigned int GrassiBruc() const;
     unsigned int getVascheLibero() const;
     unsigned int getVascheRana() const;
     unsigned int getVascheDorso() const;

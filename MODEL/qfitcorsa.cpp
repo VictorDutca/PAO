@@ -82,6 +82,8 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     gbCorsa->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     setFixedSize(500,250);
 
     TitleLayoutCorsa->addWidget(LBTcorsa, Qt::AlignCenter);

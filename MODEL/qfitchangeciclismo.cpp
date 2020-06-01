@@ -111,6 +111,8 @@ LBTciclismo = new QLabel(tr("Visualizza Ciclismo"));
     gbCiclismo->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     setFixedSize(500,250);
 
     TitleLayoutCiclismo->addWidget(LBTciclismo, Qt::AlignCenter);
@@ -151,10 +153,6 @@ void QfitChangeCiclismo::SalvaChangeCiclismo() {
        CiclismoEdit->set_durata(x2);
        CiclismoEdit->set_pianura(x3);
        CiclismoEdit->set_salita(x5);
-
-
-
-       // WL.pushT(w);
         m.update();
         close();
     }

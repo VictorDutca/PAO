@@ -8,10 +8,22 @@ QfitEdit::QfitEdit(Dlista<Workout*>& _WL,ModelWorkout& _m ,QWidget* parent) : WL
     layoutScelta = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
 
-    sceltaCorsa = new QPushButton(tr("Corsa"));
-    sceltaCiclismo = new QPushButton(tr("Ciclismo"));
-    sceltaNuoto = new QPushButton(tr("Nuoto"));
-    sceltaTriathlon = new QPushButton(tr("Triathlon"));
+    sceltaCorsa = new QPushButton(tr(" Corsa"));
+    sceltaCiclismo = new QPushButton(tr(" Ciclismo"));
+    sceltaNuoto = new QPushButton(tr(" Nuoto"));
+    sceltaTriathlon = new QPushButton(tr(" Triathlon"));
+
+    sceltaCorsa->setIcon(QIcon(":/utils/running.png"));
+    sceltaCorsa->setIconSize(QSize(20,20));
+
+    sceltaCiclismo->setIcon(QIcon(":/utils/cycling.png"));
+    sceltaCiclismo->setIconSize(QSize(20,20));
+
+    sceltaNuoto->setIcon(QIcon(":/utils/swimmer.svg"));
+    sceltaNuoto->setIconSize(QSize(20,20));
+
+    sceltaTriathlon->setIcon(QIcon(":/utils/tri.png"));
+    sceltaTriathlon->setIconSize(QSize(20,20));
 
     connect(sceltaCorsa, &QPushButton::clicked, [=]() {
         ApriCorsaForm();
@@ -36,7 +48,9 @@ QfitEdit::QfitEdit(Dlista<Workout*>& _WL,ModelWorkout& _m ,QWidget* parent) : WL
     MainLayout->addLayout(layoutScelta);
     setLayout(MainLayout);
     setWindowTitle(tr("QFit"));
-    setFixedSize(100,150);
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
+    setFixedSize(120,150);
 }
 
 void QfitEdit::ApriCorsaForm() {

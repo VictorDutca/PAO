@@ -7,8 +7,8 @@ private:
 public:
     Workout (unsigned int=0);
     virtual ~Workout() = default;
-    virtual double calorie( ) const = 0;
-    virtual double GrassiBruc( ) const =0;
+    virtual unsigned int calorie( ) const = 0;
+    virtual unsigned int GrassiBruc( ) const =0;
     virtual bool operator==(const Workout& ) const;
     virtual bool operator<=(const Workout& ) const;
     virtual bool operator>=(const Workout& ) const;

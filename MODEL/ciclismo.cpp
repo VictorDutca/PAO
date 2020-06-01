@@ -1,5 +1,6 @@
 #include "ciclismo.h"
 #include <typeinfo>
+#include <math.h>
 
 unsigned int Ciclismo::constPian = 5;
 unsigned int Ciclismo::constSal = 7;
@@ -7,7 +8,7 @@ unsigned int Ciclismo::constDisc = 3;
 
 Ciclismo::Ciclismo(unsigned int dur,unsigned int di,unsigned int pia, unsigned int sal, unsigned int  dis ): Workout(dur), distanza(di) ,pianura(pia), salita(sal), discesa(dis){}
 
-double Ciclismo::calorie() const {
+unsigned int Ciclismo::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);
 }
 Ciclismo::Ciclismo(const Ciclismo& c): Workout(c.get_durata()){
@@ -20,8 +21,8 @@ Ciclismo::Ciclismo(const Ciclismo& c): Workout(c.get_durata()){
 unsigned int Ciclismo::avg_Speed() const{
     return distanza/get_durata();
 }
-double Ciclismo::GrassiBruc() const {
-    return avg_Speed() + calorie();     // per ora lasciamo sta cazzata
+unsigned int Ciclismo::GrassiBruc() const {
+    return (avg_Speed() + calorie()) / (2*M_PI);     //per ora lasciamo sta cazzata
 }
 
 bool Ciclismo::operator==(const Workout& w) const {

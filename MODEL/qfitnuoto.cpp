@@ -73,6 +73,8 @@ QfitNuoto::QfitNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     gbNuoto->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     setFixedSize(500,220);
 
     TitleLayoutNuoto->addWidget(LBTnuoto, Qt::AlignCenter);

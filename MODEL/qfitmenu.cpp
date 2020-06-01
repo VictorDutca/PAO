@@ -1,6 +1,7 @@
 #include "qfitmenu.h"
 #include "qfitedit.h"
 #include "qfitwindow.h"
+#include "errhandler.h"
 #include <QLabel>
 #include <QStringList>
 #include <QPushButton>
@@ -66,6 +67,9 @@ void Qfitmenu::ApriScelta() {
 void Qfitmenu::SalvaFile() {
 
     XMLWorkout.FileWriter();
+
+
+
 }
 void Qfitmenu::EsportaFile(){
 
@@ -78,7 +82,7 @@ void Qfitmenu::EsportaFile(){
     else {
         QFile file(fileName);
         if (!file.open(QIODevice::WriteOnly)) {
-            QMessageBox::information(this, tr("Unable to open file"),
+            QMessageBox::information(this, tr("File non apribile"),
                                      file.errorString());
             return;
         }

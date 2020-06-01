@@ -12,8 +12,8 @@ public:
               unsigned int, unsigned int, unsigned int, unsigned int,
               unsigned int, unsigned int, unsigned int, unsigned int,
               unsigned int, unsigned int, unsigned int, unsigned int);
-    virtual double calorie() const;
-    virtual double GrassiBruc() const;
+    virtual unsigned int calorie() const;
+    virtual unsigned int GrassiBruc() const;
     virtual bool operator==(const Workout&) const;
     virtual bool operator>=(const Workout&) const;
     virtual bool operator<=(const Workout&) const;

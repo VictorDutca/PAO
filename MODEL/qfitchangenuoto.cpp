@@ -93,11 +93,13 @@ QfitChangeNuoto::QfitChangeNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     reset->setText("Reset");
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
-    //LayoutForm->addLayout(Hbottoni);
+
 
     gbNuoto->setLayout(LayoutForm);
 
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
     setFixedSize(500,220);
 
     TitleLayoutNuoto->addWidget(LBTnuoto, Qt::AlignCenter);
@@ -135,7 +137,6 @@ void QfitChangeNuoto::SalvaChangeNuoto() {
         NuotoEdit->set_VascheDorso(x4);
         NuotoEdit->set_VascheLibero(x5);
 
-        //WL.pushT(w);
         m.update();
         close();
     }

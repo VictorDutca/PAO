@@ -6,7 +6,8 @@
 *.lo
 *.o
 *.obj
-
+*.pro
+*.pro.user
 # Precompiled Headers
 *.gch
 *.pch

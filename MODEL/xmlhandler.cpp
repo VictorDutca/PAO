@@ -1,9 +1,19 @@
 #include "xmlhandler.h"
+#include "errhandler.h"
+#include <QMessageBox>
 #include <QFile>
 #include <QJsonDocument>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <iostream>
+#include <QLabel>
+#include <QStringList>
+#include <QPushButton>
+#include <QIcon>
+#include <QSize>
+#include <QMessageBox>
+#include <QDialog>
+#include <QFileDialog>
 
 XMLHandler::XMLHandler(Dlista<Workout*>& worki) : wrk(worki) {}
 
@@ -154,6 +164,7 @@ Workout* XMLHandler::WorkoutExplode(QString work){
 //file writer
 
 void XMLHandler::FileWriter(){
+    try {
     QFile file("QFitWorkout.xml");
     //file.close(); //messo per sicurezza
 
@@ -224,9 +235,15 @@ void XMLHandler::FileWriter(){
         XMLWrite.writeEndDocument();
     }
     file.close();
+    }catch(ErrCouldNotSave){
+        QMessageBox msgBox;
+        msgBox.setText("Non è stato possibile salvare il File");
+        msgBox.exec();
+    }
 }
 
 void XMLHandler::FileExport(QIODevice &file){
+    try {
         file.close();
         if (file.open(QIODevice::WriteOnly)) {
             XMLWrite.setDevice(&file);
@@ -294,6 +311,11 @@ void XMLHandler::FileExport(QIODevice &file){
 
         }
         file.close();
+    }catch(ErrCouldNotExport){
+        QMessageBox msgBox;
+        msgBox.setText("Non è stato possibile esportare il File");
+        msgBox.exec();
+    }
 }
 
 

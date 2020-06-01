@@ -14,8 +14,8 @@ private:
 public:
     Corsa (unsigned int =0, unsigned int = 0, unsigned int = 0, unsigned int = 0, unsigned int = 0);
     //Corsa(const Corsa&);
-    virtual double calorie() const;
-    virtual double GrassiBruc() const;
+    virtual unsigned int calorie() const;
+    virtual unsigned int GrassiBruc() const;
     virtual bool operator==(const Workout& ) const;
     virtual bool operator<=(const Workout& ) const;
     virtual bool operator>=(const Workout& ) const;

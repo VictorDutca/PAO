@@ -1,9 +1,11 @@
 #include "nuoto.h"
 #include <typeinfo>
+#include "math.h"
 
 unsigned int Nuoto::constRana = 5;
 unsigned int Nuoto::constDorso = 7;
 unsigned int Nuoto::constLibero = 3;
+unsigned int Nuoto::constGrassi = 4;
 
 Nuoto::Nuoto(unsigned int durata , unsigned int rana , unsigned int dorso, unsigned int libero): Workout(durata) , VascheRana(rana),VascheDorso(dorso),VascheLibero(libero) {}
 
@@ -41,11 +43,11 @@ VascheLibero <= (dynamic_cast<const Nuoto&>(w)).VascheLibero;
 
 }
 
-double Nuoto::GrassiBruc() const {
-    return 4;
+unsigned int Nuoto::GrassiBruc() const {
+    return ((calorie()) / (2*M_PI) * constGrassi);
 }
 
-double Nuoto::calorie() const {
+unsigned int Nuoto::calorie() const {
     return (VascheRana*constRana) + (VascheDorso*constDorso) + (VascheLibero*constLibero);
 }
 

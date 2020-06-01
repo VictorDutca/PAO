@@ -74,6 +74,8 @@ QFitWindow::QFitWindow(Dlista<Workout*>& _WL,XMLHandler& _XMLWorkout,QWidget *pa
 //![setting the layout]
     setLayout(mainLayout);
     setWindowTitle(tr("QFit"));
+    setWindowIcon(QIcon(":/utils/small_icon.png"));
+
 }
 
 void QFitWindow::SignalErase(int row){
