@@ -33,8 +33,7 @@ private:
     QGroupBox *gbCiclismo;
     QGroupBox *gbNuoto;
     QVBoxLayout *LTCorsa, *LTCiclismo, *LTNuoto;
-    int ToEdit;
-    int Editable;
+    int ToEdit, Editable;
 private slots:
     void SalvaChangeTriathlon();
     void Reset();

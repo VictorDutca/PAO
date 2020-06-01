@@ -6,8 +6,8 @@
 #include "ciclismo.h"
 #include "corsa.h"
 
-ModelWorkout::ModelWorkout(Dlista<Workout*>& Tinfo,QObject *parent) : enfo(Tinfo), QAbstractTableModel(parent)
-{}
+ModelWorkout::ModelWorkout(Dlista<Workout*>& Tinfo,QObject *parent)
+    : enfo(Tinfo), QAbstractTableModel(parent){}
 
 int ModelWorkout::rowCount(const QModelIndex &parent) const{
     Q_UNUSED(parent);
@@ -29,7 +29,7 @@ QVariant ModelWorkout::data(const QModelIndex &index, int role) const {
         case 0:
             if(dynamic_cast<Triathlon*>(enfo.At(row))){
                 return QString::fromStdString("Triathlon");
-               }else if(dynamic_cast<Nuoto*>(enfo.At(row))){
+            }else if(dynamic_cast<Nuoto*>(enfo.At(row))){
                 return QString::fromStdString("Nuoto");
             }else if(dynamic_cast<Corsa*>(enfo.At(row))){
                 return QString::fromStdString("Corsa");
@@ -44,8 +44,8 @@ QVariant ModelWorkout::data(const QModelIndex &index, int role) const {
             return QString::fromStdString(std::to_string(enfo.At(row)->GrassiBruc()));
 
 
+        }
     }
-}
     return QVariant();
 
 }
@@ -69,11 +69,8 @@ QVariant ModelWorkout::headerData(int section, Qt::Orientation orientation, int 
             return QString("Visualizza");
 
         }
-
-
     }
     return QVariant();
-
 }
 
 bool ModelWorkout::removeRows(int position, int rows, const QModelIndex &parent)
@@ -94,14 +91,14 @@ bool ModelWorkout::insertRows(int position, int rows, const QModelIndex &parent)
 
 void ModelWorkout::update(){
     beginResetModel();
-        insertRow(rowCount());
+    insertRow(rowCount());
     endResetModel();
 
 }
 
 void ModelWorkout::ModelErase(int row){
     if(row >= 0 && row < rowCount()) {
-       enfo.removeAt(static_cast<unsigned int>(row));
+        enfo.removeAt(static_cast<unsigned int>(row));
         removeRow(row);
     }
 }

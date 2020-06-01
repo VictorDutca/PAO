@@ -15,8 +15,7 @@ class DelegateButton : public QItemDelegate {
 public:
     DelegateButton(QIcon title, QObject *parent=nullptr);
     void paint(QPainter*,const QStyleOptionViewItem& , const QModelIndex&) const override;
-    bool editorEvent(QEvent*, QAbstractItemModel*,
-                     const QStyleOptionViewItem &, const QModelIndex &) override;
+    bool editorEvent(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem &, const QModelIndex &) override;
     ~DelegateButton() override;
 private:
     QIcon TitleButton;

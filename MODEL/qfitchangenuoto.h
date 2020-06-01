@@ -29,8 +29,7 @@ private:
     Dlista<Workout*>& WL;
     ModelWorkout& m;
     QGroupBox *gbNuoto;
-    int ToEdit;
-    int Editable;
+    int ToEdit, Editable;
 private slots:
     void SalvaChangeNuoto();
     void Reset();

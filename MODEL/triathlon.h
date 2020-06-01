@@ -7,11 +7,11 @@
 
 class Triathlon : public Corsa, public Ciclismo, public Nuoto {
 public:
-    //  Triathlon(Corsa, Ciclismo, Nuoto);
     Triathlon(unsigned int, unsigned int,
               unsigned int, unsigned int, unsigned int, unsigned int,
               unsigned int, unsigned int, unsigned int, unsigned int,
               unsigned int, unsigned int, unsigned int, unsigned int);
+
     virtual unsigned int calorie() const;
     virtual unsigned int GrassiBruc() const;
     virtual bool operator==(const Workout&) const;

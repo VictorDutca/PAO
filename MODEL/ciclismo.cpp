@@ -6,7 +6,8 @@ unsigned int Ciclismo::constPian = 5;
 unsigned int Ciclismo::constSal = 7;
 unsigned int Ciclismo::constDisc = 3;
 
-Ciclismo::Ciclismo(unsigned int dur,unsigned int di,unsigned int pia, unsigned int sal, unsigned int  dis ): Workout(dur), distanza(di) ,pianura(pia), salita(sal), discesa(dis){}
+Ciclismo::Ciclismo(unsigned int dur, unsigned int di, unsigned int pia, unsigned int sal, unsigned int  dis)
+    : Workout(dur), distanza(di) ,pianura(pia), salita(sal), discesa(dis){}
 
 unsigned int Ciclismo::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);
@@ -75,16 +76,16 @@ unsigned int Ciclismo::get_discesa() const {
 
 
 void Ciclismo::set_distanza(unsigned int x)  {
-distanza = x;
+    distanza = x;
 }
 
 void Ciclismo::set_pianura(unsigned int x)  {
-pianura = x;
+    pianura = x;
 }
 void Ciclismo::set_salita(unsigned int x)  {
-salita = x;
+    salita = x;
 }
 
 void Ciclismo::set_discesa(unsigned int x)  {
-discesa = x;
+    discesa = x;
 }

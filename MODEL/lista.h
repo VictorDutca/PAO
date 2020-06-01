@@ -4,41 +4,115 @@
 #include<workout.h>
 #include<iostream>
 #include <vector>
-using namespace std;
+#include<typeinfo>
+#include <errhandler.h>.
 
-class ListaVuota {};
 
 template<class T>
-class Dlista{
+class Dlista {
     friend class iterator;
     friend class const_iterator;
 private:
     class Nodo {
     public:
-        T info;
         Nodo* prec,*next;
-        Nodo(T w=0, Nodo* p=0, Nodo* n=0) : info(w), prec(p),next(n) {}
-        ~Nodo() {
-            if(next) {
-                delete next;
-            }
-        }
-        bool operator==(const Nodo& n) const {
-            return info==n.info && prec==n.prec && next==n.next;
-        }
-        bool operator!=(const Nodo& n) const {
-            return info!=n.info && prec==n.prec && next!=n.next;
-        }
+        T info;
+        Nodo(T, Nodo* =0, Nodo* =0);
+        ~Nodo();
+        bool operator==(const Nodo&) const;
+        bool operator!=(const Nodo& n) const;
     };
 
-
-    unsigned int size;
     Nodo* first;
+    unsigned int size;
+    void cancellaNodo(Nodo*);
+    T popFirst();
+    T popLast();
 
-    T popFirst() {
-        T aux;
-        if(!first) throw ListaVuota();
-        Nodo *a=0;
+public:
+    Dlista();
+    Dlista(const Dlista&);
+    ~Dlista();
+    Dlista& operator=(const Dlista&) const;
+
+    int cancellaElemento (const T&);
+    int getSize() const;
+    bool operator==(const Dlista&) const;
+    void pushNodo(Nodo*);
+    void pushT(T);
+    void removeAt(unsigned int);
+
+
+    class iterator{
+        friend class Dlista;
+    private:
+        Nodo* ptr;
+    public:
+        bool operator==(iterator) const;
+        bool operator!=(iterator) const;
+        iterator operator++(int);
+        iterator& operator++();
+        iterator operator--(int);
+        iterator& operator--();
+        T* operator->() const;
+        T& operator*() const;
+    };
+
+    class const_iterator{
+        friend class Dlista;
+    private:
+        const Nodo* ptr;
+    public:
+        bool operator==(const_iterator) const;
+        bool operator!=(iterator) const;
+        const_iterator operator++(int); //post
+        const_iterator& operator++(); //pre
+        const_iterator operator--(int);
+        const_iterator& operator--();
+        T* operator->() const;
+        T& operator*() const;
+    };
+    iterator erase(iterator);
+    iterator find(const T&) const;
+    iterator begin();
+    iterator end();
+    const_iterator begin() const;
+    const_iterator end() const;
+    T& operator[](iterator) const;
+    const T& At(int) const;
+};
+
+//parte privata di Dlista
+
+//parte implementativa di Nodo
+
+template <typename T>
+Dlista<T>::Nodo::Nodo(T w,typename Dlista<T>::Nodo *p, typename Dlista<T>::Nodo *n): info(w), prec(p), next(n) {}
+
+template <typename T>
+Dlista<T>::Nodo::~Nodo(){
+    if(next){
+        delete next;
+    }
+}
+
+template <typename T>
+bool Dlista<T>::Nodo::operator!=(const Nodo& n) const {
+    return info!=n.info && prec==n.prec && next!=n.next;
+}
+
+template <typename T>
+bool Dlista<T>::Nodo::operator==(const Nodo& n) const {
+    return info==n.info && prec==n.prec && next==n.next;
+}
+
+//fine implementazione di Nodo
+
+template <typename T>
+T Dlista<T>::popFirst(){
+    T aux;
+    if(first){
+        typename Dlista<T>::Nodo* a=0;
         if(first) {
             a=first;
             first=first->next;
@@ -49,427 +123,387 @@ private:
         delete a;
         return aux;
     }
+}
 
-    T popLast(){
-        T aux;
-        if(!first) throw ListaVuota();
-        Nodo* a= first;
+template <typename T>
+T Dlista<T>::popLast(){
+    T aux;
+    if(first){
+        typename Dlista<T>::Nodo* a=first;
         while(a->next){
             a=a->next;
         }
-
         a->prec->next = 0;
         size --;
         aux = a->info;
         return aux;
-
     }
-
-
-    /*void removeAt(unsigned int pos) {
-        if( pos >= size || size == 0)
-          //  throw ErrContenitore();
-
-        if(pos == 0)
-            popFront();
-        else if(pos == size - 1)
-            popBack();
-        else {
-            typename Contenitore<T>::Nodo *daEliminare = primo;
-            for (unsigned int i = 0; i < pos; ++i, daEliminare = daEliminare->dx) ;
-            eliminaNodo(primo, ultimo, daEliminare);
-            size--;
-        }
-    }*/
-
-
-    void cancellaNodo(Nodo* current) {
-            if(!current->prec) { //Cancellazione in testa
-                if(current->next) {
-                    first=first->next;
-                    first->prec=0;
-                    current->next=0;
-                    delete current;
-                    size--;
-                    return;
-                }
-                else {
-                    delete current;
-                    return;
-                }
-            }
-            if(current->prec && current->next) { //Cancellazione centrale
-                Nodo* a=current->prec;
-                a->next=current->next;
-                Nodo* b=current->next;
-                b->prec=current->prec;
-                current->prec=0;
-                current->next=0;
-                delete current;
-                size--;
-                return;
-            }
-            if(!current->next) { //Cancellazione alla fine
-                Nodo* a=current->prec;
-                a->next=0;
-                delete current;
-                size--;
-                return;
-            }
-        }
-public:
-    void removeAt(unsigned int position){
-        Nodo *a=first;
-        if(position > size){
-            //mandare eccezzZzzZione;
-        }
-
-
-        if(position == 0){
-            popFirst();
-
-        }
-        else if(position == (size-1)){
-            popLast();
-        }
-        else{
-
-            while(position){
-                a=a->next;
-                position --;
-            }
-
-            a->prec->next = a->next;
-            a->next->prec = a->prec;
-            a->prec = 0;
-            a->next = 0;
-            size--;
-            delete a;
-        }
-
-    }
-    Dlista() : first(0), size(0) {}
-    Dlista(const Dlista& l) {
-        Nodo* primo = l.first;
-        first=new Nodo(l.first,0,0);
-        Nodo* testa=first;
-        Nodo*pre=0;
-        while(primo){
-            pre=primo;
-            primo = primo->next;
-            testa->next=new Nodo(primo->info,pre,0);
-            testa=testa->next;
-        }
-    }
-    ~Dlista() {
-        if(first) {
-            delete first;
-        }
-    }
-    int getSize(){
-        return size;
-
-    }
-    void pushNodo(Nodo* n) {
-
-        if(first){
-            Nodo* a=first;
-            //Nodo* b=0;
-            while(a->next) {
-                //b=a;
-                a=a->next;
-            }
-            a->next=n;
-            n->prec=a;
-            n->next=0;
-            size++;
-        }
-        else {
-            first =n;
-            size++;
-        }
-    }
-    void pushT(T t) {
-        Nodo* n = new Nodo (t,0,0);
-        pushNodo(n);
-    }
-
-    /*if( !primo || !ultimo || !attuale)
-   throw ErrContenitore();
-if(attuale == primo && primo == ultimo)
-   primo = ultimo = 0;
-else if(attuale == primo) {
-   primo = primo->dx;
-   primo->sx = 0;
-   attuale->dx = 0;
-} else if( attuale == ultimo ) {
-   ultimo = attuale->sx;
-   ultimo->dx = 0;
-} else {
-   (attuale->sx)->dx = attuale->dx;
-   (attuale->dx)->sx = attuale->sx;
-   attuale->dx = attuale->sx = 0;
 }
-delete attuale;
-*/
 
-    bool operator==(const Dlista& l) const {
-        Nodo* a=first;
-        Nodo* b=l.first;
-        while(a->next && b->next) {
-            if(a->info != b->info) {
-                return false;
-            }
+template <typename T>
+void Dlista<T>::cancellaNodo(typename Dlista<T>::Nodo *current){
+    if(!current->prec) { //Cancellazione in testa
+        if(current->next) {
+            first=first->next;
+            first->prec=0;
+            current->next=0;
+            delete current;
+            size--;
+            return;
+        }
+        else {
+            delete current;
+            return;
+        }
+    }
+    if(current->prec && current->next) { //Cancellazione centrale
+        typename Dlista<T>::Nodo* a=current->prec;
+        a->next=current->next;
+        typename Dlista<T>::Nodo* b=current->next;
+        b->prec=current->prec;
+        current->prec=0;
+        current->next=0;
+        delete current;
+        size--;
+        return;
+    }
+    if(!current->next) { //Cancellazione alla fine
+        typename Dlista<T>::Nodo* a=current->prec;
+        a->next=0;
+        delete current;
+        size--;
+        return;
+    }
+}
+
+//implementazione parte publica di Dlista
+
+template <typename T>
+Dlista<T>::Dlista(): first(0), size(0){}
+
+template <typename T>
+Dlista<T>::Dlista(const Dlista& listaAux){
+    typename Dlista<T>::Nodo* primo = listaAux.first;
+    first=new Nodo(listaAux.first,0,0);
+    typename Dlista<T>::Nodo* testa=first;
+    typename Dlista<T>::Nodo*pre=0;
+    while(primo){
+        pre=primo;
+        primo = primo->next;
+        testa->next=new Nodo(primo->info,pre,0);
+        testa=testa->next;
+    }
+}
+
+template <typename T>
+Dlista<T>::~Dlista(){
+    if(first) {
+        delete first;
+    }
+}
+
+template <typename T>
+void Dlista<T>::removeAt(unsigned int position){
+    typename Dlista<T>::Nodo *a=first;
+    if(position > size){
+        //mandare eccezzZzzZione;
+    }
+    if(position == 0){
+        popFirst();
+
+    }
+    else if(position == (size-1)){
+        popLast();
+    }
+    else{
+        while(position){
             a=a->next;
+            position --;
+        }
+        a->prec->next = a->next;
+        a->next->prec = a->prec;
+        a->prec = 0;
+        a->next = 0;
+        size--;
+        delete a;
+    }
+}
+
+template <typename T>
+int Dlista<T>::getSize() const{
+    return size;
+}
+
+template <typename T>
+void Dlista<T>::pushNodo(typename Dlista<T>::Nodo *n){
+    if(first){
+        Nodo* a=first;
+        while(a->next) {
+            a=a->next;
+        }
+        a->next=n;
+        n->prec=a;
+        n->next=0;
+        size++;
+    }
+    else {
+        first=n;
+        size++;
+    }
+}
+template <typename T>
+void Dlista<T>::pushT(T t){
+    typename Dlista<T>::Nodo* n = new Nodo (t,0,0);
+    pushNodo(n);
+}
+
+template <typename T>
+bool Dlista<T>::operator==( const Dlista& listaAux) const{
+    typename Dlista<T>::Nodo* a=first;
+    typename Dlista<T>::Nodo* b=listaAux.first;
+    while(a->next && b->next) {
+        if(a->info != b->info) {
+            return false;
+        }
+        a=a->next;
+        b=b->next;
+    }
+    return true;
+}
+
+template <typename T>
+Dlista<T>& Dlista<T>::operator=(const Dlista &listaAux) const{
+    if(first!=listaAux.first) {
+        delete first;
+        first=new Nodo(listaAux.first->info, 0);
+        typename Dlista<T>::Nodo* a=first;
+        typename Dlista<T>::Nodo* b=listaAux.first;
+        while(b->next) {
             b=b->next;
-        }
-        return true;
-    }
-
-    Dlista& operator=(const Dlista& l) {
-        if(first!=l.first) {
-            delete first;
-            first=new Nodo(l.first->info, 0);
-            Nodo* a=first;
-            Nodo* b=l.first;
-            while(b->next) {
-                b=b->next;
-                a->next=new Nodo(b->info, 0);
-                a=a->next;
-            }
             a->next=new Nodo(b->info, 0);
-            return *this;
+            a=a->next;
         }
+        a->next=new Nodo(b->info, 0);
+        return *this;
     }
-
-    /**
-     * @brief cancellaElemento
-     * @param el
-     * @return -1 se l'elemento non è presente, 0 se è riuscito a cancellarlo
-     */
-    int cancellaElemento (const T& el) {
-
-        if(!first) return -1;
-
-        Nodo* scorri = first;
-        if(scorri->info == el) {
-            first = first->next;
-            first->prec = 0;
-            scorri->next = 0;
+}
+template <typename T>
+int Dlista<T>::cancellaElemento(const T& el) {
+    if(!first) return -1;
+    typename Dlista<T>::Nodo* scorri = first;
+    if(scorri->info == el) {
+        first = first->next;
+        first->prec = 0;
+        scorri->next = 0;
+        delete scorri;
+        return 0;
+    }
+    while(scorri->next){
+        scorri=scorri->next;
+        if(scorri->info == el){
+            scorri->prec->next=scorri->next;
+            if(scorri->next) scorri->next->prec=scorri->prec;
+            scorri->next=0;
+            scorri->prec=0;
             delete scorri;
             return 0;
         }
+    }
+    return -1;
+}
 
-        while(scorri->next){
+// parte implementativa di iterator
+template <typename T>
+bool Dlista<T>::iterator::operator==(typename Dlista<T>::iterator it) const{
+    return ptr == it.ptr;
+}
+
+template <typename T>
+bool Dlista<T>::iterator::operator!=(typename Dlista<T>::iterator it) const{
+    return ptr != it.ptr;
+}
+
+template <typename T>
+typename Dlista<T>::iterator& Dlista<T>::iterator::operator++(){//prefisso
+    if(ptr){
+        ptr = ptr->next;
+    }
+    return *this;
+}
+
+template <typename T>
+typename Dlista<T>::iterator Dlista<T>::iterator::operator++(int){ //postfisso
+    iterator temp = *this;
+    if(ptr){
+        ptr=ptr->next;
+    }
+    return temp;
+}
+
+
+
+template <typename T>
+typename Dlista<T>::iterator Dlista<T>::iterator::operator--(int){
+    iterator temp = *this;
+    if(ptr){
+        ptr = ptr->prec;
+    }
+    return temp;
+}
+
+template <typename T>
+typename Dlista<T>::iterator& Dlista<T>::iterator::operator--(){
+    if(ptr){
+        ptr = ptr->prec;
+    }
+    return *this;
+}
+
+template <typename T>
+T* Dlista<T>::iterator::operator->() const{
+    return &(ptr->info);
+}
+
+template <typename T>
+T& Dlista<T>::iterator::operator*() const{
+    return ptr->info;
+}
+
+template <typename T>
+typename Dlista<T>::iterator Dlista<T>::erase(typename Dlista<T>::iterator i){
+    if(size == 0)
+        return begin();
+    if(i.ptr){
+        iterator aux;
+        iterator aux1;
+        aux1.ptr= i.ptr->prec;
+        aux.ptr = i.ptr->next;
+        cancellaNodo(i.ptr);
+        if(!aux.ptr){
+            return aux1;
+        }
+        return aux;
+    }
+    else
+        return end();
+}
+
+template <typename T>
+typename Dlista<T>::iterator Dlista<T>::find(const T& t) const {
+    if(size>0){
+        typename Dlista<T>::Nodo* scorri=first;
+        while(scorri){
+            if(scorri->info==t){
+                iterator ok = scorri;
+                return ok;
+            }
             scorri=scorri->next;
-            if(scorri->info == el){
-                scorri->prec->next=scorri->next;
-                if(scorri->next) scorri->next->prec=scorri->prec;
-                scorri->next=0;
-                scorri->prec=0;
-                delete scorri;
-                return 0;
-            }
-        }
-
-        return -1;
-    }
-
-    class iterator{
-        friend class Dlista;
-    private:
-        Nodo* ptr;
-    public:
-        bool operator==(iterator it) const{
-            return ptr == it.ptr;
-        }
-        bool operator!=(iterator it) const{
-            return ptr != it.ptr;
-        }
-        iterator operator++(int){//postfisso
-            iterator temp = *this;
-            if(ptr){
-                ptr=ptr->next;
-            }
-            return temp;
-        }
-        iterator& operator++(){ //prefisso
-            if(ptr){
-                ptr = ptr->next;
-            }
-            return *this;
-        }
-        //ricordare che da favigno non fungeva il --
-        iterator operator--(int){
-            iterator temp = *this;
-            if(ptr){
-                ptr = ptr->prec;
-            }
-            return temp;
-        }
-        iterator& operator--(){
-            if(ptr){
-                ptr = ptr->prec;
-            }
-            return *this;
-        }
-        T* operator->() const{
-            return &(ptr->info);
-
-        }
-        T& operator*() const{
-            return ptr->info;
-        }
-
-    };
-    iterator erase(iterator i){
-        if(size == 0)
-            return begin();
-        if(i.ptr){
-            iterator aux;
-            iterator aux1;
-            aux1.ptr= i.ptr->prec;
-            aux.ptr = i.ptr->next;
-            cancellaNodo(i.ptr);
-            if(!aux.ptr){
-              return aux1;
-            }
-            return aux;
-        }
-        else
-            return end();
-    }
-    //iterator it = nomestruttura.find()
-    iterator find(const T& t) const {
-        if(size>0){
-            Nodo* scorri=first;
-            while(scorri){
-                if(scorri->info==t){
-                    Dlista<T>::iterator ok = scorri;
-                    return ok;
-                }
-                scorri=scorri->next;
-            }
         }
     }
+}
 
+//parte implementativa di const_iterator
 
-    class const_iterator{
-        friend class Dlista;
-    private:
-        const Nodo* ptr;
-    public:
-        bool operator==(iterator it) const{
-            return ptr == it.ptr;
-        }
-        bool operator!=(iterator it) const{
-            return ptr != it.ptr;
-        }
-        const_iterator operator++(int){
-            const_iterator temp = *this;
-            if(ptr){
-                ptr=ptr->next;
-            }
-            return temp;
+template <typename T>
+bool Dlista<T>::const_iterator::operator==(const_iterator it) const{
+    return ptr == it.ptr;
+}
+template <typename T>
+bool Dlista<T>::const_iterator::operator!=(iterator it) const{
+    return ptr != it.ptr;
+}
 
-        } //postfisso
-        const_iterator& operator++(){
-            if(ptr){
-                ptr = ptr->next;
-            }
-            return *this;
-
-        }    //prefisso
-        const_iterator operator--(int){
-            const_iterator temp = *this;
-            if(ptr){
-                ptr = ptr->prec;
-            }
-            return temp;
-        }
-        const_iterator& operator--(){
-            if(ptr){
-                ptr = ptr->prec;
-            }
-            return *this;
-        }
-        T* operator->() const{
-            return &(ptr->info);
-        }
-        T& operator*() const{
-            return ptr->info;
-        }
-        //Dlist<T> get_tipoWorkout();
-
-
-
-    };
-
-    iterator begin(){
-        iterator aux;
-        aux.ptr = first;
-        return aux;
+template <typename T>
+typename Dlista<T>::const_iterator Dlista<T>::const_iterator::operator++(int){ //postfisso
+    const_iterator temp = *this;
+    if(ptr){
+        ptr=ptr->next;
     }
-    iterator end(){
-        iterator aux;
-        aux.ptr = 0;
-        return aux;
+    return temp;
+
+}
+
+template <typename T>
+typename Dlista<T>::const_iterator& Dlista<T>::const_iterator::operator++(){ //prefisso
+    if(ptr){
+        ptr = ptr->next;
     }
-    const_iterator begin() const{
-        const_iterator aux;
-        aux.ptr = first;
-        return aux;
+    return *this;
+
+}
+
+template <typename T>
+typename Dlista<T>::const_iterator Dlista<T>::const_iterator::operator--(int){
+    const_iterator temp = *this;
+    if(ptr){
+        ptr = ptr->prec;
     }
-    const_iterator end() const{
-        const_iterator aux;
-        aux.ptr = 0;
-        return aux;
+    return temp;
+}
+
+template <typename T>
+typename Dlista<T>::const_iterator& Dlista<T>::const_iterator::operator--(){
+    if(ptr){
+        ptr = ptr->prec;
     }
-    T& operator[](iterator i) const{
-        return i.ptr->info;
-    }
+    return *this;
+}
 
-    // La funzione erase fatta sopra per ora sembra quella giusta
-    /*iterator erase(iterator i){
-                    if(i.ptr) {
-                        iterator ret;
-                        ret.ptr = i.ptr->next;
+template <typename T>
+T* Dlista<T>::const_iterator::operator->() const{
+    return &(ptr->info);
+}
 
-                            cancellaNodo(i.ptr);
-                        //possibile exception
+template <typename T>
+T& Dlista<T>::const_iterator::operator*() const{
+    return ptr->info;
+}
+template <typename T>
+T& Dlista<T>::operator[](iterator i) const{
+    return i.ptr->info;
+}
 
+template <typename T>
+typename Dlista<T>::iterator Dlista<T>::begin(){
+    iterator aux;
+    aux.ptr = first;
+    return aux;
+}
 
-                        return ret;
-                    } else
-                        return end();
-                 }
+template <typename T>
+typename Dlista<T>::iterator Dlista<T>::end(){
+    iterator aux;
+    aux.ptr = 0;
+    return aux;
+}
 
-                */
+template <typename T>
+typename Dlista<T>::const_iterator Dlista<T>::begin() const{
+    const_iterator aux;
+    aux.ptr = first;
+    return aux;
+}
 
-    vector<T> stampa() {
-        vector<T> v;
-        Nodo* firs = first;
-        while(firs) {
-            v.push_back(firs->info);
-            firs = firs->next;
-        }
-        return v;
+template <typename T>
+typename Dlista<T>::const_iterator Dlista<T>::end() const{
+    const_iterator aux;
+    aux.ptr = 0;
+    return aux;
+}
+
+template <typename T>
+const T& Dlista<T>::At(int position) const{  // ha senso questa funzione ?
+    Nodo *aux = first;
+    int counter = 0;
+    while (aux && counter < position) {
+        aux = aux->next;
+        counter++;
     }
 
-    const T& At(int position) const{
-        Nodo *aux = first;
-        int counter = 0;
-        while (aux && counter < position) {
-            aux = aux->next;
-            counter++;
-        }
+    if(counter < position) // okay ?
+        throw;
 
-        if(counter < position)
-            throw;
-
-        return aux->info;
-
-    };
-};
+    return aux->info;
+}
 
 #endif // LISTA_H

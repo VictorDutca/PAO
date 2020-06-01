@@ -11,15 +11,14 @@
 #include <QFrame>
 #include <QTextEdit>
 
-class testwindow : public QMainWindow
-{
+class testwindow : public QMainWindow {
     Q_OBJECT
 public:
     explicit testwindow(QWidget *parent = nullptr);
 
 private:
-QLineEdit *nameLine;
-QTextEdit *addressText;
+    QLineEdit *nameLine;
+    QTextEdit *addressText;
 
 
 signals:

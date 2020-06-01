@@ -244,7 +244,6 @@ QfitChangeTriathlon::QfitChangeTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m
         Hbottoni->addWidget(salva);
         Hbottoni->addWidget(reset);
     }
-    //titolo pag
     TitleLayout->addWidget(LBTTriat, Qt::AlignHCenter);
     LBTTriat->setAlignment (Qt::AlignHCenter);
     MainLayout->addLayout(TitleLayout);
@@ -258,7 +257,6 @@ QfitChangeTriathlon::QfitChangeTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m
     setWindowTitle(tr("QFit"));
     setWindowIcon(QIcon(":/utils/small_icon.png"));
 
-    //setFixedSize(500,200);
 
     MainLayout->addLayout(LayoutForm);
     setLayout(MainLayout);
@@ -331,11 +329,6 @@ void QfitChangeTriathlon::SalvaChangeTriathlon() {
         TriathlonEdit->set_VascheDorso(x13);
         TriathlonEdit->set_VascheLibero(x14);
 
-
-
-        //new Triathlon(x1, x3, x5, x4, x7, x6, x8, x10, x9, x10, x11, x12, x13, x14);
-
-        //WL.pushT(w);
         m.update();
         close();
     }

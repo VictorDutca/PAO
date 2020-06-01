@@ -30,8 +30,7 @@ private:
     Dlista<Workout*>& WL;
     ModelWorkout& m;
     QGroupBox *gbCorsa;
-    int ToEdit;
-    int Editable;
+    int ToEdit, Editable;
 private slots:
     void SalvaChangeCorsa();
     void Reset();

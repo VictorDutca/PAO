@@ -20,22 +20,22 @@ QfitChangeCiclismo::QfitChangeCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, 
     salva = new QPushButton;
     reset = new QPushButton;
 
- if(Editable){
-     QPalette *palette = new QPalette();
-     palette->setColor(QPalette::Base,Qt::transparent);
+    if(Editable){
+        QPalette *palette = new QPalette();
+        palette->setColor(QPalette::Base,Qt::transparent);
 
-     Tdistanza->setReadOnly(true);
-     Tdurata->setReadOnly(true);
-     Tpianura->setReadOnly(true);
-     Tsalita->setReadOnly(true);
-     Tdiscesa->setReadOnly(true);
+        Tdistanza->setReadOnly(true);
+        Tdurata->setReadOnly(true);
+        Tpianura->setReadOnly(true);
+        Tsalita->setReadOnly(true);
+        Tdiscesa->setReadOnly(true);
 
-     Tdistanza->setPalette(*palette);
-     Tdurata->setPalette(*palette);
-     Tpianura->setPalette(*palette);
-     Tsalita->setPalette(*palette);
-     Tdiscesa->setPalette(*palette);
-}
+        Tdistanza->setPalette(*palette);
+        Tdurata->setPalette(*palette);
+        Tpianura->setPalette(*palette);
+        Tsalita->setPalette(*palette);
+        Tdiscesa->setPalette(*palette);
+    }
 
     Hdistanza = new QHBoxLayout;
     Hdurata = new QHBoxLayout;
@@ -45,12 +45,12 @@ QfitChangeCiclismo::QfitChangeCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, 
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutCiclismo = new QHBoxLayout;
-        if(!Editable){
-    LBTciclismo = new QLabel(tr("Modifica Ciclismo"));
-}else{
-LBTciclismo = new QLabel(tr("Visualizza Ciclismo"));
+    if(!Editable){
+        LBTciclismo = new QLabel(tr("Modifica Ciclismo"));
+    }else{
+        LBTciclismo = new QLabel(tr("Visualizza Ciclismo"));
 
-        }
+    }
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaChangeCiclismo();
     });
@@ -106,7 +106,6 @@ LBTciclismo = new QLabel(tr("Visualizza Ciclismo"));
         Hbottoni->addWidget(salva);
         Hbottoni->addWidget(reset);
     }
-    //LayoutForm->addLayout(Hbottoni);
 
     gbCiclismo->setLayout(LayoutForm);
 
@@ -146,13 +145,13 @@ void QfitChangeCiclismo::SalvaChangeCiclismo() {
             throw ErrEmptyForm();
         }
 
-       Ciclismo *CiclismoEdit = dynamic_cast<Ciclismo*>(WL.At(ToEdit));
+        Ciclismo *CiclismoEdit = dynamic_cast<Ciclismo*>(WL.At(ToEdit));
 
-       CiclismoEdit->set_discesa(x4);
-       CiclismoEdit->set_distanza(x1);
-       CiclismoEdit->set_durata(x2);
-       CiclismoEdit->set_pianura(x3);
-       CiclismoEdit->set_salita(x5);
+        CiclismoEdit->set_discesa(x4);
+        CiclismoEdit->set_distanza(x1);
+        CiclismoEdit->set_durata(x2);
+        CiclismoEdit->set_pianura(x3);
+        CiclismoEdit->set_salita(x5);
         m.update();
         close();
     }

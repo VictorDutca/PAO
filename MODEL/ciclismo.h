@@ -16,6 +16,7 @@ public:
     Ciclismo(const Ciclismo&);
     virtual unsigned int calorie() const;
     virtual unsigned int GrassiBruc() const;
+
     unsigned int get_distanza() const;
     unsigned int get_pianura() const;
     unsigned int get_salita() const;

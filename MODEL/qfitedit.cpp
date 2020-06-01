@@ -28,15 +28,12 @@ QfitEdit::QfitEdit(Dlista<Workout*>& _WL,ModelWorkout& _m ,QWidget* parent) : WL
     connect(sceltaCorsa, &QPushButton::clicked, [=]() {
         ApriCorsaForm();
     });
-
     connect(sceltaCiclismo, &QPushButton::clicked, [=]() {
         ApriCiclismoForm();
     });
-
     connect(sceltaNuoto, &QPushButton::clicked, [=]() {
         ApriNuotoForm();
     });
-
     connect(sceltaTriathlon, &QPushButton::clicked, [=]() {
         ApriTriathlonForm();
     });
@@ -49,7 +46,6 @@ QfitEdit::QfitEdit(Dlista<Workout*>& _WL,ModelWorkout& _m ,QWidget* parent) : WL
     setLayout(MainLayout);
     setWindowTitle(tr("QFit"));
     setWindowIcon(QIcon(":/utils/small_icon.png"));
-
     setFixedSize(120,150);
 }
 
@@ -59,7 +55,6 @@ void QfitEdit::ApriCorsaForm() {
     dialog1->disconnect();
     delete dialog1;
 }
-
 
 void QfitEdit::ApriCiclismoForm() {
     QfitCiclismo* dialog2 = new QfitCiclismo(WL,m);

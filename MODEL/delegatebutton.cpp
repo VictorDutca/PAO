@@ -1,10 +1,7 @@
 #include "delegatebutton.h"
 
 DelegateButton::DelegateButton(QIcon _TitleButton, QObject *parent)
-    : QItemDelegate (parent), TitleButton(_TitleButton)
-{
-
-}
+    : QItemDelegate (parent), TitleButton(_TitleButton){}
 
 void DelegateButton::paint(QPainter *painter, const QStyleOptionViewItem &option,
                            const QModelIndex &index) const
@@ -14,10 +11,8 @@ void DelegateButton::paint(QPainter *painter, const QStyleOptionViewItem &option
         button = new QStyleOptionButton();
         button->icon = TitleButton;
         QBrush tb(Qt::white);
-       // QBrush tb(Qt::transparent);
         button->palette = QPalette(tb, tb, tb, tb, tb, tb, tb, tb, tb);
         button->iconSize = QSize(25,25) ;
-
         button->state |= QStyle::State_Enabled;
         (const_cast<DelegateButton *>(this))->BTNElement.insert(index, button);
     }
@@ -65,5 +60,5 @@ bool DelegateButton::editorEvent(
 }
 
 DelegateButton::~DelegateButton() {
-   /**/
+    /**/
 }

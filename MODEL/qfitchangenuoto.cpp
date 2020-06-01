@@ -44,11 +44,11 @@ QfitChangeNuoto::QfitChangeNuoto(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutNuoto = new QHBoxLayout;
-        if(!Editable){
-    LBTnuoto = new QLabel(tr("Modifica Nuoto"));
-}else{
-    LBTnuoto = new QLabel(tr("Visualizza Nuoto"));
-        }
+    if(!Editable){
+        LBTnuoto = new QLabel(tr("Modifica Nuoto"));
+    }else{
+        LBTnuoto = new QLabel(tr("Visualizza Nuoto"));
+    }
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaChangeNuoto();
     });

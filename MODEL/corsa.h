@@ -19,10 +19,12 @@ public:
     virtual bool operator==(const Workout& ) const;
     virtual bool operator<=(const Workout& ) const;
     virtual bool operator>=(const Workout& ) const;
+
     unsigned int get_distanza() const;
     unsigned int get_pianura() const;
     unsigned int get_salita() const;
     unsigned int get_discesa() const;
+
     void set_distanza(unsigned int);
     void set_pianura(unsigned int);
     void set_salita(unsigned int);

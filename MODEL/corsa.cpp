@@ -6,7 +6,8 @@ unsigned int Corsa::constPian = 5;
 unsigned int Corsa::constSal = 7;
 unsigned int Corsa::constDisc = 3;
 
-Corsa::Corsa (unsigned int dur, unsigned int dist, unsigned int pian, unsigned int sal, unsigned int disc) : Workout(dur), distanza(dist), pianura(pian), salita(sal), discesa(disc) {}
+Corsa::Corsa (unsigned int dur, unsigned int dist, unsigned int pian, unsigned int sal, unsigned int disc)
+    : Workout(dur), distanza(dist), pianura(pian), salita(sal), discesa(disc) {}
 
 unsigned int Corsa::calorie() const {
     return (pianura*constPian) + (discesa*constDisc) + (salita*constSal);
@@ -20,42 +21,42 @@ unsigned int Corsa::GrassiBruc() const {
 }
 
 bool Corsa::operator==(const Workout& w) const {
-if(typeid(w) == typeid(const Corsa&)){
-            return Workout::operator==(w) &&
+    if(typeid(w) == typeid(const Corsa&)){
+        return Workout::operator==(w) &&
                 distanza == (dynamic_cast<const Corsa&>(w)).distanza &&
                 pianura == (dynamic_cast<const Corsa&>(w)).pianura &&
                 salita == (dynamic_cast<const Corsa&>(w)).salita &&
                 discesa == (dynamic_cast<const Corsa&>(w)).discesa;
     }
-        return false;
+    return false;
 }
 
 bool Corsa::operator<=(const Workout& w) const {
-if(typeid(w) == typeid(const Corsa&)){
-            return Workout::operator<=(w) &&
+    if(typeid(w) == typeid(const Corsa&)){
+        return Workout::operator<=(w) &&
                 distanza <= (dynamic_cast<const Corsa&>(w)).distanza &&
                 pianura <= (dynamic_cast<const Corsa&>(w)).pianura &&
                 salita <= (dynamic_cast<const Corsa&>(w)).salita &&
                 discesa <= (dynamic_cast<const Corsa&>(w)).discesa;
 
     }
-        return false;
+    return false;
 }
 
 bool Corsa::operator>=(const Workout& w) const {
-if(typeid(w) == typeid(const Corsa&)){
-            return Workout::operator>=(w) &&
+    if(typeid(w) == typeid(const Corsa&)){
+        return Workout::operator>=(w) &&
                 distanza >= (dynamic_cast<const Corsa&>(w)).distanza &&
                 pianura >= (dynamic_cast<const Corsa&>(w)).pianura &&
                 salita >= (dynamic_cast<const Corsa&>(w)).salita &&
                 discesa >= (dynamic_cast<const Corsa&>(w)).discesa;
 
     }
-        return false;
+    return false;
 }
 
 unsigned int Corsa::get_distanza() const {
-return distanza;
+    return distanza;
 }
 
 unsigned int Corsa::get_pianura() const {

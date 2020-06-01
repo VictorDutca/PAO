@@ -24,9 +24,7 @@ class QTextEdit;
 class QVBoxLayout;
 QT_END_NAMESPACE
 
-//! [class definition]
-class QFitWindow : public QWidget
-{
+class QFitWindow : public QWidget {
     Q_OBJECT
 
 public:
@@ -52,6 +50,6 @@ signals:
     void ModelRemove(int);
 
 };
-//! [class definition]
+
 
 #endif

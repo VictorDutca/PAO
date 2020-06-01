@@ -77,7 +77,6 @@ QfitCorsa::QfitCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) :
     reset->setText("Reset");
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
-    //LayoutForm->addLayout(Hbottoni);
 
     gbCorsa->setLayout(LayoutForm);
 

@@ -55,11 +55,11 @@ QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
     Hbottoni = new QHBoxLayout;
 
     TitleLayoutCorsa = new QHBoxLayout;
-     if(!Editable){
-    LBTcorsa = new QLabel(tr("Modifica Corsa"));
-     }else{
-          LBTcorsa = new QLabel(tr("Visualizza Corsa"));
-     }
+    if(!Editable){
+        LBTcorsa = new QLabel(tr("Modifica Corsa"));
+    }else{
+        LBTcorsa = new QLabel(tr("Visualizza Corsa"));
+    }
     connect(salva, &QPushButton::clicked, [=]() {
         SalvaChangeCorsa();
     });
@@ -115,7 +115,6 @@ QfitChangeCorsa::QfitChangeCorsa(Dlista<Workout*>& _WL, ModelWorkout& _m, int _T
         Hbottoni->addWidget(salva);
         Hbottoni->addWidget(reset);
     }
-    //LayoutForm->addLayout(Hbottoni);
 
     gbCorsa->setLayout(LayoutForm);
 
@@ -154,13 +153,13 @@ void QfitChangeCorsa::SalvaChangeCorsa() {
             throw ErrEmptyForm();
         }
 
-       Corsa *CorsaEdit = dynamic_cast<Corsa*>(WL.At(ToEdit));
+        Corsa *CorsaEdit = dynamic_cast<Corsa*>(WL.At(ToEdit));
 
-       CorsaEdit->set_discesa(x4);
-       CorsaEdit->set_distanza(x1);
-       CorsaEdit->set_durata(x2);
-       CorsaEdit->set_pianura(x3);
-       CorsaEdit->set_salita(x5);
+        CorsaEdit->set_discesa(x4);
+        CorsaEdit->set_distanza(x1);
+        CorsaEdit->set_durata(x2);
+        CorsaEdit->set_pianura(x3);
+        CorsaEdit->set_salita(x5);
 
         m.update();
         close();

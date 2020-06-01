@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = QFit1.0.0
-DISTDIR = /home/victor/Scrivania/QFit_Repo/QFit/LMAO/.tmp/QFit1.0.0
+DISTDIR = /home/victor/Scrivania/QFit_Repo/QFit/buildFolder/.tmp/QFit1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/victor/Qt5.9.5/5.9.5/gcc_64/lib
 LIBS          = $(SUBLIBS) -L/home/victor/Qt5.9.5/5.9.5/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -330,14 +330,12 @@ DIST          = ../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../MODEL/nuoto.h \
 		../MODEL/ciclismo.h \
 		../MODEL/triathlon.h \
-		../MODEL/schedules.h \
 		../MODEL/lista.h \
 		../MODEL/testwindow.h \
 		../MODEL/qfitwindow.h \
 		../MODEL/xmlhandler.h \
 		../MODEL/qfitmenu.h \
 		../MODEL/modelworkout.h \
-		../MODEL/qfitchoice.h \
 		../MODEL/qfitedit.h \
 		../MODEL/formmenu.h \
 		../MODEL/qfitcorsa.h \
@@ -779,7 +777,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../MODEL/utils.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.5/5.9.5/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MODEL/mainwindow.h ../MODEL/workout.h ../MODEL/corsa.h ../MODEL/nuoto.h ../MODEL/ciclismo.h ../MODEL/triathlon.h ../MODEL/schedules.h ../MODEL/lista.h ../MODEL/testwindow.h ../MODEL/qfitwindow.h ../MODEL/xmlhandler.h ../MODEL/qfitmenu.h ../MODEL/modelworkout.h ../MODEL/qfitchoice.h ../MODEL/qfitedit.h ../MODEL/formmenu.h ../MODEL/qfitcorsa.h ../MODEL/qfitciclismo.h ../MODEL/qfitnuoto.h ../MODEL/qfittriathlon.h ../MODEL/delegatedelete.h ../MODEL/delegatebutton.h ../MODEL/delegatechange.h ../MODEL/qfitchangecorsa.h ../MODEL/qfitchangeciclismo.h ../MODEL/errhandler.h ../MODEL/qfitchangenuoto.h ../MODEL/qfitchangetriathlon.h ../MODEL/delegateview.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MODEL/mainwindow.h ../MODEL/workout.h ../MODEL/corsa.h ../MODEL/nuoto.h ../MODEL/ciclismo.h ../MODEL/triathlon.h ../MODEL/lista.h ../MODEL/testwindow.h ../MODEL/qfitwindow.h ../MODEL/xmlhandler.h ../MODEL/qfitmenu.h ../MODEL/modelworkout.h ../MODEL/qfitedit.h ../MODEL/formmenu.h ../MODEL/qfitcorsa.h ../MODEL/qfitciclismo.h ../MODEL/qfitnuoto.h ../MODEL/qfittriathlon.h ../MODEL/delegatedelete.h ../MODEL/delegatebutton.h ../MODEL/delegatechange.h ../MODEL/qfitchangecorsa.h ../MODEL/qfitchangeciclismo.h ../MODEL/errhandler.h ../MODEL/qfitchangenuoto.h ../MODEL/qfitchangetriathlon.h ../MODEL/delegateview.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../MODEL/main.cpp ../MODEL/mainwindow.cpp ../MODEL/workout.cpp ../MODEL/corsa.cpp ../MODEL/nuoto.cpp ../MODEL/ciclismo.cpp ../MODEL/triathlon.cpp ../MODEL/schedules.cpp ../MODEL/testwindow.cpp ../MODEL/qfitwindow.cpp ../MODEL/xmlhandler.cpp ../MODEL/qfitmenu.cpp ../MODEL/modelworkout.cpp ../MODEL/qfitedit.cpp ../MODEL/formmenu.cpp ../MODEL/qfitcorsa.cpp ../MODEL/qfitciclismo.cpp ../MODEL/qfitnuoto.cpp ../MODEL/qfittriathlon.cpp ../MODEL/delegatedelete.cpp ../MODEL/delegatebutton.cpp ../MODEL/delegatechange.cpp ../MODEL/qfitchangecorsa.cpp ../MODEL/qfitchangeciclismo.cpp ../MODEL/qfitchangenuoto.cpp ../MODEL/qfitchangetriathlon.cpp ../MODEL/delegateview.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../MODEL/mainwindow.ui ../MODEL/formmenu.ui $(DISTDIR)/
 

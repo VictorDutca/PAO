@@ -16,8 +16,7 @@
 #include <QGroupBox>
 #include "ciclismo.h"
 
-class QfitChangeCiclismo : public QDialog
-{
+class QfitChangeCiclismo : public QDialog {
     Q_OBJECT
 public:
     QfitChangeCiclismo(Dlista<Workout*>& , ModelWorkout&, int, int =0,QWidget* = nullptr);
@@ -31,8 +30,7 @@ private:
     Dlista<Workout*>& WL;
     ModelWorkout& m;
     QGroupBox *gbCiclismo;
-    int ToEdit;
-    int Editable;
+    int ToEdit, Editable;
 private slots:
     void SalvaChangeCiclismo();
     void Reset();

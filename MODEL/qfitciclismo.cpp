@@ -77,7 +77,6 @@ QfitCiclismo::QfitCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* par
     reset->setText("Reset");
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
-    //LayoutForm->addLayout(Hbottoni);
 
     gbCiclismo->setLayout(LayoutForm);
 
