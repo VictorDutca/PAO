@@ -35,4 +35,11 @@
         <uphill>89</uphill>
         <distance>89</distance>
     </cycling>
+    <running>
+        <length>45</length>
+        <plain>5000</plain>
+        <downhill>2000</downhill>
+        <uphill>2000</uphill>
+        <distance>9000</distance>
+    </running>
 </workout>
