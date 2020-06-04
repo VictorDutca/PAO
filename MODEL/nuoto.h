@@ -13,7 +13,6 @@ private:
     static unsigned int constGrassi;
 public:
     Nuoto(unsigned int =0, unsigned int =0, unsigned int =0, unsigned int =0);
-    //Nuoto(const Nuoto&);
     virtual unsigned int calorie() const;
     virtual unsigned int GrassiBruc() const;
 

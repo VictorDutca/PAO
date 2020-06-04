@@ -22,23 +22,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+CONFIG += warn_off
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
     workout.cpp \
     corsa.cpp \
     nuoto.cpp \
     ciclismo.cpp \
     triathlon.cpp \
-    schedules.cpp \
-    testwindow.cpp \
     qfitwindow.cpp \
     xmlhandler.cpp \
     qfitmenu.cpp \
     modelworkout.cpp \
     qfitedit.cpp \
-    formmenu.cpp \
     qfitcorsa.cpp \
     qfitciclismo.cpp \
     qfitnuoto.cpp \
@@ -53,20 +50,17 @@ SOURCES += \
     delegateview.cpp
 
 HEADERS += \
-        mainwindow.h \
     workout.h \
     corsa.h \
     nuoto.h \
     ciclismo.h \
     triathlon.h \
     lista.h \
-    testwindow.h \
     qfitwindow.h \
     xmlhandler.h \
     qfitmenu.h \
     modelworkout.h \
     qfitedit.h \
-    formmenu.h \
     qfitcorsa.h \
     qfitciclismo.h \
     qfitnuoto.h \
@@ -81,9 +75,7 @@ HEADERS += \
     qfitchangetriathlon.h \
     delegateview.h
 
-FORMS += \
-        mainwindow.ui \
-    formmenu.ui
+FORMS +=
 
 RESOURCES += \
     utils.qrc

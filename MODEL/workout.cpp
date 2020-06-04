@@ -21,4 +21,3 @@ unsigned int Workout::get_durata() const {
 void Workout::set_durata(unsigned int x) {
    durata = x;
 }
-

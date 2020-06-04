@@ -1,7 +1,7 @@
 #include "qfitchangetriathlon.h"
 #include <iostream>
 #include <QMessageBox>
-#include "triathlon.h".
+#include "triathlon.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
 #include <string.h>

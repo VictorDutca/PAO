@@ -13,7 +13,6 @@ private:
     static unsigned int constDisc;
 public:
     Corsa (unsigned int =0, unsigned int = 0, unsigned int = 0, unsigned int = 0, unsigned int = 0);
-    //Corsa(const Corsa&);
     virtual unsigned int calorie() const;
     virtual unsigned int GrassiBruc() const;
     virtual bool operator==(const Workout& ) const;

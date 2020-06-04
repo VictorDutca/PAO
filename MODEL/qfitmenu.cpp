@@ -27,7 +27,7 @@ Qfitmenu::Qfitmenu(Dlista<Workout*>& _WL,ModelWorkout& _m, XMLHandler& _XMLWorko
 
     QPixmap banner(":/utils/logoProg.png");
     title = new QLabel;
-    title->setPixmap(banner.scaled(200,100)); //modificare in futuro
+    title->setPixmap(banner.scaled(200,100));
     title->setAlignment(Qt::AlignCenter);
 
     layoutMenu = new QVBoxLayout();

@@ -4,5 +4,7 @@
 class ErrEmptyForm {};
 class ErrCouldNotSave {};
 class ErrCouldNotExport {};
+class ErrList {};
+class ErrEmptyList{};
 
 #endif // ERRHANDLER_H

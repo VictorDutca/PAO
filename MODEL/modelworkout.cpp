@@ -42,8 +42,6 @@ QVariant ModelWorkout::data(const QModelIndex &index, int role) const {
             return QString::fromStdString(std::to_string(enfo.At(row)->calorie()));
         case 3:
             return QString::fromStdString(std::to_string(enfo.At(row)->GrassiBruc()));
-
-
         }
     }
     return QVariant();

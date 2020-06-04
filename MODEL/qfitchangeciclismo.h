@@ -34,8 +34,6 @@ private:
 private slots:
     void SalvaChangeCiclismo();
     void Reset();
-
-
 };
 
 #endif // QFITCHANGECICLISMO_H

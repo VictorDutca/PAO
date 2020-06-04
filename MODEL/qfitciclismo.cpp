@@ -1,4 +1,4 @@
-#include "qfitciclismo.h".h"
+#include "qfitciclismo.h"
 #include <iostream>
 #include <QMessageBox>
 #include "ciclismo.h"
@@ -7,7 +7,7 @@
 #include "errhandler.h"
 
 QfitCiclismo::QfitCiclismo(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
-    gbCiclismo = new QGroupBox("Ciclismo"); // lascio vuoto di proposito per vedere come sta senza titolino della box
+    gbCiclismo = new QGroupBox("Ciclismo");
     LayoutForm = new QVBoxLayout;
     MainLayout = new QVBoxLayout;
     Ldistanza = new QLabel;

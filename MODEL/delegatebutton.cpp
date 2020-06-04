@@ -59,6 +59,4 @@ bool DelegateButton::editorEvent(
     return true;
 }
 
-DelegateButton::~DelegateButton() {
-    /**/
-}
+DelegateButton::~DelegateButton() {}

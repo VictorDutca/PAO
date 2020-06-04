@@ -1,11 +1,10 @@
 #include "qfittriathlon.h"
 #include <iostream>
 #include <QMessageBox>
-#include "triathlon.h".
+#include "triathlon.h"
 #include "qfitwindow.h"
 #include "modelworkout.h"
 #include "errhandler.h"
-
 
 QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* parent) : WL(_WL), m(_m) ,QDialog(parent) {
     gbCorsa = new QGroupBox("Corsa");
@@ -175,7 +174,6 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     Hbottoni->addWidget(salva);
     Hbottoni->addWidget(reset);
 
-    //titolo pag
     TitleLayout->addWidget(LBTTriat, Qt::AlignHCenter);
     LBTTriat->setAlignment (Qt::AlignHCenter);
     MainLayout->addLayout(TitleLayout);
@@ -189,7 +187,7 @@ QfitTriathlon::QfitTriathlon(Dlista<Workout*>& _WL, ModelWorkout& _m, QWidget* p
     setWindowTitle(tr("QFit"));
     setWindowIcon(QIcon(":/utils/small_icon.png"));
 
-    //setFixedSize(500,200);
+    setFixedSize(500,600);
 
     MainLayout->addLayout(LayoutForm);
     setLayout(MainLayout);

@@ -1,5 +1,6 @@
 #ifndef QFITWINDOW_H
 #define QFITWINDOW_H
+
 #include <QWidget>
 #include <QTableView>
 #include <QPushButton>
@@ -28,8 +29,11 @@ class QFitWindow : public QWidget {
     Q_OBJECT
 
 public:
-    QFitWindow(Dlista<Workout*>&, XMLHandler& ,QWidget *parent = nullptr);
+    QFitWindow(Dlista<Workout*>&, XMLHandler&, QWidget *parent = nullptr);
 private:
+    Dlista<Workout*>& WL;
+    ModelWorkout* TableModel;
+    XMLHandler& XMLWorkout;
     QTableView *Table;
     QLabel *lblTitolo;
     DelegateDelete* TblElimina;
@@ -37,9 +41,6 @@ private:
     QLineEdit *nameLine;
     QTextEdit *addressText;
     Qfitmenu *menu;
-    Dlista<Workout*>& WL;
-    ModelWorkout* TableModel;
-    XMLHandler& XMLWorkout;
     DelegateChange *TblModifica;
     DelegateView *TblVisualizza;
 public slots:
@@ -48,8 +49,6 @@ public slots:
     void OpenViewDialog(int);
 signals:
     void ModelRemove(int);
-
 };
-
 
 #endif

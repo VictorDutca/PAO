@@ -1,12 +1,11 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-#include<workout.h>
-#include<iostream>
+#include <workout.h>
+#include <iostream>
 #include <vector>
-#include<typeinfo>
-#include <errhandler.h>.
-
+#include <typeinfo>
+#include <errhandler.h>
 
 template<class T>
 class Dlista {
@@ -15,8 +14,8 @@ class Dlista {
 private:
     class Nodo {
     public:
-        Nodo* prec,*next;
         T info;
+        Nodo *prec, *next;
         Nodo(T, Nodo* =0, Nodo* =0);
         ~Nodo();
         bool operator==(const Nodo&) const;
@@ -41,7 +40,6 @@ public:
     void pushNodo(Nodo*);
     void pushT(T);
     void removeAt(unsigned int);
-
 
     class iterator{
         friend class Dlista;
@@ -111,6 +109,7 @@ bool Dlista<T>::Nodo::operator==(const Nodo& n) const {
 template <typename T>
 T Dlista<T>::popFirst(){
     T aux;
+    try{
     if(first){
         typename Dlista<T>::Nodo* a=0;
         if(first) {
@@ -123,11 +122,17 @@ T Dlista<T>::popFirst(){
         delete a;
         return aux;
     }
+    else {
+        throw ErrEmptyList();
+    }
+    }
+    catch(ErrEmptyList) {return 0;}
 }
 
 template <typename T>
 T Dlista<T>::popLast(){
     T aux;
+    try{
     if(first){
         typename Dlista<T>::Nodo* a=first;
         while(a->next){
@@ -138,6 +143,11 @@ T Dlista<T>::popLast(){
         aux = a->info;
         return aux;
     }
+    else {
+        throw ErrEmptyList();
+    }
+    }
+    catch (ErrEmptyList) {return 0;}
 }
 
 template <typename T>
@@ -205,28 +215,30 @@ Dlista<T>::~Dlista(){
 template <typename T>
 void Dlista<T>::removeAt(unsigned int position){
     typename Dlista<T>::Nodo *a=first;
-    if(position > size){
-        //mandare eccezzZzzZione;
-    }
-    if(position == 0){
-        popFirst();
-
-    }
-    else if(position == (size-1)){
-        popLast();
-    }
-    else{
-        while(position){
-            a=a->next;
-            position --;
+    try{
+        if(position > size){
+            throw ErrList();
         }
-        a->prec->next = a->next;
-        a->next->prec = a->prec;
-        a->prec = 0;
-        a->next = 0;
-        size--;
-        delete a;
+        if(position == 0){
+            popFirst();
+        }
+        else if(position == (size-1)){
+            popLast();
+        }
+        else{
+            while(position){
+                a=a->next;
+                position --;
+            }
+            a->prec->next = a->next;
+            a->next->prec = a->prec;
+            a->prec = 0;
+            a->next = 0;
+            size--;
+            delete a;
+        }
     }
+    catch (ErrList) {};
 }
 
 template <typename T>
@@ -251,6 +263,7 @@ void Dlista<T>::pushNodo(typename Dlista<T>::Nodo *n){
         size++;
     }
 }
+
 template <typename T>
 void Dlista<T>::pushT(T t){
     typename Dlista<T>::Nodo* n = new Nodo (t,0,0);
@@ -287,6 +300,7 @@ Dlista<T>& Dlista<T>::operator=(const Dlista &listaAux) const{
         return *this;
     }
 }
+
 template <typename T>
 int Dlista<T>::cancellaElemento(const T& el) {
     if(!first) return -1;
@@ -313,6 +327,7 @@ int Dlista<T>::cancellaElemento(const T& el) {
 }
 
 // parte implementativa di iterator
+
 template <typename T>
 bool Dlista<T>::iterator::operator==(typename Dlista<T>::iterator it) const{
     return ptr == it.ptr;
@@ -339,8 +354,6 @@ typename Dlista<T>::iterator Dlista<T>::iterator::operator++(int){ //postfisso
     }
     return temp;
 }
-
-
 
 template <typename T>
 typename Dlista<T>::iterator Dlista<T>::iterator::operator--(int){
@@ -458,6 +471,7 @@ template <typename T>
 T& Dlista<T>::const_iterator::operator*() const{
     return ptr->info;
 }
+
 template <typename T>
 T& Dlista<T>::operator[](iterator i) const{
     return i.ptr->info;
@@ -492,7 +506,7 @@ typename Dlista<T>::const_iterator Dlista<T>::end() const{
 }
 
 template <typename T>
-const T& Dlista<T>::At(int position) const{  // ha senso questa funzione ?
+const T& Dlista<T>::At(int position) const{
     Nodo *aux = first;
     int counter = 0;
     while (aux && counter < position) {
@@ -500,7 +514,7 @@ const T& Dlista<T>::At(int position) const{  // ha senso questa funzione ?
         counter++;
     }
 
-    if(counter < position) // okay ?
+    if(counter < position)
         throw;
 
     return aux->info;
