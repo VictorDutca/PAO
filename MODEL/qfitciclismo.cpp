@@ -114,10 +114,19 @@ void QfitCiclismo::SalvaCiclismo() {
         if(!x1 || !x2 || !x3 || !x4 || !x5) {
             throw ErrEmptyForm();
         }
-        Ciclismo *w = new Ciclismo(x2, x1, x3, x5, x4);
+        Workout *w = new Ciclismo(x2, x1, x3, x5, x4);
+        Workout *wLast = WL.checkLast();
+        if(*w == *wLast){
+
+            QMessageBox msgBox;
+            msgBox.setText("Il Workout è identico ad uno appena inserito! \nSi prega di cambiarlo.");
+            msgBox.exec();
+
+        }else{
         WL.pushT(w);
         m.update();
         close();
+        }
     }
     catch(ErrEmptyForm) {
         QMessageBox msgBox;

@@ -33,7 +33,7 @@ public:
     Dlista(const Dlista&);
     ~Dlista();
     Dlista& operator=(const Dlista&) const;
-
+    T checkLast();
     int cancellaElemento (const T&);
     int getSize() const;
     bool operator==(const Dlista&) const;
@@ -211,6 +211,27 @@ Dlista<T>::~Dlista(){
         delete first;
     }
 }
+
+template <typename T>
+T Dlista<T>::checkLast(){
+    T aux;
+    try{
+    if(first){
+        typename Dlista<T>::Nodo* a=first;
+        while(a->next){
+            a=a->next;
+        }
+
+        aux = a->info;
+        return aux;
+    }
+    else {
+        throw ErrEmptyList();
+    }
+    }
+    catch (ErrEmptyList) {return 0;}
+}
+
 
 template <typename T>
 void Dlista<T>::removeAt(unsigned int position){

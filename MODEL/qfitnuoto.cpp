@@ -104,10 +104,19 @@ void QfitNuoto::SalvaNuoto() {
         if(!x2 || !x3 || !x4 || !x5) {
             throw ErrEmptyForm();
         }
-        Nuoto *w = new Nuoto(x2, x3, x4, x5);
+        Workout *w = new Nuoto(x2, x3, x4, x5);
+        Workout *wLast = WL.checkLast();
+        if(*w == *wLast){
+
+            QMessageBox msgBox;
+            msgBox.setText("Il Workout è identico ad uno appena inserito! \nSi prega di cambiarlo.");
+            msgBox.exec();
+
+        }else{
         WL.pushT(w);
         m.update();
         close();
+        }
     }
     catch(ErrEmptyForm) {
         QMessageBox msgBox;

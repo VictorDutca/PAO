@@ -55,6 +55,9 @@ void Qfitmenu::ApriScelta() {
 
 void Qfitmenu::SalvaFile() {
     XMLWorkout.FileWriter();
+    QMessageBox msgBox;
+    msgBox.setText("File salvato nella cartella d'esecuzione!");
+    msgBox.exec();
 }
 
 void Qfitmenu::EsportaFile(){
@@ -70,9 +73,12 @@ void Qfitmenu::EsportaFile(){
         if (!file.open(QIODevice::WriteOnly)) {
             QMessageBox::information(this, tr("File non apribile"),
                                      file.errorString());
+
             return;
         }
         XMLWorkout.FileExport(file);
+
+
     }
 }
 

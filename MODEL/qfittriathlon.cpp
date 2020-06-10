@@ -241,10 +241,19 @@ void QfitTriathlon::SalvaTriathlon() {
         if(!x1 || !x2 || !x3 || !x4 || !x5 || !x6 || !x7 || !x8 || !x9 || !x10 || !x11 || !x12 || !x13 || !x14) {
             throw ErrEmptyForm();
         }
-        Triathlon *w = new Triathlon(x1, x3, x5, x4, x7, x6, x8, x10, x9, x10, x11, x12, x13, x14);
+        Workout *w = new Triathlon(x1, x3, x5, x4, x7, x6, x8, x10, x9, x10, x11, x12, x13, x14);
+        Workout *wLast = WL.checkLast();
+        if(*w == *wLast){
+
+            QMessageBox msgBox;
+            msgBox.setText("Il Workout è identico ad uno appena inserito! \nSi prega di cambiarlo.");
+            msgBox.exec();
+
+        }else{
         WL.pushT(w);
         m.update();
         close();
+        }
     }
     catch(ErrEmptyForm) {
         QMessageBox msgBox;
