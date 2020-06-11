@@ -1,9 +1,0 @@
-\babel@toc {italian}{}
-\babel@toc {italian}{}
-\contentsline {section}{\numberline {1}Ambiente di sviluppo}{2}%
-\contentsline {section}{\numberline {2}Scopo del progetto}{2}%
-\contentsline {section}{\numberline {3}Gerarchie utilizzate}{3}%
-\contentsline {subsection}{\numberline {3.1}Gerarchia della logica}{3}%
-\contentsline {section}{\numberline {4}Gerarchia della Vista}{4}%
-\contentsline {section}{\numberline {5}Utilizzo del codice polimorfo}{5}%
-\contentsline {section}{\numberline {6}Manuale utente}{5}%
