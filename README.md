@@ -1,3 +1,4 @@
+![] logo.JPG
 L’applicazione QFit permette all’utente di inserire e tenere traccia dei propri
 allenamenti che possono essere di quattro tipologie:
 
